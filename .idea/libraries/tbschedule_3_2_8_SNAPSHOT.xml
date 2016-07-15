@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="tbschedule-3.2.8-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/taobao/pamirs/schedule/tbschedule/3.2.8-SNAPSHOT/tbschedule-3.2.8-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/taobao/pamirs/schedule/tbschedule/3.2.8-SNAPSHOT/tbschedule-3.2.8-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
