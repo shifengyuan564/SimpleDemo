@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.las.jdams.dao.AreaCascadeMapper">
+
+    <select id="getArea" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        SELECT org_no, org_name
+        FROM
+            jdams_org_info
+        WHERE
+            isactive = 1
+        ORDER BY org_no ASC
+    </select>
+
+    <select id="getOperateCenter" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        SELECT
+            distribute_no, distribute_name,
+            org_no, org_name
+        FROM
+            jdams_distribute_info
+        WHERE
+            isactive = 1
+            <if test="areaNo != null and areaNo != '' ">
+                AND org_no = #{areaNo,jdbcType=VARCHAR}
+            </if>
+            <if test="distributeNo != null and distributeNo != '' ">
+                AND distribute_no = #{distributeNo,jdbcType=VARCHAR}
+            </if>
+        ORDER BY distribute_no ASC
+    </select>
+
+</mapper>

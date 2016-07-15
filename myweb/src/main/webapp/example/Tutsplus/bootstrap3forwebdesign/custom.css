@@ -1,0 +1,36 @@
+/**
+ * ----------------------------------------------------------------------------------------
+ * Demo styles.
+ * ----------------------------------------------------------------------------------------
+ */
+h1:before{
+	content: "Learn ";   /*   没有内容  */
+	color: #ff6f6b;
+}
+
+/*超链接两边出现方括号*/
+a {
+	position: relative;
+	display: inline-block;
+	outline: none;
+	text-decoration: none;
+	color: #04995c;
+	font-size: 15px;
+	padding: 5px 10px;
+}
+a:hover::before, a:hover::after {
+    position: absolute;
+}
+a:hover::before {
+    content: "\5B"; left: -7px;
+}
+a:hover::after {
+    content: "\5D"; right:  -7px;
+}
+
+
+.demo-area [class^='col-'] {
+	background-color: #434d55;
+
+	color: #fff;
+}

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ready Function</title>
+        <script src="/js/jquery-2.1.0.js"></script>
+        <script>
+            $(document).ready(function() {
+                alert("Ready Function");
+            });
+
+            function CallOnLoad() {
+                alert("OnLoad");
+            }
+        </script>
+    </head>
+
+    <body onload="CallOnLoad();">
+    </body>
+
+    <script>
+        $(function () {
+            alert("Shorthand Ready Function");
+        });
+    </script>
+</html>
+
+<!--
+    依次输出：
+    1. document ready function
+    2. shorthand
+    3. body onload
+-->

@@ -1,0 +1,61 @@
+<div class="component photogrid clearfix">
+    <a href="/lyndaBootstrap/artists#Barot_Bellingham">
+        <img data-toggle="tooltip" data-original-title="Barot Bellingham"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Barot_Bellingham_tn.jpg" alt="Photo of Barot Bellingham">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Gerard_Donahue">
+        <img data-toggle="tooltip" data-original-title="Gerard Donahue"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Gerard_Donahue_tn.jpg" alt="Photo of Gerard Donahue">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Jonathan_Ferrar">
+        <img data-toggle="tooltip" data-original-title="Jonathan Ferrar"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Jonathan_Ferrar_tn.jpg" alt="Photo of Jonathan Ferrar">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Lorenzo_Garcia">
+        <img data-toggle="tooltip" data-original-title="Lorenzo Garcia"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Lorenzo_Garcia_tn.jpg" alt="Photo of Lorenzo Garcia">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Hillary_Goldwynn">
+        <img data-toggle="tooltip" data-original-title="Hillary Goldwynn"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Hillary_Goldwynn_tn.jpg" alt="Photo of Hillary Goldwynn">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Hassum_Harrod">
+        <img data-toggle="tooltip" data-original-title="Hassum Harrod"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Hassum_Harrod_tn.jpg" alt="Photo of Hassum Harrod">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Jennifer_Jerome">
+        <img data-toggle="tooltip" data-original-title="Jennifer Jerome"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Jennifer_Jerome_tn.jpg" alt="Photo of Jennifer Jerome">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#LaVonne_LaRue">
+        <img data-toggle="tooltip" data-original-title="LaVonne LaRue"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/LaVonne_LaRue_tn.jpg" alt="Photo of LaVonne LaRue">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Riley_Rewington">
+        <img data-toggle="tooltip" data-original-title="Riley Rewington"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Riley_Rewington_tn.jpg" alt="Photo of Riley Rewington">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Constance_Smith">
+        <img data-toggle="tooltip" data-original-title="Constance Smith"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Constance_Smith_tn.jpg" alt="Photo of Constance Smith">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Xhou_Ta">
+        <img data-toggle="tooltip" data-original-title="Xhou Ta"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Xhou_Ta_tn.jpg" alt="Photo of Xhou Ta">
+    </a>
+
+    <a href="/lyndaBootstrap/artists#Richard_Tweed">
+        <img data-toggle="tooltip" data-original-title="Richard Tweed"
+             src="/example/Lynda/Bootstrap3Advanced/images/artists/Richard_Tweed_tn.jpg" alt="Photo of Richard Tweed">
+    </a>
+</div>

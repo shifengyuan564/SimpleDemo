@@ -1,0 +1,26 @@
+<!--
+    Class	                设备
+.visible-xs	    额外的小设备（小于 768px）可见
+.visible-sm	    小型设备（768 px 起）可见
+.visible-md	    中型设备（768 px 到 991 px）可见
+.visible-lg	    大型设备（992 px 及以上）可见
+
+.hidden-xs	    额外的小设备（小于 768px）隐藏
+.hidden-sm	    小型设备（768 px 起）隐藏
+.hidden-md	    中型设备（768 px 到 991 px）隐藏
+.hidden-lg	    大型设备（992 px 及以上）隐藏
+-->
+
+<article class="intro">
+    <h2>Contemporary Art Conference</h2>
+    <p>Join over 500 hundred of the most creative and brilliant minds of art colleges all around the world for five days
+        of lectures by world-renowned art scholars and artists, and seven days and nights of gallery exhibits featuring
+        the best in contemporary art, including painting, sculpture, and more, in the beautiful halls of Hotel Contempo
+        in the heart of Seattle.</p>
+    <p class="hidden-sm">The Roux Academy's annual conference and exhibit is designed to foster a close-knit
+        relationship amongst artists at various universities around the world. No matter what school you attend - if
+        you're an art student at an accredited art school anywhere in the world, you can attend the conference. But sign
+        up early, as this not-to-miss conference sells out quickly, and the waiting list is long. In addition, art
+        students are encouraged to send in works from their school portfolios to be considered for hanging in the CAC
+        exhibit halls, as well as to be selected as a Featured Artist.</p>
+</article>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <script src="../../js/jquery-2.1.0.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="lib/holder.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css"/>
+    <link rel="stylesheet" href="lib/style.css">
+
+    <title>导航栏</title>
+</head>
+<body>
+
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <a href="#" class="navbar-brand"><strong>ninghao</strong>.net</a>
+            
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">课程</a></li>
+                <li><a href="#">博客</a></li>
+                <li><a href="#">手册</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- 测试 .serialize() -->
+    <form>
+        <div><input type="text" name="a" value="1" id="a" /></div>
+        <div><input type="text" name="b" value="2" id="b" /></div>
+        <div><input type="hidden" name="c" value="3" id="c" /></div>
+        <div>
+            <textarea name="d" rows="8" cols="40">4</textarea>
+        </div>
+        <div><select name="e">
+            <option value="5" selected="selected">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select></div>
+        <div>
+            <input type="checkbox" name="f" value="8" id="f" />
+        </div>
+        <div>
+            <input type="submit" name="g" value="Submit" id="g" />
+        </div>
+    </form>
+    <script type="text/javascript">
+        $('form').submit(function() {
+            alert($(this).serialize());
+            return false;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

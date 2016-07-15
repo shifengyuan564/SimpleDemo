@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <div id="idReady">Type keys to hear morse code (Chrome only)</div>
+    <script language="javascript">
+        var pending = [];
+        var playing = false;
+        var dashcounter = 0;
+        document.body.onkeypress = keyclick;
+        var morsecode = ["--..--","–....-",".-.-.-","-..-.",
+            "-----",".----","..---","...--","....-",".....",
+            "-....","--...","---..","----.",
+            "---...","-.-.-.","","-...-","","..--..",".--.-.",
+            ".-","-...","-.-.","-..",".","..-.","--.","....","..",
+            ".---","-.-",".-..","--","-.","---",".--.","--.-",".-.",
+            "...","-","..-","...-",".--","-..-","-.--","--.."];
+        
+        window.AudioContext = window.AudioContext||window.webkitAudioContext;
+
+        context = new AudioContext;
+        var currentoscillator = context.createOscillator();
+        currentoscillator.frequency.value = 600;
+
+        var vca = context.createGain();
+        vca.gain.value = 0;
+        currentoscillator.connect(vca);
+        vca.connect(context.destination);
+        currentoscillator.start(0);
+
+        window.setInterval(timeevent, 200);
+
+        function timeevent()
+        {
+            if (dashcounter>0) {
+                // Playing a dash
+                dashcounter-=1;
+                return;
+            }
+            if (playing) {
+                vca.gain.value = 0;
+                playing = false;
+            } else{
+                if (pending.length>0) {
+                    var nextentry = pending.shift();
+                    switch(nextentry) {
+                        case ".":
+                            playing = true;
+                            vca.gain.value = 1;
+                            break;
+                        case "-":
+                            dashcounter = 2;
+                            playing = true;
+                            vca.gain.value = 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            
+        }
+        
+        
+        function keyclick(thekey) {
+            var s = String.fromCharCode(thekey.charCode).toUpperCase();
+            if (s==" ") {
+                pending.push(" "," ");  // word space
+                return;
+            }
+            var code = s.charCodeAt(0) - 44;
+            var morse = morsecode[code];
+            for(var i = 0; i< morse.length; i++){
+                pending.push(morse[i]);
+            }
+            pending.push(" ");
+        }
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sfy.dao.LinkManageDao" >
+
+    <resultMap id="LinkMap" type="com.sfy.domain.Link" >
+        <id column="id" property="id" jdbcType="BIGINT" />       <!-- 主键 -->
+        <result column="title" property="title" jdbcType="VARCHAR" />     <!-- 标题 -->
+        <result column="address" property="address" jdbcType="VARCHAR" />     <!-- 地址 -->
+    </resultMap>
+
+    <!-- 新增友情链接信息 -->
+    <insert id="insert" parameterType="com.sfy.domain.Link" >
+        INSERT INTO links (title, address) VALUES (#{title,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+            SELECT LAST_INSERT_ID() AS ID
+        </selectKey>
+    </insert>
+
+    <!-- 根据条件查询友情链接信息 -->
+    <select id="querySingleLink" resultType="com.sfy.domain.Link" parameterType="com.sfy.domain.Link" >
+        SELECT id,title,address FROM links
+        <where>
+            1 = 1
+            <if test="id != null">
+                AND id = #{id,jdbcType=BIGINT}       /* 主键id */
+            </if>
+            <if test="title != null and title != ''" >
+                AND title = #{title,jdbcType=VARCHAR}       /* 标题 */
+            </if>
+            <if test="address != null and address != ''" >
+                AND address = #{address,jdbcType=VARCHAR}       /* 地址 */
+            </if>
+        </where>
+    </select>
+
+
+    <!-- 根据条件查询友情链接信息数量 -->
+    <select id="queryLinksCount" resultType="java.lang.Integer"  parameterType="com.sfy.domain.Link" >
+        SELECT COUNT(1) FROM links
+        <where>
+            1 = 1
+            <if test="title != null and title != ''" >
+                AND title = #{title,jdbcType=VARCHAR}       /* 标题 */
+            </if>
+            <if test="address != null and address != ''" >
+                AND address = #{address,jdbcType=VARCHAR}       /* 地址 */
+            </if>
+        </where>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="pageCount" resultType="java.lang.Integer"  parameterType="com.sfy.common.Page" >
+        SELECT COUNT(1) FROM links
+        <where>
+            1 = 1
+            <if test="param.links.title != null and param.links.title != ''" >
+                AND title LIKE CONCAT('%',#{param[links].title},'%')       /* 标题 */
+            </if>
+        </where>
+    </select>
+    <select id="pageQuery" resultMap="LinkMap" parameterType="com.sfy.common.Page" >
+        SELECT id, title, address FROM links
+        <where>
+            1 = 1
+            <if test="param.links.title != null and param.links.title != ''" >
+                AND title LIKE CONCAT('%',#{param[links].title},'%')       /* 标题 */
+            </if>
+        </where>
+        LIMIT #{skip},#{size}
+    </select>
+</mapper>

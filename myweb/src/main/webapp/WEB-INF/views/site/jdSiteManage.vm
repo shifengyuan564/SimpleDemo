@@ -1,0 +1,946 @@
+#set($layout = "/layout/null.vm")
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.css"/>
+<link rel="stylesheet" type="text/css" href="/js/datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+<link rel="stylesheet" type="text/css" href="/js/JqueryUpload/css/jquery.fileupload.css"/>
+<link rel="stylesheet" type="text/css" href="/css/jdSiteManage.css"/>
+<link rel="stylesheet" type="text/css" href="/js/validate/validate_customer_extend.css"/>
+<link rel="stylesheet" type="text/css" href="/js/clueTip/jquery.cluetip.css"/>
+
+<script type="text/javascript" src="/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="/js/jquery.json-2.2.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/js/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/js/datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/JqueryUpload/js/vendor/jquery.ui.widget.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/JqueryUpload/js/jquery.iframe-transport.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/JqueryUpload/js/jquery.fileupload.js" charset="UTF-8"></script>
+
+<!-- Form验证插件 -->
+<script type="text/javascript" src="/js/validate/jquery.validate.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/validate/additional-methods.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/validate/validate_customer_extend.js"></script>
+<script type="text/javascript" src="/js/clueTip/jquery.cluetip.js"></script>
+
+<script type="text/javascript" src="/js/custom/siteManage.js"></script>
+
+<div class="mainContainer">
+    <div class="shadowContainer fade in" style="display: none;"></div>
+
+    <div class="row">
+        <div class="well">
+            <form id="exportForm" action="/site/exportExcel" method="POST">
+                <input type="hidden" id="loginUser" name="loginUser" value="$!{userPin}"/>
+                <table class="queryContainer">
+                    <tbody>
+                    <tr>
+                        <td class="labelTd">
+                            <label for="org_no">区域</label>
+                        </td>
+                        <td>
+                            <select class="form-control" id="org_no" name="orgNo">
+                                <option value="-1">请选择</option>
+                            </select>
+                        </td>
+                        <td class="labelTd">
+                            <label for="distribute_no">运营中心</label>
+                        </td>
+                        <td>
+                            <select class="form-control" id="distribute_no" name="distributeNo">
+                                <option value="-1">请选择</option>
+                            </select>
+                        </td>
+                        <td class="labelTd">
+                            <label for="site_name">门店名称</label>
+                        </td>
+                        <td>
+                            <input class="form-control" id="site_name" type="text" placeholder="请输入门店名称"
+                                   name="siteName">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labelTd">
+                            <label for="bussiness_site_no">业务编号</label>
+                        </td>
+                        <td>
+                            <input class="form-control" id="bussiness_site_no" type="text" placeholder="请输入业务门店编号" name="bussinesSiteNo">
+                        </td>
+                        <td class="labelTd">
+                            <label for="site_status">门店状态</label>
+                        </td>
+                        <td>
+                            <select class="form-control" id="site_status" name="siteStatus">
+                                <option value="-1">请选择</option>
+                                <option value="0">未启用</option>
+                                <option value="1">启用</option>
+                                <option value="2">禁用</option>
+                            </select>
+                        </td>
+                        <td class="labelTd">
+                            <label for="site_level">门店级别</label>
+                        </td>
+                        <td>
+                            <select class="form-control" id="site_level" name="siteLevel">
+                                <option value="-1">请选择</option>
+                                <option value="0">A级</option>
+                                <option value="1">B级</option>
+                                <option value="2">C级</option>
+                                <option value="3">D级</option>
+                                <option value="4">E级</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labelTd">
+                            <label for="province_no">门店地址</label>
+                        </td>
+                        <td colspan="3">
+                            <select class="form-control addressControl" id="province_no" name="provinceNo">
+                                <option value="-1">请选择</option>
+                            </select>
+                            <select class="form-control addressControl" id="city_no" name="cityNo">
+                                <option value="-1">请选择</option>
+                            </select>
+                            <select class="form-control addressControl" id="country_no" name="countryNo">
+                                <option value="-1">请选择</option>
+                            </select>
+                            <select class="form-control addressControl" id="town_no" name="townNo">
+                                <option value="-1">请选择</option>
+                            </select>
+                        </td>
+                        <td class="labelTd">
+                            <label for="jd_account">商城账号</label>
+                        </td>
+                        <td>
+                            <input class="form-control" id="jd_account" type="text" placeholder="请输入商城账号"
+                                   name="jdAccount">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="labelTd">
+                            <label for="manager_name">管家姓名</label>
+                        </td>
+                        <td>
+                            <input class="form-control" id="manager_name" type="text" placeholder="请输入管家姓名"
+                                   name="managerName">
+                        </td>
+                        <td class="labelTd">
+                            <label for="open_time_begin">开业日期</label>
+                        </td>
+                        <td>
+                            <input class="form-control timeControl" id="open_time_begin" type="text" placeholder=""
+                                   data-date-format="yyyy-mm-dd hh:ii:ss" name="openTimeBegin">
+                            <input class="form-control timeControl" id="open_time_end" type="text" placeholder=""
+                                   data-date-format="yyyy-mm-dd hh:ii:ss" name="openTimeEnd">
+                        </td>
+                        <td class="labelTd">
+                            <label for="create_time_begin" style="display: none;">创建日期</label>
+                        </td>
+                        <td>
+                            <input class="form-control timeControl" id="create_time_begin" type="text" placeholder=""
+                                   data-date-format="yyyy-mm-dd hh:ii:ss" name="createTimeBegin" style="display: none;">
+                            <input class="form-control timeControl" id="create_time_end" type="text" placeholder=""
+                                   data-date-format="yyyy-mm-dd hh:ii:ss" name="createTimeEnd" style="display: none;">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="col-md-12 col-xs-12 textAlignCenter">
+                    <button class="bootstrapBtn" id="querySiteBtn"><span class="glyphicon glyphicon-search"></span>
+                        查询
+                    </button>
+                    <button class="bootstrapBtn" id="addBtn" data-toggle="modal" data-target="#addBtnModal"><span
+                            class="glyphicon glyphicon-plus"></span> 添加
+                    </button>
+                    <button class="bootstrapBtnWarning" type="submit" id="exportBtn" disabled="disabled"><span
+                            class="glyphicon glyphicon-export"></span> 导出
+                    </button>
+                    <button class="bootstrapBtn" id="testBtn" ><span class="glyphicon glyphicon-plus"></span>
+                        Test序列化
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 查询结果表格 -->
+    <div class="row">
+        <div class="col-md-12 col-xs-12 noPaddingLeft noPaddingRight">
+            <table id="resultGrid" class="display table-hover" width="100%" cellspacing="0">
+                <thead>
+                    <th class="switchAll">
+                        <input type="checkbox" name="switchAllInput" id="switchAllInput" class="switchAllInput"/>
+                    </th>
+                    <th style="text-align: left;">区域</th>
+                    <th style="text-align: left;">运营中心</th>
+                    <th style="text-align: left;">门店名称</th>
+                    <th style="text-align: left;">业务编号</th>
+                    <th style="text-align: left;">省</th>
+                    <th style="text-align: left;">市</th>
+                    <th style="text-align: left;">县</th>
+                    <th style="text-align: left;">管家</th>
+                    <th style="text-align: left;">店长</th>
+                    <th style="text-align: left;">商城账号</th>
+                    <th style="text-align: left;">门店级别</th>
+                    <th style="text-align: left;">门店状态</th>
+                    <!--<th style="text-align: left;">创建日期</th>-->
+                    <th style="text-align: left;">开业日期</th>
+                    <th style="text-align: left;">操作</th>
+                </thead>
+
+                <tfoot>
+                <td colspan="15" class="wellFooter paddingLeft5 noPaddingRight bgContainer">
+                    <div class="noPaddingLeft noPaddingRight">
+                        <select name="pageRange" id="pageRange" class="form-control input-sm footerSelector">
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                        <div class="btnseparator"></div>
+                        <a class="glyphicon glyphicon-step-backward firstPage" aria-hidden="true"></a>
+                        <a class="glyphicon glyphicon-backward prevPage" aria-hidden="true"></a>
+                        <div class="btnseparator"></div>
+                        <div class="pageNoInputContainer">
+                            <span style="float:left;margin-left:5px;">Page</span>
+                            <input name="pageNo" id="pageNo" placeholder="" class="form-control input-sm pageNoInput" value="1">
+                            <span style="float:left;margin-left:5px;">of</span>
+                            <span style="float:left;margin-left:5px;" class="totalPage">1</span>
+                        </div>
+
+                        <div class="btnseparator"></div>
+                        <a class="glyphicon glyphicon-forward nextPage" aria-hidden="true"></a>
+                        <a class="glyphicon glyphicon-step-forward lastPage" aria-hidden="true"></a>
+                        <div class="btnseparator"></div>
+                        <a class="glyphicon glyphicon-refresh refreshBtn" aria-hidden="true"></a>
+                        <div class="btnseparator"></div>
+
+                        <span class="footerInfo">当前显示从1到15条记录,共0条</span>
+
+                        <input class="currentPage" type="hidden" value="1"/>
+                        <input class="nextPageInput" type="hidden" value="1"/>
+                        <input class="prevPageInput" type="hidden" value="0"/>
+                    </div>
+                </td>
+                <tfoot>
+            </table>
+            <input type="hidden" id="deleteHiddenInput"/>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Define Begin -->
+<div class="modal fade bs-example-modal-lg" data-backdrop="static" id="addBtnModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加门店</h4>
+            </div>
+            <div class="modal-body">
+                <form id="insertSiteInfoForm" class="insertSiteInfoForm">
+                    <h4>基础信息</h4>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label for="org_no_add">区域</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="org_no_add" name="org_no_add">
+                                    <option value="-1">请选择</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="distribute_no_add">运营中心</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="distribute_no_add" name="distribute_no_add">
+                                    <option value="-1">请选择</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="site_name_add">门店名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="site_name_add" type="text" placeholder="请输入门店名称"
+                                       name="site_name_add">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 0px;">
+                                <label for="bussiness_site_no_add">业务编码</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bussiness_site_no_add" type="text"
+                                       placeholder="请输入业务门店编码" name="bussiness_site_no_add">
+                            </td>
+                            <td>
+                                <label for="site_status_add">门店状态</label>
+                            </td>
+                            <td>
+                                <select class="form-control readonly disabled" id="site_status_add"
+                                        name="site_status_add" readonly="readonly" disabled>
+                                    <option value="0" selected>未启用</option>
+                                    <option value="1">启用</option>
+                                    <option value="2">禁用</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="open_time_add">开业时间</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="open_time_add" type="text" placeholder=""
+                                       data-date-format="yyyy-mm-dd hh:ii:ss" name="open_time_add">
+                                <input type="hidden" id="start_time_add"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 0px;">
+                                <label for="province_no_add">门店地址</label>
+                            </td>
+                            <td colspan="5">
+                                <select class="form-control addressControlSpecial" id="province_no_add" name="province_no_add">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select class="form-control addressControlSpecial" id="city_no_add" name="city_no_add">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select class="form-control addressControlSpecial" id="country_no_add" name="country_no_add">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select class="form-control addressControlSpecial" id="town_no_add" name="town_no_add">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <input class="form-control addressInputControl" id="address_add" type="text"
+                                       placeholder="" name="address_add">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 0px;">
+                                <label for="gps_longitude_add">地址经度</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="gps_longitude_add" type="text" placeholder="">
+                            </td>
+                            <td>
+                                <label for="gps_latitude_add">地址纬度</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="gps_latitude_add" type="text" placeholder="">
+                            </td>
+                            <td>
+                                <label for="jd_account_add">商城账号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="jd_account_add" type="text" placeholder=""
+                                       name="jd_account_add">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="site_manager_add">店长</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="site_manager_add" type="text" placeholder=""
+                                       name="site_manager_add">
+                            </td>
+                            <td>
+                                <label for="telephone_add">联系电话</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="telephone_add" type="text" placeholder=""
+                                       name="telephone_add">
+                            </td>
+                            <td>
+                                <label for="email_add">邮箱</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="email_add" type="text" placeholder="" name="email_add">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="weixin_add">微信号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="weixin_add" type="text" placeholder="">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h4>扩展信息</h4>
+                    <input type="hidden" id="uploadedInput"/>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label for="company_name_add">公司名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="company_name_add" type="text" placeholder=""
+                                       name="company_name_add">
+                            </td>
+                            <td>
+                                <label for="bussiness_license_no_add">营业执照编号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bussiness_license_no_add" type="text" placeholder=""
+                                       name="bussiness_license_no_add">
+                            </td>
+                            <td>
+                                <label for="bussiness_license_address_add">营业执照所在地</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bussiness_license_address_add" type="text"
+                                       placeholder="" name="bussiness_license_address_add">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tax_registration_no_add">税务登记号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="tax_registration_no_add" type="text" placeholder=""
+                                       name="tax_registration_no_add">
+                            </td>
+                            <td>
+                                <label for="bank_deposit_name_add">开户行名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_deposit_name_add" type="text" placeholder=""
+                                       name="bank_deposit_name_add">
+                            </td>
+                            <td>
+                                <label for="bank_deposit_address_add">开户行地址</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_deposit_address_add" type="text" placeholder=""
+                                       name="bank_deposit_address_add">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="bank_account_add">银行账号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_account_add" type="text" placeholder=""
+                                       name="bank_account_add">
+                            </td>
+                            <td>
+                                <label for="bank_account_name_add">开户名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_account_name_add" type="text" placeholder=""
+                                       name="bank_account_name_add">
+                            </td>
+                            <td>
+                                <label for="bussiness_license_term_validity_add">营业执照有效期</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bussiness_license_term_validity_add"
+                                       data-date-format="yyyy-mm-dd" type="text" placeholder=""
+                                       name="bussiness_license_term_validity_add">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tax_type_add">供应商纳税类型</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="tax_type_add" name="tax_type_add">
+                                    <option value="-1">请选择</option>
+                                    <option value="0">一般纳税人</option>
+                                    <option value="1">小规模纳税人</option>
+                                    <option value="2">非增值税纳税人</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="tax_rate_add">纳税税率</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="tax_rate_add" name="tax_rate_add">
+                                    <option value="-1">请选择</option>
+                                    <option value="0%">0%</option>
+                                    <option value="3%">3%</option>
+                                    <option value="6%">6%</option>
+                                    <option value="7%">7%</option>
+                                    <option value="13%">13%</option>
+                                    <option value="17%">17%</option>
+                                    <option value="图书13%免税">图书13%免税</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="company_type_company_add">企业性质</label>
+                            </td>
+                            <td>
+                                <label class="radio-inline">
+                                    <input type="radio" class="company_type_add" name="company_type_add"
+                                           id="company_type_company_add" value="0" checked> 公司
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" class="company_type_add" name="company_type_add"
+                                           id="company_type_personal_add" value="1"> 个人
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="remark_add">备注</label>
+                            </td>
+                            <td colspan="5">
+                                <textarea class="form-control" id="remark_add" name="remark_add" rows="3"></textarea>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <form id="uploadForm">
+                    <span class="btn btn-success fileinput-button willAdd">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>选择文件</span>
+                        <!-- The file input field used as target for the file upload widget -->
+                        <input id="fileupload" type="file" name="files[]" data-url="/site/uploadForPage" multiple>
+                    </span>
+                    <span>
+                        <button id="uploadBtn" type="button" class="btn btn-primary" disabled="disabled"><span
+                                class="glyphicon glyphicon-cloud-upload"></span> 上传文件
+                        </button>
+                    </span>
+                    <div class="row">
+                        <span id="selectedFilesName"></span>
+                    </div>
+                    <div class="row progressRow">
+                        <div class="progress">
+                            <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="10"
+                                 aria-valuemin="10" aria-valuemax="100" style="width: 10%;">
+                                10%
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="alert alert-danger alertValidate" role="alert" style="display: none;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="bootstrapBtnWarning" data-dismiss="modal">返回</button>
+                <button type="button" class="bootstrapBtn insertBtn">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade bs-example-modal-lg" data-backdrop="static" id="modifyBtnModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改门店</h4>
+            </div>
+            <div class="modal-body">
+                <h4>基础信息</h4>
+                <form id="modifySiteInfoForm">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label for="org_no_modify">区域</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="org_no_modify" name="org_no_modify">
+                                    <option value="-1">请选择</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="distribute_no_modify">运营中心</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="distribute_no_modify" name="distribute_no_modify">
+                                    <option value="-1">请选择</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="site_name_modify">门店名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="site_name_modify" type="text" placeholder="请输入门店名称"
+                                       aria-readonly="true" name="site_name_modify">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 0px;">
+                                <label for="bussiness_site_no_modify">门店编码</label>
+                            </td>
+                            <td>
+                                <input type="hidden" id="site_no_modify"/>
+                                <input class="form-control" id="bussiness_site_no_modify" type="text"
+                                       placeholder="请输入门店编码"
+                                       aria-readonly="true" name="bussiness_site_no_modify">
+                            </td>
+                            <td>
+                                <label for="site_status_modify">门店状态</label>
+                            </td>
+                            <td>
+                                <select class="form-control readonly" id="site_status_modify"
+                                        name="site_status_modify" disabled = "disabled">
+                                    <option value="0" selected>未启用</option>
+                                    <option value="1">启用</option>
+                                    <option value="2">禁用</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="open_time_modify">开业时间</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="open_time_modify" type="text" placeholder=""
+                                       data-date-format="yyyy-mm-dd hh:ii:ss" name="open_time_modify">
+                                <input type="hidden" id="start_time_modify"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 0px;">
+                                <label for="province_no_modify">门店地址</label>
+                            </td>
+                            <td colspan="5">
+                                <select class="form-control addressControlSpecial" id="province_no_modify"
+                                        name="province_no_modify">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select class="form-control addressControlSpecial" id="city_no_modify" name="city_no_modify">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select class="form-control addressControlSpecial" id="country_no_modify"
+                                        name="country_no_modify">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select class="form-control addressControlSpecial" id="town_no_modify" name="town_no_modify">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <input class="form-control addressInputControl" id="address_modify"
+                                       name="address_modify"
+                                       type="text" placeholder="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-left: 0px;">
+                                <label for="gps_longitude_modify">地址经度</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="gps_longitude_modify" type="text" placeholder=""
+                                       name="gps_longitude_modify">
+                            </td>
+                            <td>
+                                <label for="gps_latitude_modify">地址纬度</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="gps_latitude_modify" type="text" placeholder=""
+                                       name="gps_latitude_modify">
+                            </td>
+                            <td>
+                                <label for="jd_account_modify">商城账号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="jd_account_modify" type="text" placeholder=""
+                                       name="jd_account_modify">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="site_manager_modify">店长</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="site_manager_modify" type="text" placeholder=""
+                                       name="site_manager_modify">
+                            </td>
+                            <td>
+                                <label for="telephone_modify">联系电话</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="telephone_modify" type="text" placeholder=""
+                                       name="telephone_modify">
+                            </td>
+                            <td>
+                                <label for="email_modify">邮箱</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="email_modify" type="text" placeholder=""
+                                       name="email_modify">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="weixin_modify">微信号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="weixin_modify" type="text" placeholder=""
+                                       name="weixin_modify">
+                            </td>
+                            <td>
+                                <label for="managerName_modify">管家姓名</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="managerName_modify" type="text" placeholder="" readonly
+                                       aria-readonly="true" name="managerName_modify">
+                            </td>
+                            <td>
+                                <label for="managerErp_modify">管家ERP</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="managerErp_modify" type="text" placeholder="" readonly
+                                       aria-readonly="true" name="managerErp_modify">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h4>扩展信息</h4>
+                    <input type="hidden" id="uploadedInputModify"/>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <label for="company_name_modify">公司名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="company_name_modify" type="text" placeholder=""
+                                       name="company_name_modify">
+                            </td>
+                            <td>
+                                <label for="bussiness_license_no_modify">营业执照编号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bussiness_license_no_modify" type="text" placeholder=""
+                                       name="bussiness_license_no_modify">
+                            </td>
+                            <td>
+                                <label for="bussiness_license_address_modify">营业执照所在地</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bussiness_license_address_modify" type="text"
+                                       placeholder="" name="bussiness_license_address_modify">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tax_registration_no_modify">税务登记号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="tax_registration_no_modify" type="text" placeholder=""
+                                       name="tax_registration_no_modify">
+                            </td>
+                            <td>
+                                <label for="bank_deposit_name_modify">开户行名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_deposit_name_modify" type="text" placeholder=""
+                                       name="bank_deposit_name_modify">
+                            </td>
+                            <td>
+                                <label for="bank_deposit_address_modify">开户行地址</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_deposit_address_modify" type="text" placeholder=""
+                                       name="bank_deposit_address_modify">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="bank_account_modify">银行账号</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_account_modify" type="text" placeholder=""
+                                       name="bank_account_modify">
+                            </td>
+                            <td>
+                                <label for="bank_account_name_modify">开户名称</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bank_account_name_modify" type="text" placeholder=""
+                                       name="bank_account_name_modify">
+                            </td>
+                            <td>
+                                <label for="bussiness_license_term_validity_modify">营业执照有效期</label>
+                            </td>
+                            <td>
+                                <input class="form-control" id="bussiness_license_term_validity_modify"
+                                       data-date-format="yyyy-mm-dd" type="text" placeholder=""
+                                       name="bussiness_license_term_validity_modify">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="tax_type_modify">供应商纳税类型</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="tax_type_modify" name="tax_type_modify">
+                                    <option value="-1">请选择</option>
+                                    <option value="0">一般纳税人</option>
+                                    <option value="1">小规模纳税人</option>
+                                    <option value="2">非增值税纳税人</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="tax_rate_modify">纳税税率</label>
+                            </td>
+                            <td>
+                                <select class="form-control" id="tax_rate_modify" name="tax_rate_modify">
+                                    <option value="-1">请选择</option>
+                                    <option value="0%">0%</option>
+                                    <option value="3%">3%</option>
+                                    <option value="6%">6%</option>
+                                    <option value="7%">7%</option>
+                                    <option value="13%">13%</option>
+                                    <option value="17%">17%</option>
+                                    <option value="图书13%免税">图书13%免税</option>
+                                </select>
+                            </td>
+                            <td>
+                                <label for="company_type_company_modify">企业性质</label>
+                            </td>
+                            <td>
+                                <label class="radio-inline">
+                                    <input type="radio" class="company_type_modify" name="company_type_modify"
+                                           id="company_type_company_modify" value="0" checked> 公司
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" class="company_type_modify" name="company_type_modify"
+                                           id="company_type_personal_modify" value="1"> 个人
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="remark_modify">备注</label>
+                            </td>
+                            <td colspan="5">
+                                <textarea class="form-control" id="remark_modify" name="remark_modify"
+                                          rows="3"></textarea>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <label for="resultGridModify" style="padding-left: 10px;">已上传的文件</label>
+                <div style="padding-left: 10px;">
+                    <table id="resultGridModify" class="display table-hover" width="100%" cellspacing="0">
+                        <thead>
+                        <th style="text-align: left;">文件名</th>
+                        <th style="text-align: left;">路径</th>
+                        <th style="text-align: left;">操作</th>
+                        </thead>
+                    </table>
+                </div>
+                <form id="uploadFormModify">
+                    <span class="btn btn-success fileinput-button willAddModify">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>选择文件</span>
+                        <!-- The file input field used as target for the file upload widget -->
+                        <input id="fileuploadModify" type="file" name="files[]" data-url="/site/uploadForPage" multiple>
+                    </span>
+                    <span>
+                        <button id="uploadBtnModify" type="button" class="btn btn-primary" disabled="disabled"><span
+                                class="glyphicon glyphicon-cloud-upload"></span> 上传文件
+                        </button>
+                    </span>
+                    <div class="row">
+                        <span id="selectedFilesNameModify"></span>
+                    </div>
+                    <div class="row progressRowModify">
+                        <div class="progressModify">
+                            <div class="progress-bar specialProgress" id="progressBarModify" role="progressbar"
+                                 aria-valuenow="10" aria-valuemin="10" aria-valuemax="100" style="width: 10%;">
+                                10%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="resultTmsGrid" style="padding-left: 10px;">关联承运站点信息</label>
+                        <table id="resultTmsGrid" class="display table-hover" width="100%" cellspacing="0">
+                            <thead>
+                            <th style="text-align: left;">序号</th>
+                            <th style="text-align: left;">机构</th>
+                            <th style="text-align: left;">配送中心</th>
+                            <th style="text-align: left;">承运站点编号</th>
+                            <th style="text-align: left;">承运站点名称</th>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <label for="resultImGrid" style="padding-left: 10px;">关联安维站点信息</label>
+                        <table id="resultImGrid" class="display table-hover" width="100%" cellspacing="0">
+                            <thead>
+                            <th style="text-align: left;">序号</th>
+                            <th style="text-align: left;">区域</th>
+                            <th style="text-align: left;">运营中心</th>
+                            <th style="text-align: left;">安维网点编号</th>
+                            <th style="text-align: left;">安维网点名称</th>
+                            </thead>
+                        </table>
+                    </div>
+                </form>
+                <div class="alert alert-danger alertModifyValidate" role="alert" style="display: none;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="bootstrapBtnWarning" data-dismiss="modal">返回</button>
+                <button type="button" class="bootstrapBtn modifySaveBtn">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade bs-example-modal-sm deleteConfirmModal" data-backdrop="static" tabindex="-1" role="dialog"
+     id="deleteConfirmModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="confirmContent">
+                <span class="glyphicon glyphicon-question-sign text-warning"></span> 确认删除所选门店信息么？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="bootstrapBtnWarning" data-dismiss="modal">返回</button>
+                <button type="button" class="bootstrapBtn deleteConfirmBtn">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm confirmModal" data-backdrop="static" tabindex="-1" role="dialog"
+     id="confirmModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="confirmContent"></div>
+            <div class="modal-footer">
+                <button type="button" class="bootstrapBtnWarning" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm confirmInfoModal" data-backdrop="static" tabindex="-1" role="dialog"
+     id="confirmInfoModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="confirmInfoContent">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="bootstrapBtn confirmInfoBtn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm confirmModifyModal" data-backdrop="static" tabindex="-1" role="dialog"
+     id="confirmModifyModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="confirmModifyContent">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="bootstrapBtn confirmModifyBtn" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Define End -->

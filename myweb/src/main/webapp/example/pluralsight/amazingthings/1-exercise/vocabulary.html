@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vocabulary List</title>
+    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    <script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <style>
+        * {
+            font-family: 'Oleo Script', cursive;
+        }
+        div {
+            font-size: 30px;
+        }
+        body {
+            background-image: url('old_map_@2X.png');
+            background-repeat: repeat;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // jquery 写法 1
+            var data = [];
+            $.each($("div"), function (_index, _obj) {
+                data.push($(_obj).html().split(" ")[1]);    // 这里还可以使用， $(_obj).text()，但是两者有区别
+            });
+            alert(data.sort().join("\n"));
+
+            // jquery 写法 2
+            $("div").each( function( _index, _obj ) {
+                data.push(_obj.innerHTML.split(" ")[1]);    // 单独的 _obj不能调用jquery方法， _obj == this
+            });
+            alert(data.sort().join("\n"));
+        });
+
+        // js 写法
+        function splitWords() {
+            var arr = document.getElementsByTagName('div');
+            var words = [];
+            for (var i = 0; i < arr.length; i++) {
+                words.push(arr[i].innerHTML.split(" ")[1]);
+            }
+            alert(words.sort().join("\n"));
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Vocabulary List Week 4</h1>
+    <input type="button" id="split" value="split" onclick="splitWords()" />
+
+    <div>1. suppose</div>
+    <div>2. compound</div>
+    <div>3. exponent</div>
+    <div>4. ambient</div>
+    <div>5. reform</div>
+    <div>6. intestine</div>
+    <div>7. ambivalent</div>
+    <div>8. condensation</div>
+    <div>9. glacier</div>
+    <div>10. circumstantial</div>
+    <div>11. interdependent</div>
+    <div>12. gravity</div>
+    <div>13. statement</div>
+    <div>14. measuring</div>
+    <div>15. fringe</div>
+    <div>16. autobiography</div>
+    <div>17. photograph</div>
+    <div>18. constitution</div>
+    <div>19. reclamation</div>
+    <div>20. assimilate</div>
+</body>
+</html>

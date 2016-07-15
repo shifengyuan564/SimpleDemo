@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>管理系统</title>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- Mobile Specific Meta
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        确保适当的绘制和触屏缩放
+        width 属性控制设备的宽度。假设您的网站将被带有不同屏幕分辨率的设备浏览，那么将它设置为 device-width 可以确保它能正确呈现在不同设备上。
+        initial-scale=1.0 确保网页加载时，以 1:1 的比例呈现，不会有任何的缩放。
+
+        在移动设备浏览器上，通过为 viewport meta 标签添加 user-scalable=no 可以禁用其缩放（zooming）功能。
+        通常情况下，maximum-scale=1.0 与 user-scalable=no 一起使用。这样禁用缩放功能后，用户只能滚动屏幕，就能让您的网站看上去更像原生应用的感觉。
+        注意，这种方式我们并不推荐所有网站使用，还是要看您自己的情况而定！
+    -->
+
+
+    <script type="text/javascript" src="#springUrl('')/js/jquery-2.1.0.js" charset="utf-8" ></script>
+
+    <style>
+        .bootstrapBtn{
+            background: #f24f44 none repeat scroll 0 0;
+            border: 1px solid #f24f44;
+            color: #fff;
+            border-radius: 2px;
+            display: inline-block;
+            font-size: 12px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 10px;
+            text-align: center;
+            width: 98px;
+        }
+        .bootstrapBtn:hover {
+            background: #fb766d none repeat scroll 0 0;
+            border: 1px solid #fb766d;
+        }
+
+        .bootstrapBtnWarning{
+            background: #fff none repeat scroll 0 0;
+            border: 1px solid #d9d9d9;
+            color: #959595;
+            border-radius: 2px;
+            display: inline-block;
+            font-size: 12px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 10px;
+            text-align: center;
+            width: 98px;
+        }
+
+        .bootstrapBtnWarning:hover {
+            border: 1px solid #f24f44;
+            color: #f24f44;
+        }
+    </style>
+</head>
+<body>
+    $screen_content
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Validation</title>
+
+    <style>
+        .parsley-error 
+        {
+            border-width:medium;
+            border-color:Red;
+        }
+
+        ul.parsley-error-list, .custom-error-message
+        {
+            display:inline !important;
+            color:red;
+        }
+    </style>
+
+    <script src="/js/jquery-2.1.0.js"></script>
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/js/parsley.js"></script>
+</head>
+<body>
+     <form method="post" data-parsley-validate data-parsley-namespace="data-parsley-" >
+        <label for="TextZip">Zip*:</label>
+        <input id="TextZip" name="TextZip" type="text"
+               data-parsley-regexp="^\d{5}$"
+               data-parsley-required="true"
+               data-parsley-error-message="Invalid must be 5 digits" />
+        
+        <input id="Submit1" type="submit" value="submit"  />  
+    </form> 
+</body>
+</html>

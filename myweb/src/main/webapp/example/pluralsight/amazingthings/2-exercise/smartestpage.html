@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>World's Smartest Webpage</title>
+</head>
+
+<body>
+<div id="container">
+Question: <input type="text" id="questionBox"><br>
+Username: <input type="text" id="usernameBox"><br>
+Password: <input type="password" id="passwordBox"><br>
+<input type="button" id="answer" value="Answer the question!" onclick="buttonClick();">
+</div>
+<script>
+    var password;
+    function showAnswer(){
+        var asteriskPosition = password.indexOf("*");
+        if (asteriskPosition !== -1) {
+            password = password.substring(0, asteriskPosition);
+        }
+        document.getElementById("container").innerHTML = password;
+    }
+    function buttonClick() {
+        password = document.getElementById("passwordBox").value;
+        document.getElementById("container").innerHTML = "Thinking...";
+        setTimeout(showAnswer, 2000);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+/*.row-fluid{*/
+	/*color: #0088CC;*/
+/*}*/
+body { 
+	display: block;
+	color: #000;  
+    font-size: 14px;
+    font-family: verdana;
+    line-height: 166.6%;
+	text-align: center;		/*字体居中显示*/
+}
+body, h1, h2, h3, ul, li, form, p, img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+label{
+	font-weight:normal;
+}
+.row{
+	margin: 6px 0;
+}
+fieldset{
+	margin: 10px 5px;
+}
+fieldset,ol>li{
+	text-align: left;
+}
+fieldset>div{
+	text-align: center;
+	vertical-align: middle;
+}
+legend{
+	font-size: 16px;
+	color: #31708f;
+}
+.list-group {  
+  margin: 0 15px;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+ .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, 
+ .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, 
+ .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+	padding-left: 0; 
+ 	padding-right: 0; 
+}
+.btn-group{
+	float: left;
+}
+button>span{
+	margin-right: 7px;
+}
+.panel {
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+/**
+ * 以下 from las.im 全局通用样式
+ *
+ *
+ * @project 360buy
+ * @version 1.0
+ * @author  Fengweiping
+ * @copyright 2012 360buy
+ *
+ */
+
+/**
+ * @subsection Grid表格样式
+ */
+.grid{
+    width:100%; clear: both; background-color: #fff;
+    table-layout:fixed;
+    border-top: 1px solid #d7d7d7;
+    border-right: 1px solid #d7d7d7;
+}
+.grid th,
+.grid td{
+    height:34px;
+    border-left: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+    padding:0 3px
+}
+.grid thead{
+    background:url(/css/i/img-w-1px.png) 0 -40px repeat-x #ececec;
+}
+.grid thead th,.grid thead td{
+    height:40px;
+}
+.grid tbody td,
+.grid tbody th{
+    word-wrap : break-word;
+}
+.grid tr.trOdd{background: #f5f5f6;}
+.grid tr.selected{background: #fcdf98;}
+.grid tr.trHover{background: #eef6fc;}
+.grid td.trHover{border-left: 3px solid #347dbb;padding-left:2px;}
+/**
+ * @subsection page 分页
+ */
+.page{
+    height:28px;
+    line-height:28px;
+    background-color:#f3f3f3;
+    border:1px solid #d7d7d7;
+    border-top:0;
+    padding:5px 0;
+}
+.page a{
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    display: inline-block;
+    padding: 0 10px;
+    text-decoration: none;
+    vertical-align: middle;
+    border:1px solid #d7d7d7;
+    margin-left:-1px;
+    color:#0095cd;
+    background:url(/css/i/img-w-1px.png) 0 -80px repeat-x;
+}
+.page a:hover{
+    text-decoration: none;
+}
+.page .apostrophe{
+    float:left;
+    padding:0 3px;
+}
+.page a.current{
+    color:#ff6600;
+    background:url(/css/i/img-w-1px.png) 0 -106px repeat-x;
+}
+/**
+ * @subsection ico 图标
+ */
+.ico{
+    height:18px;
+    vertical-align: middle;
+    width:24px;
+    display:inline-block;
+    background-image:url(/css/i/ico.png);
+    background-repeat: no-repeat;;
+    background-position: 0 0;
+}
+.ico.ico-key{
+    background-position: -4px -90px;
+}
+.ico.ico-logoff{
+    background-position: -32px -90px;
+}
+/**
+ * 输入框
+ *
+ * 根据文本域长度分类，44 26 14 10为最多输入字符数目，psw为密码，ver为验证码
+ *
+ * @section 输入框
+ */
+.textField46,
+.textField28,
+.textField18,
+.textField12,
+.textField8,
+.textField7,
+.textField4,
+.textField2,
+.textField{ height: 22px; line-height: 22px; padding: 0 3px;  background-color: #fff; font-size: 12px; border:1px solid #cbcbcb;}
+.textField46 { width: 278px }
+.textField28 { width: 169px }
+.textField18 { width: 114px }
+.textField12 { width: 78px }
+.textField8 { width: 49px }
+.textField7 { width: 44px }
+.textField4 { width: 22px }
+.textField2 { width: 14px }
+
+.dateSet,.timeSet,.YMSet,.dateTimeSet{
+    background:url("/css/i/calendar.png") no-repeat scroll right 2px #fff;
+}
+/**
+ * 文本域
+ *
+ * 根据文本域宽度分类，370 400 460 564为px宽度
+ * @section 文本域
+ */
+textarea{
+    border: 1px solid #cbcbcb;
+    font-size: 12px;
+    padding:3px;
+    resize:none;
+    color: #555555;
+}
+.textarea370 { width: 371px; height: 48px; }
+.textarea400 { width: 394px; height: 79px; }
+.textarea460 { width: 454px; height: 54px; }
+.textarea525X50 { width: 525px; height: 50px; }
+.textarea290X235 { width: 290px; height: 28px; }
+.textarea564 { width: 558px; height: 106px; }
+.textarea116X114 {height: 116px;width: 114px;
+}
+/**
+ * 下拉框
+ *
+ * 根据下拉框长度分类并与，44 26 14 10为最多输入字符数目
+ *
+ * @section 文本域
+ */
+.select46,
+.select28,
+.select18,
+.select12,
+.select8,
+.select { height: 24px;line-height:22px;padding: 2px 0;border:1px solid #cbcbcb;vertical-align: middle;}
+.select46 { width: 286px }
+.select28 { width: 177px }
+.select18 { width: 122px }
+.select12 { width: 86px }
+.select8 { width: 57px }
+
+/**
+ * @subsection 自适应小按钮
+ *
+ * 包括a标签模拟的按钮，button标签按钮，二者都是自适应按钮
+ *
+ * @section 通用按钮
+ */
+/*各个按钮兼容*/
+button::-moz-focus-inner { padding: 0 !important; border: 0 none !important; }
+button {padding:0;margin:0;background-color:transparent;overflow: visible;vertical-align:middle;}
+.btn {hide-focus:expression(this.hideFocus=true);cursor: pointer;}/* for IE7.0及以下版本 */
+.btn:focus{ outline-style:none; }/* for Firefox，IE8.0等 */
+.btn{display: inline-block;height: 28px;vertical-align:middle;}
+.btn s,
+.btn b,
+.btn span,
+.btn i{ display: inline-block;height: 28px;line-height:28px;cursor: pointer;vertical-align:baseline;white-space: nowrap;font-style:normal;text-decoration: none;}
+
+a.btn:link,
+a.btn:visited,
+a.btn:hover,
+a.btn:active{ text-decoration: none }
+
+.btn s{padding-left:8px;background: url(/css/i/btn.gif) no-repeat 0 0; }
+.btn s b{padding-right: 8px;background: url(/css/i/btn.gif) no-repeat right 0;}
+.btn s b span{background: url(/css/i/btn.gif) repeat 0 -28px; color:#555;font-size: 12px;font-weight: normal;padding: 0 7px;}
+
+.btn.btnM s{padding-left:8px;background: url(/css/i/btn.gif) no-repeat 0 -56px; }
+.btn.btnM s b{padding-right: 8px;background: url(/css/i/btn.gif) no-repeat right -56px;}
+.btn.btnM s b span{background: url(/css/i/btn.gif) repeat 0 -84px; color:#fff;font-size:14px;font-style: normal;}
+
+.btn.btnL s{padding-left:8px;background: url(/css/i/btn.gif) no-repeat 0 -168px; }
+.btn.btnL s b{padding-right: 8px;background: url(/css/i/btn.gif) no-repeat right -168px;}
+.btn.btnL s b span{background: url(/css/i/btn.gif) repeat 0 -196px;font-size:12px;font-style: normal;}
+
+.btn i{width:18px;}
+/**
+ * @subsection jModal
+ *
+ * 模态框样式
+ *
+ */
+
+#jqmAlert {
+    display: block;
+    left: 50%;
+    margin-left: -200px;
+    top: 127.15px;
+    width: 500px;
+    z-index: 10000;
+}
+
+
+.whiteOverlay {
+    background-color:#ccc;
+}
+.jqDrag {
+    cursor: move;
+}
+.modal,
+.jqmLoading{
+    display:none;
+    _left: 50%;
+    position: fixed;
+    /*box-shadow: 2px 2px 4px #333;
+    border-radius: 5px 5px 5px 5px;*/
+    top: 17%;}
+.loading_64,.loading_55,.loading_48,.loading_32, .loading_24, .loading_16 {
+    background-repeat: no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+}
+.loading_64 {
+    height: 64px;
+    width: 64px;
+    background-image: url("/css/i/loading_64.gif");
+}
+.loading_55 {
+    height: 55px;
+    width: 55px;
+    background-image: url("/css/i/loading_55.gif");
+}
+.loading_48 {
+    height: 48px;
+    width: 48px;
+    background-image: url("/css/i/loading_48.gif");
+}
+.loading_32 {
+    height: 32px;
+    width: 32px;
+    background-image: url("/css/i/loading_32.gif");
+}
+.loading_24 {
+    height: 24px;
+    width: 24px;
+    background-image: url("/css/i/loading_24.gif");
+}
+.loading_16 {
+    height: 16px;
+    width: 16px;
+    background-image: url("/css/i/loading_16.gif");
+}
+* html .modal,
+* html .jqmLoading{
+    position: absolute;
+}
+
+.modal .tl{
+    background: url(/css/i/jModal.png) repeat-x 0 0 #4290c1;
+    height:33px;
+    line-height: 33px;
+    color:#fff;
+    line-height: 31px;
+    margin-right:10px;
+    padding-left:10px;
+}
+.modal .tr{
+    background: url(/css/i/jModal.png) repeat-x 0 0 #4290c1;
+    height:33px;
+    line-height: 33px;
+    margin-right:-10px;
+    padding-right:10px;
+    display:block;
+}
+.modal .tit {
+    float:left;
+    font-size: 12px;
+}
+.modal .modalClose {
+    background: url("/css/i/jModal.png") no-repeat scroll 3px -33px transparent;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    height: 18px;
+    margin-top: 10px;
+    text-indent: -9999px;
+    width: 18px;
+}
+.modal .moadalCon,
+.modal .modalFooter{
+    border-left: 1px solid #4290c1;
+    border-right: 1px solid #4290c1;
+    background-color:#fff;
+}
+.modal .moadalCon{
+    padding:10px;
+}
+.modal .h400{
+    max-height:400px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+.modal .modalFooter{
+    text-align:center;
+}
+.modal .modalFooter .btn{
+    margin: 20px 50px 10px 0;
+}
+
+.modal .bl{
+    border-bottom: 1px solid #4290c1;
+}
+/**
+ * @subsection msg
+ *
+ * 提示信息样式
+ *
+ */
+.modal .fakeMsg{
+    padding: 8px 0;
+    zoom:1;
+}
+.modal .fakeMsg .ico{
+    float:left;
+    width:24px;
+    height:24px;
+    margin: 0 10px 0 6px;
+}
+.modal .fakeMsg .conText{
+    float:left;
+    display:inline-block;
+    color:#666;
+    line-height: 20px;
+}
+
+.modal .alert .ico{
+    background:url(/css/i/msgIco24.png) 0px -49px no-repeat;
+}
+.modal .attention .ico{
+    background:url(/css/i/msgIco24.png) 0px -25px no-repeat;
+}
+.modal .success .ico{
+    background:url(/css/i/msgIco24.png) 0px 0px no-repeat;
+}
+.modal .error .ico{
+    background:url(/css/i/msgIco24.png) 0px -74px no-repeat;
+}
+.modal .fakeMsg.error{
+    /*border:1px solid #cc6666;*/
+    /*background-color:#ffeaea;*/
+}
+.modal .fakeMsg.success{
+    /*border:1px solid #9cca0f;*/
+    /*background-color:#effeb9;*/
+}
+/**
+ * @subsection tab tab页
+ */
+.tab{
+    border-bottom:1px solid #90c0e9;
+    height:26px;
+}
+.tab ul{
+    margin-bottom: -1px;
+}
+.tab ul li{
+    float:left;
+    height:27px;
+    line-height:27px;
+}
+.tab ul li a,
+.tab ul li span{
+    display:inline-block;
+    height:27px;
+    line-height:27px;
+}
+.tab ul li a{
+    position:relative;
+    padding-left:15px;
+    margin-right:2px;
+    background:url(/css/i/tab-bg.png) no-repeat left -0px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.tab ul li span{
+    padding-right:15px;
+    background:url(/css/i/tab-bg.png) no-repeat right -28px;
+    color:#347dbb;
+}
+.tab ul li a:hover{
+    background:url(/css/i/tab-bg.png) no-repeat left -112px;
+}
+.tab ul li a:hover span{
+    background:url(/css/i/tab-bg.png) no-repeat right -140px;
+}
+.tab ul li a.selected{
+    background:url(/css/i/tab-bg.png) no-repeat left -56px;
+}
+.tab ul li a.selected span{
+    background:url(/css/i/tab-bg.png) no-repeat right -84px;
+}
+.tabCon{
+    padding:10px;
+    border:1px solid #d7d7d7;
+    border-top:0;
+}
+

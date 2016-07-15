@@ -1,0 +1,81 @@
+<script type="text/javascript" src="#springUrl('')/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="#springUrl('')/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="#springUrl('')/css/common.css" /> <!-- 后引入的css为主 -->
+
+<style>
+    /*当前所点击的菜单样式*/
+    .list-group > .curr, .list-group > .curr:hover, .list-group > .curr:focus {
+        background-color: #CE4648;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.125) inset;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-weight:bold;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var height = $(window).height();
+        if (height < 600) {
+            height = 600;
+        }
+
+        $("#centerFrame").attr('height', height);
+
+        $(".list-group a").click(function (e) {
+            e.preventDefault();
+
+            if (this.attributes['url']) {
+                switchFrame(this.attributes['url'].nodeValue);
+                switchActiveButtonCss("#" + this.id);
+            }
+        });
+
+        function switchFrame(url) {
+            $('#centerFrame', document).attr("src", url);
+        }
+
+
+        function switchActiveButtonCss(id) {
+//            $(".list-group-item").attr("style", "");
+//            $(id).attr("style", "background:#F5F5F5");
+            $(".list-group a").removeClass('curr');
+            $(id).addClass('curr');
+        };
+        if ($("#page6")) {
+            $("#page6").click();
+        }
+    });
+</script>
+
+
+<div class="col-xs-2">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-warning">
+            <span style="font-size:18px;font-weight: bold;">基础信息列表</span>
+        </a>
+        <a id="page1" class="list-group-item clickBtn" url="../accountManageController/accountManage" href="#">账号管理</a>
+        <a id="page2" class="list-group-item clickBtn" url="/getView/site/jdSiteManage" href="#">京东帮门店管理</a>
+        <a id="page3" class="list-group-item clickBtn" url="http://jdhms.jd.com/erp/application/queryApplications"
+           href="#">京东帮入驻申请查询</a>
+        <a id="page4" class="list-group-item clickBtn" url="http://jdhms.jd.com/erp/user/user_index"
+           href="#">京东帮外网用户管理</a>
+        <a id="page5" class="list-group-item clickBtn" url="/getView/basicManage/managerManage" href="#">京东帮管家管理</a>
+        <a id="page6" class="list-group-item clickBtn curr" url="/getView/site/linkpage" href="#">友情链接管理</a>
+        <a id="page7" class="list-group-item clickBtn" url="/erp/informationDelivery/index" href="#">新闻公告管理</a>
+
+        <a href="#" class="list-group-item list-group-item-warning">
+            <span style="font-size:18px;font-weight: bold;">权限系统</span>
+        </a>
+        <a id="page8" class="list-group-item clickBtn"
+           url="http://las.core.jd.com/permission/accountactive?sys=LAS_JDHMS" href="#">用户管理</a>
+        <a id="page9" class="list-group-item clickBtn"
+           url="http://las.core.jd.com/permission/accountdelete?sys=LAS_JDHMS" href="#">角色管理</a>
+        <a id="page10" class="list-group-item clickBtn"
+           url="http://las.core.jd.com/permission/resourceassign?sys=LAS_JDHMS" href="#">资源管理</a>
+        <a id="page11" class="list-group-item clickBtn" url="http://las.core.jd.com/permission/out_user?sys=LAS_JDHMS"
+           href="#">外部用户管理</a>
+    </div>
+</div>
+<iframe id="centerFrame" style="top: 0px; padding-right: 10px; padding-left: 0px;" width="100%" style="margin:0 auto;"
+        class="col-xs-10" frameborder="0" scrolling="auto"></iframe>

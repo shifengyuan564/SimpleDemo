@@ -1,0 +1,58 @@
+﻿@model SamplesData.UserData
+
+@{
+  ViewBag.Title = "Date Range Picker Sample 5";
+}
+
+<h2>Custom Ranges</h2>
+
+@using (Html.BeginForm())
+{
+  <div class="row">
+    <div class="col-xs-12 col-md-6 center-block">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Date Range</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            @Html.LabelFor(m => m.StartDate, "Employment Begin Date")
+            @Html.TextBoxFor(m => m.StartDate)
+          </div>
+          <div class="form-group">
+            @Html.LabelFor(m => m.EndDate, "Employment End Date")
+            @Html.TextBoxFor(m => m.EndDate)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@section scripts
+{
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('input[name="StartDate"]').daterangepicker(
+        {
+          format: 'MM/DD/YYYY',
+          startDate: '12/01/2014',
+          endDate: '12/15/2014',
+          singleDatePicker: false,
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
+            'Last 7 Days': [moment().subtract('days', 6), moment()],
+            'Last 30 Days': [moment().subtract('days', 29), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+          },
+        },
+      function (start, end, label) {
+        $("#StartDate").val(start.format('MM/DD/YYYY'));
+        $("#EndDate").val(end.format('MM/DD/YYYY'));
+      }
+      );
+    });
+  </script>
+}

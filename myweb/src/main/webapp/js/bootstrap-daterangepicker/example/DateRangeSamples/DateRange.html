@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Date Range Picker</title>
+
+    <!-- js 的引入顺序不能乱写 -->
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/js/bootstrap-daterangepicker/daterangepicker.css"/>
+    <script type="text/javascript" src="/js/jquery-2.1.0.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-daterangepicker/moment.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('input[name="daterange-oneday"]').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 15,
+                alwaysShowCalendars: true,
+                "ranges": {
+                    "Today":        ["2016-06-27T06:29:07.750Z","2016-06-27T06:29:07.750Z"],
+                    "Yesterday":    ["2016-06-26T06:29:07.750Z","2016-06-26T06:29:07.750Z"],
+                    "Last 7 Days":  ["2016-06-21T06:29:07.750Z","2016-06-27T06:29:07.750Z"],
+                    "Last 30 Days": ["2016-05-29T06:29:07.750Z","2016-06-27T06:29:07.750Z"],
+                    "This Month":   ["2016-05-31T16:00:00.000Z","2016-06-30T15:59:59.999Z"],
+                    "Last Month":   ["2016-04-30T16:00:00.000Z","2016-05-31T15:59:59.999Z"]
+                },
+                "locale": {
+                    "format": "YYYY-MM-DD",
+                    "separator": " - ",
+                    "applyLabel": "确定",
+                    "cancelLabel": "取消",
+                    "fromLabel": "From",
+                    "toLabel": "To",
+                    "customRangeLabel": "Custom",
+                    "weekLabel": "W",
+                    "daysOfWeek": ["日","一","二","三","四","五","六"],
+                    "monthNames": ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+                    "firstDay": 1
+                }
+            });
+
+            $('#fromto').find('#startDate').daterangepicker({
+                singleDatePicker: true,
+                timePicker: true,
+                timePicker24Hour: true,
+                startDate: moment().subtract(6, 'days'),
+                locale: {
+                    format: 'YYYY-MM-DD HH:mm:00'
+                }
+            });
+            $('#fromto').find('#endDate').daterangepicker({
+                singleDatePicker: true,
+                timePicker: true,
+                startDate: moment(),
+                locale: {
+                    format: 'YYYY-MM-DD hh:mm:00 A'
+                }
+            });
+
+            <!-- event
+            $('input[id="startDate"]').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('YYYY-MM-DD HH:mm:00'));
+            });
+            $('input[id="startDate"]').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+            -->
+        });
+    </script>
+</head>
+
+<body>
+<h2>Simple Date Range Picker</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4 center-block">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">One Day</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label for="daterange-oneday">select date:</label>
+                    <input type="text" value="" id="daterange-oneday" name="daterange-oneday">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-8 center-block">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">From To</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group" id="fromto">
+                    <label for="startDate" class="col-xs-1 control-label">开始时间</label>
+                    <div class="col-xs-4">
+                        <input class="form-control" id="startDate" value="" type="text">
+                    </div>
+
+                    <label for="endDate" class="col-xs-1 control-label">结束时间</label>
+                    <div class="col-xs-5">
+                        <input class="form-control" id="endDate" value="" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+<aside class="abouttheartists">
+    <h2>About the artists</h2>
+    <p>Each Featured Artist has an opportunity to speak at the conference to share his or her vision, perspective, and
+        techniques with conference attendees. To get more information about the artists click on one of their photos, or
+        visit our <a href="/lyndaBootstrap/artists">artists</a> page.
+    </p>
+    #parse("/bootstrap/LyndaBootstrap3Advanced/components/snippet-artistphotogrid.vm")
+
+    <a href="/lyndaBootstrap/artists" class="btn  btn-danger">about the artists</a>
+</aside>

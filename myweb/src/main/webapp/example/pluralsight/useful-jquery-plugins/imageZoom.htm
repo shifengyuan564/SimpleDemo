@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Zoom Plugin</title>
+
+    <link rel="stylesheet" type="text/css" href="/js/jqzoom-2.3/css/jquery.jqzoom.css" />
+
+    <script src="/js/jquery-2.1.0.js"></script>
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src='/js/jqzoom-2.3/js/jquery.jqzoom-core.js'></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $(".jqzoom").jqzoom({ zoomWidth: 400 });
+        });
+    </script>
+</head>
+
+<body>
+    <a href="/example/pluralsight/useful-jquery-plugins/images/Zig_Zag_Railway.JPG" class="jqzoom" title="Zig Zag">
+        <img src="/example/pluralsight/useful-jquery-plugins/images/Zig_Zag_Railway_Sm.JPG"  title="Zig Zag" style="border: 1px solid #666;">
+    </a>
+</body>
+</html>

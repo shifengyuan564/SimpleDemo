@@ -1,0 +1,36 @@
+#set($layout = "/layout/null.vm")
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roux Academy Conference 2013 -- Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather:400,300,300italic,400italic,700,700italic'
+          rel='stylesheet' type='text/css'>
+    <link href="/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/example/Lynda/Bootstrap3Advanced/mystyles.css" rel="stylesheet" media="screen">
+</head>
+<body id="home">
+<section class="container">
+    <div class="content row">
+        #parse("/bootstrap/LyndaBootstrap3Advanced/components/header.vm")
+        #parse("/bootstrap/LyndaBootstrap3Advanced/components/snippet-carousel.vm")
+        <section class="main col col-lg-8">
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/article-intro.vm")
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/article-abouttheartists.vm")
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/article-aboutthevenue.vm")
+        </section>
+        <section class="sidebar col col-lg-4">
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-register.vm")
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-lastyear.vm")
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-accordion.vm")
+        </section>
+    </div>
+    #parse("/bootstrap/LyndaBootstrap3Advanced/components/footer.vm")
+</section>
+
+<script src="#springUrl('')/js/jquery-2.1.0.js"></script>
+<script src="#springUrl('')/js/bootstrap.js"></script>
+<script src="/example/Lynda/Bootstrap3Advanced/myscript.js"></script>
+</body>
+</html>

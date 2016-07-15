@@ -1,0 +1,543 @@
+<link rel="stylesheet"  type="text/css" href="#springUrl('')/css/index.css"/>
+
+
+<div class="main w">
+    <div class="menu">
+        <h3><b></b>常用功能</h3>
+        <ul>
+            <li class="curr"><a href=""><b></b>调度预约</a></li>
+            <li><a href=""><b></b>运单详情</a></li>
+            <li><a href=""><b></b>项目内容</a></li>
+            <li><a href=""><b></b>项目内容</a></li>
+            <li><a href=""><b></b>项目内容</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="wrap">
+            <div id="slide" class="slider">
+                <ul class="slide-items" data-ui="slide-wrap">
+                    <li class="slide-item" data-ui="slide-item">
+                        <img src="https://img10.360buyimg.com/da/jfs/t2140/216/2462770680/195359/ebae9227/56de7d11Nc846ffe2.jpg" alt="">
+                        <span>标题1</span>
+                    </li>
+                    <li class="slide-item" data-ui="slide-item">
+                        <img src="https://img12.360buyimg.com/da/jfs/t2056/178/1805200595/100275/adcf9cca/56de618dN26e72df3.jpg" alt="">
+                        <span>标题2</span>
+                    <li class="slide-item" data-ui="slide-item">
+                        <img src="https://img10.360buyimg.com/da/jfs/t2434/330/1767172208/165526/76b9fb51/56dcf2f4Na5f44bcf.jpg" alt="">
+                        <span>标题3</span>
+                    </li>
+                    <li class="slide-item" data-ui="slide-item">
+                        <img src="https://img20.360buyimg.com/da/jfs/t1969/108/2538551869/114862/f20f9b10/56de9e50Nb6b141e1.jpg" alt="">
+                        <span>标题4</span>
+                    </li>
+                    <li class="slide-item" data-ui="slide-item">
+                        <img src="https://img12.360buyimg.com/da/jfs/t2491/242/1801488155/44705/5c5d1738/56de789bN3c459655.jpg" alt="">
+                        <span>标题5</span>
+                    </li>
+                    <li class="slide-item" data-ui="slide-item">
+                        <img src="https://img30.360buyimg.com/da/jfs/t2464/42/2421582726/90501/e1f6006b/56d8e0ecN61124dd9.jpg" alt="">
+                        <span>标题6</span>
+                    </li>
+                </ul>
+                <div data-ui="slide-nav-wrap" class="slide-controls">
+                    <span data-ui="slide-nav" class="cur"></span>
+                    <span data-ui="slide-nav"></span>
+                    <span data-ui="slide-nav"></span>
+                    <span data-ui="slide-nav"></span>
+                    <span data-ui="slide-nav"></span>
+                    <span data-ui="slide-nav"></span>
+                </div>
+                <div class="slide-opts">
+                    <a href="javascript:;" class="slide-prev" data-ui="btn-prev"></a>
+                    <a href="javascript:;" class="slide-next" data-ui="btn-next"></a>
+                </div>
+            </div>
+            <div id="slide2" class="slider-outer">
+                <div class="slide-opts">
+                    <a href="javascript:;" class="slide-prev" data-ui="btn-prev"></a>
+                    <a href="javascript:;" class="slide-next" data-ui="btn-next"></a>
+                </div>
+                <div class="slide-items" data-ui="slide-wrap">
+                    <div class="slide-item" data-ui="slide-item" id="tab-inner1">
+                        <div class="slide-title">同区域门店排行1</div>
+                        <ul class="inner-nav">
+                            <li data-ui="tab-nav-inner1" class="fore1 curr-inner">综合</li>
+                            <li data-ui="tab-nav-inner1" class="fore2">销售额</li>
+                            <li data-ui="tab-nav-inner1" class="fore3">单量</li>
+                        </ul>
+                        <div class="inner-con" data-ui="tab-content-inner1">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">16</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner1">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">14</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner1">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">12</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item" data-ui="slide-item" id="tab-inner2">
+                        <div class="slide-title">同区域门店排行2</div>
+                        <ul class="inner-nav">
+                            <li data-ui="tab-nav-inner2" class="fore1 curr-inner">综合</li>
+                            <li data-ui="tab-nav-inner2" class="fore2">销售额</li>
+                            <li data-ui="tab-nav-inner2" class="fore3">单量</li>
+                        </ul>
+                        <div class="inner-con" data-ui="tab-content-inner2">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">16</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner2">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">14</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner2">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">12</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item" data-ui="slide-item" id="tab-inner3">
+                        <div class="slide-title">同区域门店排行3</div>
+                        <ul class="inner-nav">
+                            <li data-ui="tab-nav-inner3" class="fore1 curr-inner">综合</li>
+                            <li data-ui="tab-nav-inner3" class="fore2">销售额</li>
+                            <li data-ui="tab-nav-inner3" class="fore3">单量</li>
+                        </ul>
+                        <div class="inner-con" data-ui="tab-content-inner3">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">16</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner3">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">14</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner3">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">12</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide-item" data-ui="slide-item" id="tab-inner4">
+                        <div class="slide-title">同区域门店排行4</div>
+                        <ul class="inner-nav">
+                            <li data-ui="tab-nav-inner4" class="fore1 curr-inner">综合</li>
+                            <li data-ui="tab-nav-inner4" class="fore2">销售额</li>
+                            <li data-ui="tab-nav-inner4" class="fore3">单量</li>
+                        </ul>
+                        <div class="inner-con" data-ui="tab-content-inner4">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">16</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner4">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">14</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                        <div class="inner-con" data-ui="tab-content-inner4">
+                            <div class="line">
+                                <div class="fore1">序号</div>
+                                <div class="fore2">服务点名称</div>
+                                <div class="fore3">销量</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top1">1</b></div>
+                                <div class="fore2">北京定福庄服务店1</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top2">2</b></div>
+                                <div class="fore2">北京定福庄服务店2</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1"><b class="top3">3</b></div>
+                                <div class="fore2">北京定福庄服务店3</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                            <div class="line">
+                                <div class="fore1">12</div>
+                                <div class="fore2"><b>[本店]</b>北京定福庄服务店4</div>
+                                <div class="fore3">99999</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap cols-2">
+            <div class="m">
+                <div class="mt">
+                    <h3>新闻资讯</h3>
+                </div>
+                <div class="mc">
+                    <ul class="list">
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                    </ul>
+                    <a href="" class="more">更多<b></b></a>
+                </div>
+            </div>
+            <div class="m">
+                <div class="mt">
+                    <h3>新闻资讯</h3>
+                </div>
+                <div class="mc">
+                    <ul class="list">
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                    </ul>
+                    <a href="" class="more">更多<b></b></a>
+                </div>
+            </div>
+        </div>
+        <div class="wrap cols-3">
+            <div class="m">
+                <div class="mt">
+                    <h3>新闻资讯</h3>
+                </div>
+                <div class="mc">
+                    <ul class="list">
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                    </ul>
+                    <a href="" class="more">更多<b></b></a>
+                </div>
+            </div>
+            <div class="m">
+                <div class="mt">
+                    <h3>新闻资讯</h3>
+                </div>
+                <div class="mc">
+                    <ul class="list">
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                    </ul>
+                    <a href="" class="more">更多<b></b></a>
+                </div>
+            </div>
+            <div class="m">
+                <div class="mt">
+                    <h3>新闻资讯</h3>
+                </div>
+                <div class="mc">
+                    <ul class="list">
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                        <li><a href="">关于在全公司征集京东历史资料的倡议</a><span>10分钟前</span></li>
+                    </ul>
+                    <a href="" class="more">更多<b></b></a>
+                </div>
+            </div>
+        </div>
+        <div class="wrap cols-1">
+            <div class="m">
+                <div class="mt">
+                    <h3>新闻资讯</h3>
+                </div>
+                <div class="mc">
+                    <div class="links">
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                        <a href="">中国联通</a>
+                    </div>
+                    <a href="" class="more">更多<b></b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div>Copyright © 2004-2015 JD.com 京东 版权所有</div>
+    <div>Power by<span>用户体验设计部</span>Design by<span>JDC</span></div>
+</div>

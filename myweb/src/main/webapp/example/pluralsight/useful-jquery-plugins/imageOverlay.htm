@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Overlay Plugin</title>
+
+    <link rel="stylesheet" href="/js/image-overlay/ImageOverlay.css" type="text/css" media="screen" />
+
+    <script src="/js/jquery-2.1.0.js"></script>
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/js/image-overlay/jquery.ImageOverlay.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $("#Australia").ImageOverlay({ overlay_origin: 'top' });
+        });
+    </script>   
+</head>
+<body>
+	<ul id="Australia" class="image-overlay">
+		<li>
+            <a href="http://bridgeclimb.com/">
+                <img alt="Bridge" src="/example/pluralsight/useful-jquery-plugins/images/FlagBridge.JPG" />
+                <div class="caption">
+			        <h3>Sydney Harbor Bridge</h3>
+			        <p>You can climb to the top!</p>
+		        </div>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

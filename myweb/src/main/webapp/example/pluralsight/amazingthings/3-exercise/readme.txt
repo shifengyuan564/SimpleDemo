@@ -1,0 +1,2 @@
+The after_full directory contains a version of the pirate talk application that can handle more than 100 characters at a time.
+It's a good example of more advanced string manipulation for those who are interested.

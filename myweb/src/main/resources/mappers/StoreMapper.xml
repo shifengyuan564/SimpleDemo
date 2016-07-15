@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfy.mapper.StoreMapper">
+    <sql id="queryPageCondition">
+        <if test="param.store!= null">
+            t.is_delete = 0
+            <if test="param.store.storeNo!= null and param.store.storeNo!=''">
+                and t.site_no LIKE CONCAT(#{param[store].storeNo},'%' )
+            </if>
+            <if test="param.store.storeName!= null and param.store.storeName!=''">
+                AND t.site_name LIKE CONCAT(#{param[store].storeName},'%' )
+            </if>
+            <if test="param.store.orgNo!= null and param.store.orgNo!=''">
+                and t.org_no = #{param[store].orgNo}
+            </if>
+            <if test="param.store.distributeNo!= null and param.store.distributeNo!=''">
+                and t.distribute_no = #{param[store].distributeNo}
+            </if>
+            <if test="param.store.provinceNo!= null and param.store.provinceNo!=''">
+                and t.province_no = #{param[store].provinceNo}
+            </if>
+            <if test="param.store.cityNo!= null and param.store.cityNo!=''">
+                and t.city_no = #{param[store].cityNo}
+            </if>
+            <if test="param.store.countryNo!= null and param.store.countryNo!=''">
+                and t.country_no = #{param[store].countryNo}
+            </if>
+            <if test="param.store.websiteNo!= null and param.store.websiteNo!=''">
+                and t.website_no LIKE CONCAT(#{param[store].websiteNo},'%' )
+            </if>
+            <if test="param.store.websiteName!= null and param.store.websiteName!=''">
+                and t.website_name LIKE CONCAT(#{param[store].websiteName},'%' )
+            </if>
+        </if>
+    </sql>
+
+    <resultMap id="storeMap" type="com.sfy.domain.store.Store">
+        <id column="id" property="id" />
+        <result column="site_no" property="storeNo"/>
+        <result column="org_no" property="orgNo"/>
+        <result column="org_name" property="orgName"/>
+        <result column="distribute_no" property="distributeNo"/>
+        <result column="distribute_name" property="distributeName"/>
+        <result column="site_name" property="storeName"/>
+        <result column="address" property="address"/>
+        <result column="telephone" property="telphone"/>
+        <result column="contact" property="contact"/>
+        <result column="email" property="email"/>
+        <result column="province_no" property="provinceNo"/>
+        <result column="city_no" property="cityNo"/>
+        <result column="country_no" property="countryNo"/>
+        <result column="town_no" property="townNo"/>
+        <result column="ismodify" property="modify"/>
+    </resultMap>
+
+    <resultMap id="siteBaseInfoMap" type="com.sfy.domain.store.SiteBaseInfo">
+        <id column="site_no" property="siteNo"/>
+        <result column="org_no" property="orgNo"/>
+        <result column="org_name" property="orgName"/>
+        <result column="distribute_no" property="distributeNo"/>
+        <result column="distribute_name" property="distributeName"/>
+        <result column="site_name" property="siteName"/>
+        <result column="site_status" property="siteStatus"/>
+        <result column="site_level" property="siteLevel"/>
+        <result column="site_type" property="siteType"/>
+        <result column="site_manager" property="siteManager"/>
+        <result column="province_no" property="provinceNo"/>
+        <result column="province_name" property="provinceName"/>
+        <result column="city_no" property="cityNo"/>
+        <result column="city_name" property="cityName"/>
+        <result column="country_no" property="countryNo"/>
+        <result column="country_name" property="countryName"/>
+        <result column="town_no" property="townNo"/>
+        <result column="town_name" property="townName"/>
+        <result column="address" property="address"/>
+        <result column="jd_account" property="jdAccount"/>
+        <result column="manager_erp" property="managerErp"/>
+        <result column="manager_name" property="managerName"/>
+        <result column="gps_longitude" property="gpsLongitude"/>
+        <result column="gps_latitude" property="gpsLatitude"/>
+        <result column="telephone" property="telephone"/>
+        <result column="email" property="email"/>
+        <result column="wechat" property="wechat"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="start_time" property="startTime"/>
+        <result column="open_time" property="openTime"/>
+        <result column="bussiness_site_no" property="bussinessSiteNo"/>
+    </resultMap>
+
+    <resultMap id="siteExtendInfoMap" type="com.sfy.domain.store.SiteExtendInfo">
+        <id column="id" property="id"/>
+        <result column="site_no" property="siteNo"/>
+        <result column="company_name" property="companyName"/>
+        <result column="company_type" property="companyType"/>
+        <result column="bussiness_license_no" property="bussinessLicenseNo"/>
+        <result column="bussiness_license_address" property="bussinessLicenseAddress"/>
+        <result column="bussiness_license_term_validity" property="bussinessLicenseTermValidity"/>
+        <result column="tax_type" property="taxType"/>
+        <result column="tax_rate" property="taxRate"/>
+        <result column="tax_registration_no" property="taxRegistrationNo"/>
+        <result column="bank_deposit_name" property="bankDepositName"/>
+        <result column="bank_deposit_address" property="bankDepositAddress"/>
+        <result column="bank_account" property="bankAccount"/>
+        <result column="bank_account_name" property="bankAccountName"/>
+        <result column="jss_attachement" property="jssAttachement"/>
+        <result column="create_user" property="createUser"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+    
+    <resultMap id="syncSiteInfoMap" type="com.sfy.domain.store.SyncSiteInfoMq">
+        <result column="website_no" property="websiteNo"/>
+        <result column="website_name" property="websiteName"/>
+        <result column="belongs_branch_id" property="belongsBranchId"/>
+        <result column="belongs_branch_name" property="belongsBranchName"/>
+        <result column="belong_largewarehouse_id" property="belongLargewarehouseId"/>
+        <result column="belong_largewarehouse_name" property="belongLargewarehouseName"/>
+        <result column="service_website_no" property="serviceWebsiteNo"/>
+        <result column="system_type" property="systemSource"/>
+        <result column="create_time" property="establishTime"/>
+    </resultMap>
+
+    <select id="queryForPage" parameterType="Page" resultMap="storeMap">
+        select t.site_no,t.org_no,t.org_name,t.distribute_no,t.distribute_name,
+        t.site_name,t.address,t.telephone,t.contact,t.email,t.ismodify
+        from jdams_site_base_info t
+        <where>
+            <include refid="queryPageCondition"/>
+        </where>
+        ORDER BY t.id DESC
+        LIMIT #{skip},#{size}
+    </select>
+    <select id="count" parameterType="Page" resultType="int">
+        SELECT
+        COUNT(distinct t.site_no) as total
+        from jdams_site_base_info t
+        <where>
+            <include refid="queryPageCondition"/>
+        </where>
+        ORDER BY t.site_no DESC
+    </select>
+    <!-- 通过主键删除表jdams_resource数据 -->
+    <!--<delete id="delete" parameterType="java.util.List">-->
+        <!--update-->
+        <!--jdams_site_base_info-->
+        <!--set is_delete = 1-->
+        <!--<where>-->
+            <!--id in-->
+            <!--<foreach item="item" collection="list" separator="," open="(" close=")" index="index">-->
+                <!--#{item}-->
+            <!--</foreach>-->
+        <!--</where>-->
+    <!--</delete>-->
+    <select id="getIsDeleteCount" parameterType="java.util.List" resultType="int">
+        select COUNT(t.id) from jdams_plan_info t
+        INNER JOIN jdams_site_base_info t1 on t1.site_no=t.shopNo
+        INNER JOIN jdams_plan t2 on t2.id=t.planId
+        where ((DATE_FORMAT(t2.planExecutiveTime, '%Y%m' ) = DATE_FORMAT( CURDATE( ) , '%Y%m' ))
+        OR (date_format(t2.planExecutiveTime,'%Y-%m')=date_format(DATE_SUB(curdate(), INTERVAL 1 MONTH),'%Y-%m') and
+        t.opStatus=0)
+        OR(date_format(t2.planExecutiveTime,'%Y-%m')=date_format(DATE_ADD(curdate(), INTERVAL 1 MONTH),'%Y-%m')))
+        and t1.id in
+        <foreach item="item" collection="list" separator="," open="(" close=")" index="index">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="queryStoreByNo" parameterType="com.sfy.domain.store.Store" resultMap="storeMap">
+        SELECT t.id,t.site_no,t.org_no,t.org_name,t.distribute_no,t.distribute_name,t.site_name,t.address,t.telephone,t.contact,t.email,t.province_no,t.city_no,
+            t.country_no,t.town_no,t.ismodify,t.website_no as websiteNo,t.website_name as websiteName,t.remark as remark
+        FROM jdams_site_info t
+        WHERE  t.site_no=#{storeNo} AND t.isactive = 1
+    </select>
+
+    <!-- 通过京东帮名称或者编号模糊查询对应的京东帮 (对外接口提供的查询) 2016-2-24 -->
+    <select id="querySiteBaseInfo" parameterType="java.lang.String" resultMap="siteBaseInfoMap">
+        SELECT b.site_no, b.org_no, b.org_name, b.distribute_no, b.distribute_name,
+        b.site_name, b.site_status, b.site_level, b.site_type, b.site_manager,
+        b.province_no, b.province_name, b.city_no, b.city_name, b.country_no,
+        b.country_name, b.town_no, b.town_name, b.address, b.jd_account,
+        b.manager_erp, b.manager_name, b.gps_longitude, b.gps_latitude, b.telephone,
+        b.email, b.wechat, b.create_user, b.update_user, b.create_time, b.update_time,
+        b.start_time, b.open_time
+
+        FROM jdams_site_base_info b
+        <where>
+            is_delete = 0
+
+            <if test="_parameter!= null and _parameter!= ''">
+                AND ( site_no LIKE CONCAT('%',#{queryInfo},'%') OR site_name LIKE CONCAT('%',#{queryInfo},'%') )
+            </if>
+        </where>
+    </select>
+
+    <!-- 通过siteNo或siteName，获得门店基础信息（详细信息）-->
+    <select id="getOneSiteBaseInfo" parameterType="com.sfy.domain.store.SiteBaseInfo"
+            resultMap="siteBaseInfoMap">
+        SELECT b.site_no, b.org_no, b.org_name, b.distribute_no, b.distribute_name,
+        b.site_name, b.site_status, b.site_level, b.site_type, b.site_manager,
+        b.province_no, b.province_name, b.city_no, b.city_name, b.country_no,
+        b.country_name, b.town_no, b.town_name, b.address, b.jd_account,
+        b.manager_erp, b.manager_name, b.gps_longitude, b.gps_latitude, b.telephone,
+        b.email, b.wechat, b.create_user, b.update_user, b.create_time, b.update_time,
+        b.start_time, b.open_time
+        FROM jdams_site_base_info b
+        <where>
+            is_delete = 0
+
+            <if test="siteNo != null and siteNo != '' ">
+                AND site_no = #{siteNo}
+            </if>
+            <if test="siteName != null and siteName != '' ">
+                AND site_name = #{siteName}
+            </if>
+        </where>
+    </select>
+
+    <!-- 通过siteNo，获得门店扩展信息（详细信息）-->
+    <select id="getOneSiteExtendInfo" parameterType="com.sfy.domain.store.SiteBaseInfo"
+            resultMap="siteExtendInfoMap">
+        SELECT e.site_no, e.company_name, e.company_type, e.bussiness_license_no,
+        e.bussiness_license_address, e.bussiness_license_term_validity, e.tax_type,
+        e.tax_rate, e.tax_registration_no, e.bank_deposit_name, e.bank_deposit_address,
+        e.bank_account, e.bank_account_name, e.jss_attachement, e.create_user, e.update_user,
+        e.create_time, e.update_time, e.remark
+        FROM jdams_site_extend_info e
+        <where>
+            is_delete = 0
+
+            <if test="siteNo != null and siteNo != '' ">
+                AND site_no = #{siteNo}
+            </if>
+        </where>
+    </select>
+
+
+    <update id="updateStoreObject" parameterType="com.sfy.domain.store.Store">
+        update
+            jdams_site_base_info t
+            set t.province_no=#{provinceNo},t.province_name=#{provinceName},t.city_no=#{cityNo},
+            t.city_name=#{cityName},t.country_no=#{countryNo},t.country_name=#{countryName},t.town_no=#{townNo},t.town_name=#{townName},t.address=#{address}
+            ,t.telephone=#{telphone},t.contact=#{contact},t.email=#{email},t.ismodify=1,t.update_time=NOW(),t.website_no=#{websiteNo},t.website_name=#{websiteName},t.remark=#{remark}
+        WHERE t.site_no=#{storeNo}
+    </update>
+
+    <select id="querySiteBaseInfoCount" parameterType="com.sfy.domain.store.SiteBaseInfo" resultType="int">
+        SELECT COUNT(*) FROM jdams_site_base_info b
+        <where>
+            is_delete = 0
+            <if test="orgNo!= null and orgNo != ''">
+                AND org_no = #{orgNo}
+            </if>
+            <if test="distributeNo!= null and distributeNo != ''">
+                AND distribute_no = #{distributeNo}
+            </if>
+            <if test="siteName!= null and siteName != ''">
+                AND ( site_name LIKE CONCAT('%',#{siteName},'%') )
+            </if>
+            <if test="siteNo!= null and siteNoName != null">
+                AND ( site_no LIKE CONCAT('%',#{siteNoName},'%') )
+            </if>
+            <if test="bussinessSiteNo!= null and bussinessSiteNo != null">
+                AND ( bussiness_site_no LIKE CONCAT('%',#{bussinessSiteNo},'%') )
+            </if>
+            <if test="siteStatus!= null and siteStatus > -1">
+                AND site_status = #{siteStatus}
+            </if>
+            <if test="siteLevel!= null and siteLevel != -1">
+                AND site_level = #{siteLevel}
+            </if>
+            <if test="provinceNo!= null and provinceNo != ''">
+                AND province_no = #{provinceNo}
+            </if>
+            <if test="cityNo!= null and cityNo != ''">
+                AND city_no = #{cityNo}
+            </if>
+            <if test="countryNo!= null and countryNo != ''">
+                AND country_no = #{countryNo}
+            </if>
+            <if test="townNo!= null and townNo != ''">
+                AND town_no = #{townNo}
+            </if>
+            <if test="jdAccount!= null and jdAccount != ''">
+                AND ( jd_account LIKE CONCAT('%',#{jdAccount},'%') )
+            </if>
+            <if test="bussinessSiteNo!= null and bussinessSiteNo != ''">
+                AND ( bussiness_site_no LIKE CONCAT('%',#{bussinessSiteNo},'%') )
+            </if>
+            <if test="managerName!= null and managerName != ''">
+                AND ( manager_name LIKE CONCAT('%',#{managerName},'%') )
+            </if>
+            <if test="createTimeBegin!= null and createTimeBegin != ''">
+                <![CDATA[AND create_time >= #{createTimeBegin}]]>
+            </if>
+            <if test="createTimeEnd!= null and createTimeEnd != ''">
+                <![CDATA[AND create_time <= #{createTimeEnd}]]>
+            </if>
+            <if test="openTimeBegin!= null and openTimeBegin != ''">
+                <![CDATA[AND open_time >= #{openTimeBegin}]]>
+            </if>
+            <if test="openTimeEnd!= null and openTimeEnd != ''">
+                <![CDATA[AND open_time <= #{openTimeEnd}]]>
+            </if>
+            <if test="startTimeBegin!= null and startTimeBegin != ''">
+                <![CDATA[AND start_time >= #{startTimeBegin}]]>
+            </if>
+            <if test="startTimeEnd!= null and startTimeEnd != ''">
+                <![CDATA[AND start_time <= #{startTimeEnd}]]>
+            </if>
+            <if test="orgAllNums != null">
+                <![CDATA[AND org_no in ]]>
+                <foreach item="item" index="index" collection="orgAllNums" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="querySiteBaseInfoForPage" parameterType="com.sfy.domain.store.SiteBaseInfo"
+            resultMap="siteBaseInfoMap">
+        SELECT
+        b.site_no, b.org_no, b.org_name, b.distribute_no, b.distribute_name,
+        b.site_name, b.site_status, b.site_level, b.site_type, b.site_manager,
+        b.province_no, b.province_name, b.city_no, b.city_name, b.country_no,
+        b.country_name, b.town_no, b.town_name,
+        concat_ws('',ifNULL(b.province_name,''),ifNULL(b.city_name,''),ifNULL(b.country_name,''),ifNULL(b.town_name,''),ifNULL(b.address,'')) as address,
+        b.jd_account,b.manager_erp, b.manager_name, b.gps_longitude, b.gps_latitude, b.telephone,
+        b.email, b.wechat, b.create_user, b.update_user, b.create_time, b.update_time,
+        b.start_time, b.open_time,b.bussiness_site_no
+        FROM jdams_site_base_info b
+        <where>
+            is_delete = 0
+            <if test="orgNo!= null and orgNo != ''">
+                AND org_no = #{orgNo}
+            </if>
+            <if test="distributeNo!= null and distributeNo != ''">
+                AND distribute_no = #{distributeNo}
+            </if>
+            <if test="siteName!= null and siteName != ''">
+                AND ( site_name LIKE CONCAT('%',#{siteName},'%') )
+            </if>
+            <if test="siteNo!= null and siteNoName != null">
+                AND ( site_no LIKE CONCAT('%',#{siteNoName},'%') )
+            </if>
+            <if test="bussinessSiteNo!= null and bussinessSiteNo != null">
+                AND ( bussiness_site_no LIKE CONCAT('%',#{bussinessSiteNo},'%') )
+            </if>
+            <if test="siteStatus!= null and siteStatus > -1">
+                AND site_status = #{siteStatus}
+            </if>
+            <if test="siteLevel != null and siteLevel != -1">
+                AND site_level = #{siteLevel}
+            </if>
+            <if test="provinceNo!= null and provinceNo != ''">
+                AND province_no = #{provinceNo}
+            </if>
+            <if test="cityNo!= null and cityNo != ''">
+                AND city_no = #{cityNo}
+            </if>
+            <if test="countryNo!= null and countryNo != ''">
+                AND country_no = #{countryNo}
+            </if>
+            <if test="townNo!= null and townNo != ''">
+                AND town_no = #{townNo}
+            </if>
+            <if test="jdAccount!= null and jdAccount != ''">
+                AND ( jd_account LIKE CONCAT('%',#{jdAccount},'%') )
+            </if>
+            <if test="managerName!= null and managerName != ''">
+                AND ( manager_name LIKE CONCAT('%',#{managerName},'%') )
+            </if>
+            <if test="createTimeBegin!= null and createTimeBegin != ''">
+                <![CDATA[AND create_time >= #{createTimeBegin}]]>
+            </if>
+            <if test="createTimeEnd!= null and createTimeEnd != ''">
+                <![CDATA[AND create_time <= #{createTimeEnd}]]>
+            </if>
+            <if test="startTimeBegin!= null and startTimeBegin != ''">
+                <![CDATA[AND start_time >= #{startTimeBegin}]]>
+            </if>
+            <if test="startTimeEnd!= null and startTimeEnd != ''">
+                <![CDATA[AND start_time <= #{startTimeEnd}]]>
+            </if>
+            <if test="openTimeBegin!= null and openTimeBegin != ''">
+                <![CDATA[AND open_time >= #{openTimeBegin}]]>
+            </if>
+            <if test="openTimeEnd!= null and openTimeEnd != ''">
+                <![CDATA[AND open_time <= #{openTimeEnd}]]>
+            </if>
+            <if test="bussinessSiteNo!= null and bussinessSiteNo != ''">
+                AND ( bussiness_site_no LIKE CONCAT('%',#{bussinessSiteNo},'%') )
+            </if>
+            <if test="orgAllNums != null">
+                <![CDATA[AND org_no in ]]>
+                <foreach item="item" index="index" collection="orgAllNums" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <!-- 多区域支持 -->
+            <if test="orgNos !=null">
+                and
+                <foreach item="item" collection="orgNos" separator="OR" open="(" close=")" index="index">
+                    (org_no = #{item.org_no}
+                    <if test="item.distribute_no != null and item.distribute_no !=''  ">
+                        AND (distribute_no = #{item.distribute_no})
+                    </if>
+                    )
+                </foreach>
+            </if>
+            <!-- 多区域支持 -->
+            <if test="distributeNos !=null">
+                and distribute_no IN
+                <foreach item="item" collection="distributeNos" separator="," open="(" close=")" index="index">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+        <if test="startNum!= null and startNum >= 0 and pageSize != null and pageSize > 0">
+            <![CDATA[LIMIT #{startNum}, #{pageSize}]]>
+        </if>
+
+    </select>
+
+    <insert id="insertSiteExtendInfo" parameterType="com.sfy.domain.store.SiteExtendInfo">
+         INSERT INTO jdams_site_extend_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            is_delete,
+            <if test="siteNo != null" >
+                site_no,
+            </if>
+            <if test="companyName != null" >
+                company_name,
+            </if>
+            <if test="companyType != null">
+                company_type,
+            </if>
+            <if test="bussinessLicenseNo != null">
+                bussiness_license_no,
+            </if>
+            <if test="bussinessLicenseAddress != null">
+                bussiness_license_address,
+            </if>
+            <if test="bussinessLicenseTermValidity != null">
+                bussiness_license_term_validity,
+            </if>
+            <if test="taxType != null">
+                tax_type,
+            </if>
+            <if test="taxRate != null">
+                tax_rate,
+            </if>
+            <if test="taxRegistrationNo != null">
+                tax_registration_no,
+            </if>
+            <if test="bankDepositName != null">
+                bank_deposit_name,
+            </if>
+            <if test="bankDepositAddress != null">
+                bank_deposit_address,
+            </if>
+            <if test="bankAccount != null">
+                bank_account,
+            </if>
+            <if test="bankAccountName != null">
+                bank_account_name,
+            </if>
+            <if test="jssAttachement != null">
+                jss_attachement,
+            </if>
+            <if test="createUser != null">
+                create_user,
+            </if>
+            <if test="updateUser != null">
+                update_user,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            0,
+            <if test="siteNo != null" >
+                #{siteNo,jdbcType=BIGINT},
+            </if>
+            <if test="companyName != null" >
+                #{companyName,jdbcType=VARCHAR},
+            </if>
+            <if test="companyType != null" >
+                #{companyType,jdbcType=SMALLINT},
+            </if>
+            <if test="bussinessLicenseNo != null" >
+                #{bussinessLicenseNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bussinessLicenseAddress != null" >
+                #{bussinessLicenseAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="bussinessLicenseTermValidity != null" >
+                #{bussinessLicenseTermValidity,jdbcType=VARCHAR},
+            </if>
+            <if test="taxType != null" >
+                #{taxType,jdbcType=SMALLINT},
+            </if>
+            <if test="taxRate != null" >
+                #{taxRate,jdbcType=VARCHAR},
+            </if>
+            <if test="taxRegistrationNo != null" >
+                #{taxRegistrationNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bankDepositName != null" >
+                #{bankDepositName,jdbcType=VARCHAR},
+            </if>
+            <if test="bankDepositAddress != null" >
+                #{bankDepositAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccount != null" >
+                #{bankAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="bankAccountName != null" >
+                #{bankAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="jssAttachement != null" >
+                #{jssAttachement,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateUser != null" >
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+               #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="insertSiteBaseInfo" parameterType="com.sfy.domain.store.SiteBaseInfo">
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="siteNo">
+            SELECT LAST_INSERT_ID() AS site_no
+        </selectKey>
+        INSERT INTO jdams_site_base_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            site_no,
+            is_delete,
+            <if test="orgNo != null" >
+                org_no,
+            </if>
+            <if test="orgName != null" >
+                org_name,
+            </if>
+            <if test="distributeNo != null" >
+                distribute_no,
+            </if>
+            <if test="distributeName != null" >
+                distribute_name,
+            </if>
+            <if test="siteName != null" >
+                site_name,
+            </if>
+            <if test="siteStatus != null" >
+                site_status,
+            </if>
+            <if test="siteLevel != null" >
+                site_level,
+            </if>
+            <if test="siteType != null" >
+                site_type,
+            </if>
+            <if test="provinceNo != null" >
+                province_no,
+            </if>
+            <if test="provinceName != null" >
+                province_name,
+            </if>
+            <if test="cityNo != null" >
+                city_no,
+            </if>
+            <if test="cityName != null" >
+                city_name,
+            </if>
+            <if test="countryNo != null" >
+                country_no,
+            </if>
+            <if test="countryName != null" >
+                country_name,
+            </if>
+            <if test="townNo != null" >
+                town_no,
+            </if>
+            <if test="townName != null" >
+                town_name,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="jdAccount != null" >
+                jd_account,
+            </if>
+            <if test="siteManager != null" >
+                site_manager,
+            </if>
+            <if test="managerErp != null" >
+                manager_erp,
+            </if>
+            <if test="managerName != null" >
+                manager_name,
+            </if>
+            <if test="gpsLongitude != null" >
+                gps_longitude,
+            </if>
+            <if test="gpsLatitude != null" >
+                gps_latitude,
+            </if>
+            <if test="telephone != null" >
+                telephone,
+            </if>
+            <if test="email != null" >
+                email,
+            </if>
+            <if test="wechat != null" >
+                wechat,
+            </if>
+            <if test="createUser != null" >
+                create_user,
+            </if>
+            <if test="updateUser != null" >
+                update_user,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+            <if test="startTime != null" >
+                start_time,
+            </if>
+            <if test="openTime != null" >
+                open_time,
+            </if>
+            <if test="bussinessSiteNo != null" >
+                bussiness_site_no,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            #{siteNo},
+            0,
+            <if test="orgNo != null" >
+                #{orgNo,jdbcType=VARCHAR},
+            </if>
+            <if test="orgName != null" >
+                #{orgName,jdbcType=VARCHAR},
+            </if>
+            <if test="distributeNo != null" >
+                #{distributeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="distributeName != null" >
+                #{distributeName,jdbcType=VARCHAR},
+            </if>
+            <if test="siteName != null" >
+                #{siteName,jdbcType=VARCHAR},
+            </if>
+            <if test="siteStatus != null" >
+                #{siteStatus,jdbcType=SMALLINT},
+            </if>
+            <if test="siteLevel != null" >
+                #{siteLevel,jdbcType=SMALLINT},
+            </if>
+            <if test="siteType != null" >
+                #{siteType,jdbcType=SMALLINT},
+            </if>
+            <if test="provinceNo != null" >
+                #{provinceNo,jdbcType=VARCHAR},
+            </if>
+            <if test="provinceName != null" >
+                #{provinceName,jdbcType=VARCHAR},
+            </if>
+            <if test="cityNo != null" >
+                #{cityNo,jdbcType=VARCHAR},
+            </if>
+            <if test="cityName != null" >
+                #{cityName,jdbcType=VARCHAR},
+            </if>
+            <if test="countryNo != null" >
+                #{countryNo,jdbcType=VARCHAR},
+            </if>
+            <if test="countryName != null" >
+                #{countryName,jdbcType=VARCHAR},
+            </if>
+            <if test="townNo != null" >
+                #{townNo,jdbcType=VARCHAR},
+            </if>
+            <if test="townName != null" >
+                #{townName,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="jdAccount != null" >
+                #{jdAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="siteManager != null" >
+                #{siteManager,jdbcType=VARCHAR},
+            </if>
+            <if test="managerErp != null" >
+                #{managerErp,jdbcType=VARCHAR},
+            </if>
+            <if test="managerName != null" >
+                #{managerName,jdbcType=VARCHAR},
+            </if>
+            <if test="gpsLongitude != null" >
+                #{gpsLongitude,jdbcType=DECIMAL},
+            </if>
+            <if test="gpsLatitude != null" >
+                #{gpsLatitude,jdbcType=DECIMAL},
+            </if>
+            <if test="telephone != null" >
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="wechat != null" >
+                #{wechat,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null" >
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="updateUser != null" >
+                #{updateUser,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="startTime != null" >
+                #{startTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="openTime != null" >
+                #{openTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bussinessSiteNo != null" >
+                #{bussinessSiteNo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <select id="queryStoreByManager" parameterType="java.lang.String" resultMap="siteBaseInfoMap">
+        SELECT t.site_no,t.site_name
+        FROM jdams_site_base_info t
+        WHERE  t.manager_erp=#{manager_erp} AND t.is_delete = 0
+    </select>
+
+    <update id="deleteSiteBaseInfo" parameterType="com.sfy.domain.store.SiteBaseInfo">
+        UPDATE jdams_site_base_info
+        SET is_delete = 1
+        WHERE site_no = #{siteNo}
+    </update>
+
+    <update id="deleteSiteExtendInfo" parameterType="com.sfy.domain.store.SiteExtendInfo">
+        UPDATE jdams_site_extend_info
+        SET is_delete = 1
+        WHERE site_no = #{siteNo}
+    </update>
+
+    <update id="updateSiteBaseInfoBatchForManager"  parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index"  separator=";">
+            update jdams_site_base_info
+            <set>
+                manager_erp=#{item.managerErp,jdbcType=VARCHAR},manager_name=#{item.managerName,jdbcType=VARCHAR},
+                manager_tel=#{item.managerTel,jdbcType=VARCHAR},manager_email=#{item.managerEmail,jdbcType=VARCHAR}
+            </set>
+            where site_no = #{item.siteNo,jdbcType=VARCHAR}
+        </foreach>
+    </update>
+
+    <select id="queryOneSiteExtendInfoForPage" parameterType="com.sfy.domain.store.SiteExtendInfo"
+            resultMap="siteExtendInfoMap">
+        SELECT e.id, e.site_no, e.company_name, e.company_type, e.bussiness_license_no,
+        e.bussiness_license_address, e.bussiness_license_term_validity, e.tax_type,
+        e.tax_rate, e.tax_registration_no, e.bank_deposit_name, e.bank_deposit_address,
+        e.bank_account, e.bank_account_name, e.jss_attachement, e.create_user, e.update_user,
+        e.create_time, e.update_time, e.remark
+        FROM jdams_site_extend_info e
+        <where>
+            is_delete = 0
+            <if test="siteNo != null ">
+                AND site_no = #{siteNo}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryOneSiteBaseInfoForPage" parameterType="com.sfy.domain.store.SiteBaseInfo"
+            resultMap="siteBaseInfoMap">
+        SELECT b.site_no, b.org_no, b.org_name, b.distribute_no, b.distribute_name,
+        b.site_name, b.site_status, b.site_level, b.site_type, b.site_manager,
+        b.province_no, b.province_name, b.city_no, b.city_name, b.country_no,
+        b.country_name, b.town_no, b.town_name, b.address, b.jd_account,
+        b.manager_erp, b.manager_name, b.gps_longitude, b.gps_latitude, b.telephone,
+        b.email, b.wechat, b.create_user, b.update_user, b.create_time, b.update_time,
+        b.start_time, b.open_time, b.bussiness_site_no
+        FROM jdams_site_base_info b
+        <where>
+            is_delete = 0
+            <if test="siteNo != null">
+                AND site_no = #{siteNo}
+            </if>
+            <if test="siteName != null and siteName != '' ">
+                AND site_name = #{siteName}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateSiteBaseInfoForPage" parameterType="com.sfy.domain.store.SiteBaseInfo">
+        UPDATE jdams_site_base_info b
+        SET
+        <if test="orgNo != null" >
+            org_no = #{orgNo,jdbcType=VARCHAR},
+        </if>
+        <if test="orgName != null" >
+            org_name = #{orgName,jdbcType=VARCHAR},
+        </if>
+        <if test="distributeNo != null" >
+            distribute_no = #{distributeNo,jdbcType=VARCHAR},
+        </if>
+        <if test="distributeName != null" >
+            distribute_name = #{distributeName,jdbcType=VARCHAR},
+        </if>
+        <if test="siteName != null">
+            site_name = #{siteName,jdbcType=VARCHAR},
+        </if>
+        <if test="siteStatus != null" >
+            site_status = #{siteStatus,jdbcType=SMALLINT},
+        </if>
+        <if test="siteLevel != null" >
+            site_level = #{siteLevel,jdbcType=SMALLINT},
+        </if>
+        <if test="siteType != null" >
+            site_type = #{siteType,jdbcType=SMALLINT},
+        </if>
+        <if test="provinceNo != null" >
+            province_no = #{provinceNo,jdbcType=VARCHAR},
+        </if>
+        <if test="provinceName != null" >
+            province_name = #{provinceName,jdbcType=VARCHAR},
+        </if>
+        <if test="cityNo != null" >
+            city_no = #{cityNo,jdbcType=VARCHAR},
+        </if>
+        <if test="cityName != null" >
+            city_name = #{cityName,jdbcType=VARCHAR},
+        </if>
+        <if test="countryNo != null" >
+            country_no = #{countryNo,jdbcType=VARCHAR},
+        </if>
+        <if test="countryName != null" >
+            country_name = #{countryName,jdbcType=VARCHAR},
+        </if>
+        <if test="townNo != null" >
+            town_no = #{townNo,jdbcType=VARCHAR},
+        </if>
+        <if test="townName != null" >
+            town_name = #{townName,jdbcType=VARCHAR},
+        </if>
+        <if test="address != null" >
+            address = #{address,jdbcType=VARCHAR},
+        </if>
+        <if test="jdAccount != null" >
+            jd_account = #{jdAccount,jdbcType=VARCHAR},
+        </if>
+        <if test="siteManager != null" >
+            site_manager = #{siteManager,jdbcType=VARCHAR},
+        </if>
+        <if test="managerErp != null" >
+            manager_erp = #{managerErp,jdbcType=VARCHAR},
+        </if>
+        <if test="managerName != null" >
+            manager_name = #{managerName,jdbcType=VARCHAR},
+        </if>
+        <if test="gpsLongitude != null" >
+            gps_longitude = #{gpsLongitude,jdbcType=DECIMAL},
+        </if>
+        <if test="gpsLatitude != null" >
+            gps_latitude = #{gpsLatitude,jdbcType=DECIMAL},
+        </if>
+        <if test="telephone != null" >
+            telephone = #{telephone,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null" >
+            email = #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="wechat != null" >
+            wechat = #{wechat,jdbcType=VARCHAR},
+        </if>
+        <if test="createUser != null" >
+            create_user = #{createUser,jdbcType=VARCHAR},
+        </if>
+        <if test="updateUser != null" >
+            update_user = #{updateUser,jdbcType=VARCHAR},
+        </if>
+        <if test="createTime != null" >
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="updateTime != null" >
+            update_time = #{updateTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="startTime != null" >
+            start_time = #{startTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="openTime != null" >
+            open_time = #{openTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="bussinessSiteNo != null" >
+            bussiness_site_no = #{bussinessSiteNo,jdbcType=VARCHAR},
+        </if>
+        is_delete = 0
+        <where>
+            is_delete = 0
+            <if test="siteNo != null and siteNo != '' ">
+                AND site_no = #{siteNo, jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <update id="updateSiteUploadInfo" parameterType="com.sfy.domain.store.SiteExtendInfo">
+        UPDATE jdams_site_extend_info b
+        SET
+        <if test="jssAttachement != null">
+            jss_attachement = #{jssAttachement,jdbcType=VARCHAR}
+        </if>
+        WHERE
+            site_no = #{siteNo,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateSiteExtendInfoForPage" parameterType="com.sfy.domain.store.SiteExtendInfo">
+        UPDATE jdams_site_extend_info b
+        SET
+        <if test="companyName != null" >
+            company_name = #{companyName,jdbcType=VARCHAR},
+        </if>
+        <if test="companyType != null" >
+            company_type = #{companyType,jdbcType=SMALLINT},
+        </if>
+        <if test="bussinessLicenseNo != null" >
+            bussiness_license_no = #{bussinessLicenseNo,jdbcType=VARCHAR},
+        </if>
+        <if test="bussinessLicenseAddress != null" >
+            bussiness_license_address = #{bussinessLicenseAddress,jdbcType=VARCHAR},
+        </if>
+        <if test="bussinessLicenseTermValidity != null" >
+            bussiness_license_term_validity = #{bussinessLicenseTermValidity,jdbcType=VARCHAR},
+        </if>
+        <if test="taxType != null" >
+            tax_type = #{taxType,jdbcType=SMALLINT},
+        </if>
+        <if test="taxRate != null" >
+            tax_rate = #{taxRate,jdbcType=VARCHAR},
+        </if>
+        <if test="taxRegistrationNo != null" >
+            tax_registration_no = #{taxRegistrationNo,jdbcType=VARCHAR},
+        </if>
+        <if test="bankDepositName != null" >
+            bank_deposit_name = #{bankDepositName,jdbcType=VARCHAR},
+        </if>
+        <if test="bankDepositAddress != null" >
+            bank_deposit_address = #{bankDepositAddress,jdbcType=VARCHAR},
+        </if>
+        <if test="bankAccount != null" >
+            bank_account = #{bankAccount,jdbcType=VARCHAR},
+        </if>
+        <if test="bankAccountName != null" >
+            bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+        </if>
+        <if test="jssAttachement != null" >
+            jss_attachement = #{jssAttachement,jdbcType=VARCHAR},
+        </if>
+        <if test="createUser != null" >
+            create_user = #{createUser,jdbcType=VARCHAR},
+        </if>
+        <if test="updateUser != null" >
+            update_user = #{updateUser,jdbcType=VARCHAR},
+        </if>
+        <if test="createTime != null" >
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="updateTime != null" >
+            update_time = #{updateTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="remark != null" >
+            remark = #{remark,jdbcType=VARCHAR},
+        </if>
+        is_delete = 0
+        <where>
+            is_delete = 0
+            <if test="siteNo != null">
+                AND site_no = #{siteNo, jdbcType=BIGINT}
+            </if>
+        </where>
+    </update>
+
+    <!-- 判断同步表中是否有指定的安维或者承运站点 -->
+    <select id="getSiteCount" resultType="int" parameterType="com.sfy.domain.store.SyncSiteInfoMq">
+        select count(1)
+        from jdams_sync_site_info
+        <where>
+            is_delete = 0
+            <if test="websiteNo != null and websiteNo != '' ">
+                and website_no = #{websiteNo,jdbcType=VARCHAR}
+            </if>
+            <if test="systemSource != null ">
+                and system_type = #{systemSource,jdbcType=TINYINT}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertSyncSiteInfo" parameterType="com.sfy.domain.store.SyncSiteInfoMq" useGeneratedKeys="true"  keyProperty="id">
+        insert into jdams_sync_site_info(
+            website_no, website_name, belongs_branch_id, belongs_branch_name,
+            belong_largewarehouse_id, belong_largewarehouse_name, service_website_no,
+            system_type, create_time, is_delete
+        )
+        values(
+            #{websiteNo,jdbcType=VARCHAR},                /* 网点编码 ID (承运或安维) */
+            #{websiteName,jdbcType=VARCHAR},              /* 网点名称 */
+            #{belongsBranchId,jdbcType=VARCHAR},          /* 分公司(区域)编码 ID */
+            #{belongsBranchName,jdbcType=VARCHAR},        /* 分公司名称 */
+            #{belongLargewarehouseId,jdbcType=VARCHAR},   /* 配送中心(运营中心)编码 ID */
+            #{belongLargewarehouseName,jdbcType=VARCHAR}, /* 配送中心名称 */
+            #{serviceWebsiteNo,jdbcType=VARCHAR},         /* 门店编号 (京东帮) */
+            #{systemSource,jdbcType=TINYINT},             /* 系统来源（0：承运，1：安维） */
+            NOW(),
+            0
+        );
+    </insert>
+
+    <update id="updateSyncSiteInfo"  parameterType="com.sfy.domain.store.SyncSiteInfoMq">
+        <if test="_parameter != null">
+        UPDATE jdams_sync_site_info
+        <set>
+            <if test="serviceWebsiteNo != null and serviceWebsiteNo != '' ">
+                service_website_no = #{serviceWebsiteNo,jdbcType=VARCHAR},
+            </if>
+            <if test="websiteNo != null and websiteNo != '' ">
+                website_no = #{websiteNo,jdbcType=VARCHAR},
+            </if>
+            <if test="websiteName != null and websiteName != ''">
+                website_name = #{websiteName,jdbcType=VARCHAR},
+            </if>
+            <if test="belongsBranchId != null and belongsBranchId != ''">
+                belongs_branch_id = #{belongsBranchId,jdbcType=VARCHAR},
+            </if>
+            <if test="belongsBranchName != null and belongsBranchName != ''">
+                belongs_branch_name = #{belongsBranchName,jdbcType=VARCHAR},
+            </if>
+            <if test="belongLargewarehouseId != null and belongLargewarehouseId != ''">
+                belong_largewarehouse_id = #{belongLargewarehouseId,jdbcType=VARCHAR},
+            </if>
+            <if test="belongLargewarehouseName != null and belongLargewarehouseName != ''">
+                belong_largewarehouse_name = #{belongLargewarehouseName,jdbcType=VARCHAR},
+            </if>
+            ts = NOW()
+        </set>
+            <where>
+                is_delete = 0
+                <if test="websiteNo != null and websiteNo != '' ">
+                    and website_no = #{websiteNo,jdbcType=VARCHAR}
+                </if>
+                <if test="systemSource != null ">
+                    and system_type = #{systemSource,jdbcType=TINYINT}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <update id="deleteSyncSiteInfo"  parameterType="com.sfy.domain.store.SyncSiteInfoMq">
+        UPDATE jdams_sync_site_info SET is_delete = 1, ts = NOW()
+        <where>
+            is_delete = 0
+            <if test="websiteNo != null and websiteNo != '' ">
+                and website_no = #{websiteNo,jdbcType=VARCHAR}
+            </if>
+            <if test="systemSource != null ">
+                and system_type = #{systemSource,jdbcType=TINYINT}
+            </if>
+        </where>
+    </update>
+
+    <select id="queryMaxSiteNoByOrgNo" parameterType="com.sfy.domain.store.SiteBaseInfo"
+            resultType="String">
+        SELECT MAX(site_no) FROM jdams_site_base_info WHERE site_no = #{siteNo}
+     </select>
+
+    <select id="querySyncSiteInfo" parameterType="java.lang.String" resultMap="syncSiteInfoMap">
+        SELECT s.website_no, s.website_name, s.belongs_branch_id,
+            s.belongs_branch_name, s.belong_largewarehouse_id, s.belong_largewarehouse_name,
+            s.service_website_no, s.system_type, s.create_time
+        FROM jdams_sync_site_info s
+        <where>
+            is_delete = 0
+            <if test="_parameter!= null and _parameter!= ''">
+              and service_website_no = #{siteNo,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="querySystemAdmin" parameterType="java.lang.String" resultType="String">
+        select r.roleName from jdams_role r,jdams_role_user u where r.roleNo = u.roleNo and u.userNo = #{loginUser}
+    </select>
+
+
+
+    <select id="querySiteBaseInfoCountByMultiOrg" parameterType="com.sfy.domain.store.SiteBaseInfo" resultType="int">
+        SELECT COUNT(1) FROM jdams_site_base_info b
+        <where>
+            is_delete = 0
+            <include refid="querySitebaseInfoForPageByMultiOrg" />
+        </where>
+    </select>
+
+
+    <select id="querySiteBaseInfoForPageByMultiOrg" parameterType="com.sfy.domain.store.SiteBaseInfo"
+            resultMap="siteBaseInfoMap">
+        SELECT
+        b.site_no, b.org_no, b.org_name, b.distribute_no, b.distribute_name,
+        b.site_name, b.site_status, b.site_level, b.site_type, b.site_manager,
+        b.province_no, b.province_name, b.city_no, b.city_name, b.country_no,
+        b.country_name, b.town_no, b.town_name,
+        concat_ws('',ifNULL(b.province_name,''),ifNULL(b.city_name,''),ifNULL(b.country_name,''),ifNULL(b.town_name,''),ifNULL(b.address,'')) as address,
+        b.jd_account,b.manager_erp, b.manager_name, b.gps_longitude, b.gps_latitude, b.telephone,
+        b.email, b.wechat, b.create_user, b.update_user, b.create_time, b.update_time,
+        b.start_time, b.open_time,b.bussiness_site_no
+        FROM jdams_site_base_info b
+        <where>
+            is_delete = 0
+           <include refid="querySitebaseInfoForPageByMultiOrg" />
+        </where>
+        <if test="startNum!= null and startNum >= 0 and pageSize != null and pageSize > 0">
+            <![CDATA[LIMIT #{startNum}, #{pageSize}]]>
+        </if>
+
+    </select>
+
+
+    <sql id="querySitebaseInfoForPageByMultiOrg">
+        <if test="orgNo!= null and orgNo != ''">
+            AND org_no = #{orgNo}
+        </if>
+        <if test="distributeNo!= null and distributeNo != ''">
+            AND distribute_no = #{distributeNo}
+        </if>
+        <if test="siteName!= null and siteName != ''">
+            AND ( site_name LIKE CONCAT('%',#{siteName},'%') )
+        </if>
+        <if test="siteNo!= null and siteNoName != null">
+            AND ( site_no LIKE CONCAT('%',#{siteNoName},'%') )
+        </if>
+        <if test="bussinessSiteNo!= null and bussinessSiteNo != null">
+            AND ( bussiness_site_no LIKE CONCAT('%',#{bussinessSiteNo},'%') )
+        </if>
+        <if test="siteStatus!= null and siteStatus > -1">
+            AND site_status = #{siteStatus}
+        </if>
+        <if test="siteLevel != null and siteLevel != -1">
+            AND site_level = #{siteLevel}
+        </if>
+        <if test="provinceNo!= null and provinceNo != ''">
+            AND province_no = #{provinceNo}
+        </if>
+        <if test="cityNo!= null and cityNo != ''">
+            AND city_no = #{cityNo}
+        </if>
+        <if test="countryNo!= null and countryNo != ''">
+            AND country_no = #{countryNo}
+        </if>
+        <if test="townNo!= null and townNo != ''">
+            AND town_no = #{townNo}
+        </if>
+        <if test="jdAccount!= null and jdAccount != ''">
+            AND ( jd_account LIKE CONCAT('%',#{jdAccount},'%') )
+        </if>
+        <if test="managerName!= null and managerName != ''">
+            AND ( manager_name LIKE CONCAT('%',#{managerName},'%') )
+        </if>
+        <if test="createTimeBegin!= null and createTimeBegin != ''">
+            <![CDATA[AND create_time >= #{createTimeBegin}]]>
+        </if>
+        <if test="createTimeEnd!= null and createTimeEnd != ''">
+            <![CDATA[AND create_time <= #{createTimeEnd}]]>
+        </if>
+        <if test="startTimeBegin!= null and startTimeBegin != ''">
+            <![CDATA[AND start_time >= #{startTimeBegin}]]>
+        </if>
+        <if test="startTimeEnd!= null and startTimeEnd != ''">
+            <![CDATA[AND start_time <= #{startTimeEnd}]]>
+        </if>
+        <if test="openTimeBegin!= null and openTimeBegin != ''">
+            <![CDATA[AND open_time >= #{openTimeBegin}]]>
+        </if>
+        <if test="openTimeEnd!= null and openTimeEnd != ''">
+            <![CDATA[AND open_time <= #{openTimeEnd}]]>
+        </if>
+        <if test="bussinessSiteNo!= null and bussinessSiteNo != ''">
+            AND ( bussiness_site_no LIKE CONCAT('%',#{bussinessSiteNo},'%') )
+        </if>
+        <if test="orgAllNums != null">
+            <![CDATA[AND org_no in ]]>
+            <foreach item="item" index="index" collection="orgAllNums" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <!-- 多区域支持 -->
+        <if test="orgNos !=null">
+            and
+            <foreach item="item" collection="orgNos" separator="OR" open="(" close=")" index="index">
+                (org_no = #{item.org_no}
+                <if test="item.distribute_no != null and item.distribute_no !=''  ">
+                    AND (distribute_no = #{item.distribute_no} OR distribute_no IS NULL OR distribute_no = '' OR distribute_no = '#')
+                </if>
+                )
+            </foreach>
+        </if>
+        <!-- 多区域支持 -->
+        <if test="distributeNos !=null">
+            and (distribute_no IN
+            <foreach item="item" collection="distributeNos" separator="," open="(" close=")" index="index">
+                #{item}
+            </foreach>
+            <![CDATA[
+              OR distribute_no IS NULL OR distribute_no = '' OR distribute_no = '#')
+            ]]>
+        </if>
+    </sql>
+
+</mapper>
+

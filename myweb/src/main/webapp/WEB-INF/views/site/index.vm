@@ -1,0 +1,62 @@
+
+<link rel="stylesheet"  type="text/css" href="#springUrl('')/css/index.css"/>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var visibleHeight = $(window).height();     // 浏览器当前窗口可视区域高度
+        var headerHight = $(".header").height() + 25;    // div的高度 （包含margin）
+        $("#mainFrame").attr('height', visibleHeight-headerHight);
+
+
+        $(".btnSwitchJs a").click(function(e){
+            if(this.attributes['url']){
+                switchmainFrame(this.attributes['url'].nodeValue);
+                switchActiveButtonCss("#"+this.id);
+            }
+        });
+
+        function switchmainFrame(url){
+            $('#mainFrame', parent.document).attr("src",url);
+        }
+
+
+        function switchActiveButtonCss(id){
+            $(".header ul li").removeClass('curr');
+            $(id).parent().addClass('curr');
+        };
+
+        $("#page1").click();    // 初始默认显示首页
+    });
+</script>
+
+<div class="header">
+    <div class="w">
+        <div class="logo"><a href="">京东帮管理平台</a></div>
+        <ul class="nav btnSwitchJs">
+            <li class="curr"><a id="page1" href="#" url="/top/homepage">我的首页</a></li>
+            <li><a id="page2" href="" url="">巡店管理</a></li>
+            <li><a id="page3" href="" url="">消息通知</a></li>
+            <li><a id="page4" href="" url="">业绩查询</a></li>
+            <li><a id="page5" href="" url="">培训考试</a></li>
+            <li><a id="page6" href="" url="">营销管理</a></li>
+            <li><a id="page7" href="#" url="/top/baseinfo">基础信息</a></li>
+        </ul>
+        <div class="user">
+            <div class="u-img"><img src="img/user.png" alt=""></div>
+            <div class="u-detail">
+                <div><span class="u-name">欢迎您，史丰源！</span><a href="" class="logout">[退出]</a></div>
+                <div class="u-enter"><a href="">进入京东帮管理平台</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<iframe id="mainFrame" style="top: 0px; padding-right: 0px; padding-left: 0px; overflow-y: scroll" class="i-col-xs-12" frameborder="0" scrolling="yes"></iframe>
+
+
+
+
+

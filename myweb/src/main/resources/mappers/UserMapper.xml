@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jd.las.jdams.dao.UserMapper">
+
+    <select id="getUserList" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        select orgNo as org_no,orgName as org_name,distributeNo as distribute_no,distributeName as
+        distribute_name,userName,boundErp,extranetNo
+        from jdams_user
+        where 1=1
+        <if test="boundErp!=null and boundErp!=''">
+            AND boundErp=#{boundErp,jdbcType=VARCHAR}
+        </if>
+        <if test="extranetNo!=null and extranetNo!=''">
+            AND extranetNo=#{extranetNo,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="getUser" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        select boundErp,userName,orgNo,orgName ,distributeNo ,distributeName
+        from jdams_user
+        <where>
+            1=1
+            <if test="orgNo!=null and orgNo!=''">
+                and ( jdams_user.orgNo ='#' and jdams_user.distributeNo='#')
+                OR (jdams_user.orgNo = #{orgNo,jdbcType=VARCHAR} )
+            </if>
+            <if test="distributeNo!=null and distributeNo!=''">
+                and (jdams_user.distributeNo=#{distributeNo,jdbcType=VARCHAR})
+            </if>
+            <if test="roleIds!=null and roleIds.size()>0">
+                and jdams_user.userNo in (select distinct userNo from jdams_role,jdams_role_user where
+                jdams_role.roleNo=jdams_role_user.roleNo
+                <foreach collection="roleIds" item="item" open="and jdams_role.roleNo IN(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+            <if test="roleNames!=null and roleNames.size()>0">
+                and jdams_user.userNo in (select distinct userNo from jdams_role,jdams_role_user where
+                jdams_role.roleNo=jdams_role_user.roleNo
+                <foreach collection="roleNames" item="item" open="and jdams_role.roleName IN(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+        </where>
+        ORDER BY jdams_user.userNo asc
+    </select>
+
+    <select id="getUserOperationUser" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        select boundErp,userName,orgNo,orgName ,distributeNo ,distributeName
+        from jdams_user
+        <where>
+            (jdams_user.orgNo=null or jdams_user.orgNo !='#')
+            and (jdams_user.distributeNo!=null or jdams_user.distributeNo !='#')
+            <if test="roleNames!=null and roleNames.size()>0">
+                and jdams_user.userNo in (select distinct userNo from jdams_role,jdams_role_user where
+                jdams_role.roleNo=jdams_role_user.roleNo
+                <foreach collection="roleNames" item="item" open="and jdams_role.roleName IN(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+        </where>
+        ORDER BY jdams_user.userNo asc
+    </select>
+
+    <select id="getUserOnlyExist" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        select boundErp,userName,orgNo,orgName ,distributeNo ,distributeName
+        from jdams_user
+        <where>
+            1=1
+            <if test="orgNo!=null and orgNo!=''">
+                and (jdams_user.orgNo = #{orgNo,jdbcType=VARCHAR})
+            </if>
+            <if test="distributeNo!=null and distributeNo!=''">
+                and (jdams_user.distributeNo=#{distributeNo,jdbcType=VARCHAR})
+            </if>
+            <if test="roleIds!=null and roleIds.size()>0">
+
+                and jdams_user.userNo in (select distinct userNo from jdams_role,jdams_role_user where
+                jdams_role.roleNo=jdams_role_user.roleNo
+
+                <foreach collection="roleIds" item="item" open="and jdams_role.roleNo IN(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+            <if test="roleNames!=null and roleNames.size()>0">
+                and jdams_user.userNo in (select distinct userNo from jdams_role,jdams_role_user where
+                jdams_role.roleNo=jdams_role_user.roleNo
+                <foreach collection="roleNames" item="item" open="and jdams_role.roleName IN(" separator="," close=")">
+                    #{item}
+                </foreach>
+                )
+            </if>
+        </where>
+        ORDER BY jdams_user.userNo asc
+    </select>
+
+    <select id="userSecurityInterceptor" resultType="java.util.LinkedHashMap" parameterType="java.util.Map">
+        SELECT
+            mac1,
+            mac2
+        FROM jdams_user
+        WHERE boundErp = #{boundErp,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 获取指定条件下的所有用户-->
+    <select id="queryUsers" parameterType="java.util.Map" resultType="String">
+        SELECT
+        jdams_user.boundErp
+        FROM
+        jdams_user jdams_user
+        <where>
+            1=1
+            <if test="orgNo!=null and orgNo!=''">
+                and jdams_user.orgNo = #{orgNo,jdbcType=VARCHAR}
+                <if test="distributeNo!=null and distributeNo!=''">
+                    and jdams_user.distributeNo=#{distributeNo,jdbcType=VARCHAR}
+                </if>
+            </if>
+            <if test="roleIds!=null and roleIds.size()>0">
+                and jdams_user.userNo in (select distinct userNo from jdams_role,jdams_role_user where
+                jdams_role.roleNo=jdams_role_user.roleNo
+                <foreach collection="roleIds" item="item" open="and jdams_role.roleNo IN(" separator="," close=")">
+                    #{item.roleNo}
+                </foreach>
+                )
+            </if>
+        </where>
+        GROUP BY jdams_user.boundErp
+    </select>
+
+</mapper>

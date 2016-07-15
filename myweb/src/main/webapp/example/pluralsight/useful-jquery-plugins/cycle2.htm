@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Cycle2 Plugin (jquery图片切换插件)</title>
+
+    <style type="text/css"> 
+        .slideshow { height: 400px; width: 300px; }
+        .slideshow img { padding: 0px; border: 0px}
+    </style>
+
+    <script src="/js/jquery-2.1.0.js"></script>
+    <script src="/js/jquery.cycle2.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('.slideshow').cycle({ fx: 'fade' });
+        });
+    </script>
+</head>
+<body>
+    <div class="slideshow">
+		<img src="/example/pluralsight/useful-jquery-plugins/images/FlagBridge.JPG" width="400" height="300" />
+		<img src="/example/pluralsight/useful-jquery-plugins/images/OperaHouse.JPG" width="400" height="300" />
+		<img src="/example/pluralsight/useful-jquery-plugins/images/bridgeWalk.JPG" width="400" height="300" />
+		<img src="/example/pluralsight/useful-jquery-plugins/images/ZigZag.JPG" width="400" height="300" />
+    </div>
+
+    <!--下面的div不需 $('.slideshow').cycle调用-->
+    <div class="cycle-slideshow" data-cycle-fx="scrollHorz">
+        <img src="/example/pluralsight/useful-jquery-plugins/images/FlagBridge.JPG" width="400" height="300" />
+        <img src="/example/pluralsight/useful-jquery-plugins/images/OperaHouse.JPG" width="400" height="300" />
+        <img src="/example/pluralsight/useful-jquery-plugins/images/bridgeWalk.JPG" width="400" height="300" />
+        <img src="/example/pluralsight/useful-jquery-plugins/images/ZigZag.JPG" width="400" height="300" />
+    </div>
+
+</body>
+</html>

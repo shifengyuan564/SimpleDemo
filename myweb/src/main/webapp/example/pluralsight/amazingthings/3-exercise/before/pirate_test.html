@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Pirate talk</title>
+</head>
+
+<body>
+<textarea id="output"></textarea>
+<script>
+    function received(json){
+        document.getElementById("output").value = json.translation.pirate;
+    }
+</script>
+<script src="http://isithackday.com/arrpi.php?callback=received&format=json&text=Hello">
+</script>
+</body>
+</html>

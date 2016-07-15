@@ -1,0 +1,171 @@
+
+<link rel="stylesheet" type="text/css"  href="#springUrl('')/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.css"/>
+<link rel="stylesheet" type="text/css" href="/css/jquery.validator.css"/>
+<link rel="stylesheet" type="text/css" href="#springUrl('')/css/linkpage.css?v=20160317" />
+
+<script type="text/javascript" src="#springUrl('')/js/bootstrap.js"></script>
+<script src="/js/jquery.dataTables.js"></script>
+<script src="/js/jquery.validator.js"></script>
+<script src="/js/jquery.validator-zh-CN.js"></script>
+<script src="/js/multiselect-master/js/multiselect.js"></script>
+
+<script src="/js/custom/linkpage.js"></script>
+
+<div>
+    <div class="well well-sm">
+        <div class="row specialRow">
+            <div class="col-xs-2 col-md-2">
+                <label for="title">名称:</label>
+            </div>
+            <div id="queryContent" class="col-xs-2 col-md-2 {required:true, messages: {required: '需要输入查询内容'}}">
+                <input name="title" id="title" class="form-control input-sm">
+            </div>
+            <div class="col-xs-4">
+                <button type="button" id="query" onclick="query();" class="bootstrapBtn">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>查询
+                </button>
+                <button class="bootstrapBtnWarning" id="addBtn" data-toggle="modal" data-target="#addBtnModal">
+                    <span class="glyphicon glyphicon-plus"></span> 添加
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <table id="resultGrid" class="display table-hover" width="100%" cellspacing="0">
+        <thead>
+            <th></th>
+            <th style="text-align: center;">名称</th>
+            <th style="text-align: center;">地址</th>
+            <th style="text-align: center;">操作</th>
+        </thead>
+        <tfoot>
+        <td colspan="4" class="well paddingLeft5 noPaddingRight bgContainer" style="border-top: 0px solid #111;">
+            <div class="addingRnoPaddingLeft noPight">
+                <select name="pageRange" id="pageRange" onchange="changePageSize();" class="form-control input-sm footerSelector">
+                    <option value="10" selected>10</option>
+                    <option value="20" >20</option>
+                    <option value="30" >30</option>
+                </select>
+                <div class="btnseparator"></div>
+                <a class="glyphicon glyphicon-step-backward firstPage" aria-hidden="true" href="javascript:firstPage()"></a>
+                <a class="glyphicon glyphicon-backward prevPage" aria-hidden="true" href="javascript:prevPage()"></a>
+                <div class="btnseparator"></div>
+                <div class="pageNoInputContainer">
+                    <span style="float:left;margin-left:5px;">Page</span>
+                    <input name="pageNo" id="pageNo" placeholder="" class="form-control input-sm pageNoInput">
+                    <span style="float:left;margin-left:5px;">of</span>
+                    <span id="pageTotal" style="float:left;margin-left:5px;">10</span>
+                </div>
+                <div class="btnseparator"></div>
+                <a class="glyphicon glyphicon-forward nextPage" aria-hidden="true" href="javascript:nextPage()"></a>
+                <a class="glyphicon glyphicon-step-forward lastPage" aria-hidden="true" href="javascript:lastPage()"></a>
+                <div class="btnseparator"></div>
+                <a class="glyphicon glyphicon-refresh refreshBtn" aria-hidden="true" href="javascript:query()"></a>
+                <div class="btnseparator"></div>
+                <span class="footerInfo">当前显示从1到10条记录,共10条</span>
+            </div>
+        </td>
+        </tfoot>
+    </table>
+</div>
+
+
+<!-- 新增窗口 -->
+<div class="modal fade bs-example-modal-lg" data-backdrop="static" id="addBtnModal">
+    <div class="modal-dialog modal-lg" style="width:600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: left; font-weight: bold;">添加友情链接</h4>
+            </div>
+            <div class="modal-body">
+                <form id="insertForm" class="form-horizontal">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px; ">
+                                <label for="titleI">名称</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="titleI" name="titleI" type="text"
+                                       placeholder="请输入友情链接名称"
+                                       data-rule="名称:required"
+                                       data-msg-required="{0}不能为空"
+                                       maxlength="50" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px;">
+                                <label for="addressI">地址</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="addressI" name="addressI" type="text"
+                                       placeholder="请输入友情链接地址"
+                                       data-rule="地址:required"
+                                       data-msg-required="{0}不能为空"
+                                       maxlength="100" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                <button type="button" id="saveBtn" class="btn btn-primary insertBtn" >保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- 维护窗口 -->
+<div class="modal fade bs-example-modal-lg" data-backdrop="static" id="updateBtnModal">
+    <div class="modal-dialog modal-lg" style="width:600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: left; font-weight: bold;">维护友情链接</h4>
+            </div>
+            <div class="modal-body">
+                <form id="updateForm" class="form-horizontal">
+                    <input type="hidden" id="idU" name="idU">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px; ">
+                                <label for="titleU">名称</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="titleU" name="titleU" type="text"
+                                       placeholder="请输入友情链接名称"
+                                       data-rule="名称:required"
+                                       data-msg-required="{0}不能为空"
+                                       maxlength="50" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px;">
+                                <label for="addressU">地址</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="addressU" name="addressU" type="text"
+                                       placeholder="请输入友情链接地址"
+                                       data-rule="地址:required"
+                                       data-msg-required="{0}不能为空"
+                                       maxlength="100" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+                <button type="button" id="updateBtn" class="btn btn-primary insertBtn" >保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

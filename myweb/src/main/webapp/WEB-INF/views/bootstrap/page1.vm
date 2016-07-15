@@ -1,0 +1,218 @@
+<head>
+    <title>Bootstrap 实例 1</title>
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="#springUrl('')/js/bootstrap.js"></script>
+    <script type="text/javascript" src="#springUrl('')/js/bootstrap-multiselect.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/css/bootstrap-multiselect.css"/>
+</head>
+
+
+<!-- multiselect plugin: -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example-getting-started').multiselect();
+
+        $('.multiselect-new').multiselect({
+            buttonClass: 'btn',
+            buttonWidth: 'auto',
+            buttonContainer: '<div class="btn-group" />',
+            maxHeight: false,
+            buttonText: function(options) {
+                if (options.length == 0) {
+                    return 'None selected <b class="caret"></b>';
+                }
+                else if (options.length > 3) {
+
+                    return options.length + ' selected <b class="caret"></b>';
+                }
+                else {
+                    var selected = '';
+                    options.each(function() {
+                        selected += $(this).text() + ', ';
+                    });
+
+                    return selected.substr(0, selected.length -2) + ' <b class="caret"></b>';
+                }
+            }
+        });
+    });
+</script>
+
+
+<div class="container">
+    <div class="jumbotron">
+        <h2>我的第一个 Bootstrap 页面
+            <small>我是副标题</small>
+        </h2>
+        <p>重置窗口大小，查看响应式效果！</p>
+    </div>
+    <div class="row"> <!-- 要保证4+4+4 或者 6+6=12 -->
+        <div class="col-sm-4">
+            <h3>第一列</h3>
+            <p>学的不仅是技术，更是梦想！</p>
+            <p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>第二列</h3>
+            <p>学的不仅是技术，更是梦想！</p>
+            <p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
+        </div>
+        <div class="col-sm-4">
+            <h3>第三列</h3>
+            <p>学的不仅是技术，更是梦想！</p>
+            <p>再牛逼的梦想,也抵不住你傻逼似的坚持！</p>
+        </div>
+    </div>
+
+    <div class="row">   <!-- 列偏移 -->
+        <div class="col-md-6 col-md-offset-3"
+             style="background-color: #dedef8; box-shadow:inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+            </p>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae vitae
+                dicta sunt explicabo.
+            </p>
+        </div>
+        <div class="col-md-6"
+             style="background-color: #dedef8;box-shadow:inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium.
+            </p>
+            <p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non numquam eius modi
+                tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem.
+            </p>
+        </div>
+    </div>
+    <div class="row">   <!-- 列排序  .col-md-push-* 和 .col-md-pull-* 类的内置网格列的顺序，其中 * 范围是从 1 到 11。-->
+        <p>排序前</p>
+        <div class="col-md-4" style="background-color: #dedef8;
+         box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            我在左边
+        </div>
+        <div class="col-md-8" style="background-color: #dedef8;
+         box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            我在右边
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <p>排序后</p>
+        <div class="col-md-4 col-md-push-8" style="background-color: #dedef8;
+            box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+            我在左边
+        </div>
+        <div class="col-md-8 col-md-pull-4" style="background-color: #dedef8;
+         box-shadow: inset 1px -1px 1px #444,inset -1px 1px 1px #444;">
+            我在右边
+        </div>
+    </div>
+
+    <small>本行内容是在标签内</small>
+    <br>
+    <strong>本行内容是在标签内</strong><br>
+    本行内容是在 <em> 标签内，并呈现为斜体</em><br>
+    <p class="text-left">向左对齐文本</p>
+    <p class="text-center">居中对齐文本</p>
+    <p class="text-right">向右对齐文本</p>
+    <p class="text-muted">本行内容是减弱的</p>
+    <p class="text-primary">本行内容带有一个 primary class</p>
+    <p class="text-success">本行内容带有一个 success class</p>
+    <p class="text-info">本行内容带有一个 info class</p>
+    <p class="text-warning">本行内容带有一个 warning class</p>
+    <p class="text-danger">本行内容带有一个 danger class</p>
+
+    <blockquote>这是一个带有源标题的引用。
+        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
+    <blockquote class="pull-right">这是一个向右对齐的引用。
+        <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
+
+    <h2>表格</h2>
+    <p> .table 为任意表格添加基本样式 (只有横向分隔线):</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Firstname</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Anna</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Debbie</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>John</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="well well-lg">您好，我在大的 Well 中！</div>
+    <div class="well well-sm">您好，我在小的 Well 中！</div>
+
+
+    <form role="form">
+        <div class="form-group">
+            <label for="name">名称</label>
+            <input type="text" class="form-control input-sm" id="name" placeholder="请输入名称">
+        </div>
+        <div class="form-group">
+            <label for="inputfile">文件输入</label>
+            <input type="file" id="inputfile">
+            <p class="help-block">这里是块级帮助文本的实例。</p>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> 请打勾
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">提交</button>
+    </form>
+
+    <hr>
+    <!-- multiselect 1-->
+    <h3>multiselect plugin</h3>
+    <select id="example-getting-started" multiple="multiple">
+        <option value="cheese">Cheese</option>
+        <option value="tomatoes">Tomatoes</option>
+        <option value="mozarella">Mozzarella</option>
+        <option value="mushrooms">Mushrooms</option>
+        <option value="pepperoni">Pepperoni</option>
+        <option value="onions">Onions</option>
+    </select>
+
+    <!-- multiselect 2-->
+    <div class="input-prepend input-append">
+        <span class="add-on"><b class="icon-list-alt"></b></span>
+        <select class="multiselect-new" multiple="multiple">
+            <option value="cheese">Cheese</option>
+            <option value="tomatoes">Tomatoes</option>
+            <option value="mozarella">Mozzarella</option>
+            <option value="mushrooms">Mushrooms</option>
+            <option value="pepperoni">Pepperoni</option>
+            <option value="onions">Onions</option>
+        </select>
+        <button class="btn btn-danger">Cancel</button>
+        <button class="btn btn-success">Save</button>
+    </div>
+</div>

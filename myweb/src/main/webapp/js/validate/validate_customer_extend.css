@@ -1,0 +1,23 @@
+.errorCon{
+    display:inline-block;
+    width:16px;
+    height:24px;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.errorCon .w1000{
+    display:inline-block;
+    width:1000px;
+}
+label.error{
+    display:inline-block;
+    height:24px;
+    width:auto;
+    overflow: hidden;
+    vertical-align: middle;
+    padding-left:16px;
+    background:url("ico.png") no-repeat scroll -182px -142px transparent;
+    text-overflow:ellipsis;
+    word-wrap:normal;
+    white-space:nowrap;
+}

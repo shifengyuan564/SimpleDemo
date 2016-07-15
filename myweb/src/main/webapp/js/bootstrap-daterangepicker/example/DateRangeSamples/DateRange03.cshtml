@@ -1,0 +1,40 @@
+﻿@model SamplesData.UserData
+
+@{
+  ViewBag.Title = "Date Range Picker Sample 3";
+}
+
+<h2>Single Date Picker</h2>
+
+@using (Html.BeginForm())
+{
+  <div class="row">
+    <div class="col-xs-12 col-md-6 center-block">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Date Range</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            @Html.LabelFor(m => m.StartDate, "Employment Begin Date")
+            @Html.TextBoxFor(m => m.StartDate)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@section scripts
+{
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('input[name="StartDate"]').daterangepicker(
+        {
+          format: 'MM/DD/YYYY',
+          startDate: '12/01/2014',
+          singleDatePicker: true
+        });
+    });
+  </script>
+}

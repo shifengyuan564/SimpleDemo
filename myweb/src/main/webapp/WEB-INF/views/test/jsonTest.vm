@@ -1,0 +1,50 @@
+#set($layout = "layout/null.vm")
+
+<!doctype html>
+<html>
+<head>
+    <title>json交互测试</title>
+
+    <link rel="stylesheet" href="#springUrl('')/css/common.css"/>
+    <script type="text/javascript" src="#springUrl('')/js/jquery-2.1.0.js" charset="utf-8" ></script>
+    <script type="text/javascript" src="#springUrl('')/js/jqModal.js"></script>
+    <script type="text/javascript" src="#springUrl('')/js/custom/js-person-login.js"></script>
+    <script type="text/javascript" src="#springUrl('')/js/common/commons.js"></script>
+
+    <script type="text/javascript">
+        function clickScore() {
+            alert(document.getElementById("score").value);  // 测试chrome在.vm也中断点功能
+            alert(encodeURI("http://www.baidu.com"));
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>id</td>
+            <td><input id="id" value="100" /></td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td><input id="name" value="snowolf" /></td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td><input id="status" value="true" /></td>
+        </tr>
+        <tr>
+            <td>score</td>
+            <td><input id="score" value="98.5" onclick="clickScore()" /></td>
+        </tr>
+        <tr>
+            <td>birth</td>
+            <td><input id="birth" value="2016-01-01 14:02:30" /></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="profile" value="Profile——GET" /></td>
+            <td><input type="button" id="login" value="Login——POST" /></td>
+            <td><input type="button" id="expt" value="expt" /></td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tooltips</title>
+
+    <link rel="stylesheet" href="/js/qtip/jquery.qtip.css" type="text/css" />
+
+    <script src="/js/jquery-2.1.0.js"></script>
+    <script src="/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/js/qtip/jquery.qtip.js"></script>
+
+     <script type="text/javascript">
+         $(function () {
+             $("#titleTooltip").qtip();
+             $("#dataTipToolip").qtip({
+                 content: {
+                     attr: 'data-tip' 
+                 }
+             });
+             $("#inlineTooltip").qtip({
+                 content: {                     
+                     text: $("#hidden1") 
+                 }
+             });
+             $("#externalTooltip").qtip({
+                 content: {
+                     text: "loading",
+                     ajax: {
+                         url: "/tooltipsExt.htm"
+                     }
+                 }
+            });
+          });
+     </script>
+</head>
+<body>
+    <a href="#" id="titleTooltip" title="This is title attribute content!">Title</a><p></p>
+    <a href="#" id="dataTipToolip" data-tip="This is custom attribute content!">Custom Attribute</a><p></p>
+    <a href="#" id="inlineTooltip">Inline</a><p></p>
+    <div id="hidden1" style="display:none"> 
+        <p>HTML <b>tooltip</b> with an image<p></p> <img src="/example/pluralsight/useful-jquery-plugins/images/bridgeWalkSm.jpg"></p>
+    </div>
+    <a href="#" id="externalTooltip">External web page</a>
+</body>
+</html>

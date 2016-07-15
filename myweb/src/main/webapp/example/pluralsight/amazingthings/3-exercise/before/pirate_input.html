@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Pirate talk</title>
+</head>
+
+<body>
+<textarea id="english"></textarea>
+<br>
+<input type="button" value="Argh!!!" onclick="pirate_talk();">
+<br>
+<textarea id="output"></textarea>
+<script>
+    function received(json){
+        document.getElementById("output").value = json.translation.pirate;
+    }
+    function pirate_talk(){
+        var script = document.createElement("script");
+        script.src = "http://isithackday.com/arrpi.php?callback=received&format=json&text="+encodeURIComponent(document.getElementById("english").value);
+        document.body.appendChild(script);
+    }
+</script>
+</body>
+</html>
