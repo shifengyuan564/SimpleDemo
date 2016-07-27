@@ -44,4 +44,9 @@ public class TestController {
         logger.debug("-------------------------进入datagridJQ.vm---------------------------");
         return "test/datagridJQ";
     }
+
+    @RequestMapping(value = "/liyi", method = RequestMethod.GET)
+    public String liyi() {
+        return "test/liyi";
+    }
 }

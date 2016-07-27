@@ -1,0 +1,101 @@
+﻿#set($layout = "layout/null.vm")
+<html>
+
+<head>
+    <title>Demo</title>
+    <script type="text/javascript" src="#springUrl('')/js/jquery-2.1.0.js" charset="utf-8" ></script>
+    <script type="text/javascript" src="#springUrl('')/js/bootstrap.js"></script>
+    <script type="text/javascript" src="#springUrl('')/js/validate/jquery.validate.js" charset="UTF-8"></script>
+
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/css/bootstrap.css"/>
+    <link rel="stylesheet" href="#springUrl('')/css/common.css"/>
+
+    <style type="text/css">
+        .blockheader {
+            font-size: 30px;
+            font-family: headerfont;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .formdetails {
+            float: left;
+            width: 1000px;
+        }
+        .textlabel {
+            text-align: left;
+            font-size: 14px;
+            margin: 0px;
+            display: block;
+            width: 250px;
+            padding: 2px 5px;
+            float: left;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            btnListener.requestBtnListener();               /* 初始化页面按钮监听 */
+        });
+
+        var btnListener = {
+            requestBtnListener: function () {
+                $('#requestBtn').on('click', function (e) {
+                        e.preventDefault();                 /* 禁止表单按钮触发默认事件*/
+                        $.ajax({
+                            url: "http://localhost/person/getResponse",
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                contentData : $("#content").val(),
+                                targetUrl : $("#url").val(),
+                                targetPort : $('#port').val()
+                            },
+                            success: function (data) {
+                                alert(data);
+                            },
+                            error: function () {
+                                alert('ajax 请求错误...');
+                            }
+                        });
+                });
+            }
+        }
+    </script>
+</head>
+
+<body>
+<section class="formdetails">
+    <header class="blockheader">
+        <span>Request & Response</span>
+    </header>
+
+    <form id="mainForm" class="form-horizontal" action="" method="post">
+        <fieldset class="box">
+            <legend> </legend>
+
+            <section class="row">
+                <label for="url" class="col col-sm-4 control-label">URL: </label>
+                <div class="col-sm-5">
+                    <input id="url" class="form-control" placeholder="Please enter url" required="required">
+                </div>
+            </section>
+
+            <section class="row">
+            <label for="port" class="col col-sm-4 control-label">PORT: </label>
+                <div class="col-sm-5">
+                    <input id="port" class="form-control" placeholder="Please enter port" required="required">
+                </div>
+            </section>
+            <section class="row">
+                <label for="content" class="col col-sm-4 control-label">CONTENT: </label>
+                <div class="col-sm-5">
+                    <input id="content" class="form-control" placeholder="Please enter content" required="required">
+                </div>
+            </section>
+        </fieldset>
+        <input type="submit" id = "requestBtn" class="submitbutton" value="提交"/>
+    </form>
+</section>
+</body>
+</html>

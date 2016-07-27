@@ -1,5 +1,6 @@
 package com.sfy.controller;
 
+import com.google.gson.Gson;
 import com.sfy.common.DoubleEditor;
 import com.sfy.common.JsonUtil;
 import com.sfy.common.LasViewException;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.beans.PropertyEditorSupport;
+import java.io.*;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -93,4 +96,34 @@ public class PersonController {
         return expt;
     }
 
+    /**
+     * 李轶 ： 前台输入url和端口和内容，如果内容是00则返回成功，否则失败，断开连接是30秒
+     */
+    @RequestMapping(value = "/getResponse", method = RequestMethod.POST)
+    @ResponseBody
+    public String getResponse(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws IOException {
+        String content = request.getParameter("contentData");
+        String url = request.getParameter("targetUrl");
+        String port = request.getParameter("targetPort");
+        String jsonResult = null;
+
+        Socket s = new Socket(url, Integer.parseInt(port));
+        s.setSoTimeout(30 * 1000);
+
+        OutputStream os = s.getOutputStream();
+        os.write(content.getBytes());
+
+        // 获取输入流
+        InputStream is = s.getInputStream();
+        byte[] bys = new byte[1024];
+        int len = is.read(bys);// 阻塞
+        String client = new String(bys, 0, len);
+
+        if("00".equals(client)){
+            jsonResult =  "成功";
+        } else{
+            jsonResult = "失败";
+        }
+        return new Gson().toJson(jsonResult);
+    }
 }
