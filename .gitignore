@@ -1,8 +1,8 @@
-# Created by .ignore support plugin (hsz.mobi)
+# Created by .ignore support plugin (20160715)
 
-#.idea/
-#*.iml
-#**/.iml
+.idea/
+*.iml
+**/.iml
 /out
-#.gitignore
-*.class
+.gitignore
+.class
