@@ -32,7 +32,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath:important.properties</value>
-				<value>classpath:jss_config.properties</value>
+				<value>classpath:mss_config.properties</value>
 			</list>
 		</property>
 	</bean>

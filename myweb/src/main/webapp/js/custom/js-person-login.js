@@ -18,7 +18,7 @@ $(document).ready(function () {
 function profile() {
     "use strict";
 
-    var url = 'http://localhost:8087/person/profile/';
+    var url = 'http://localhost/person/profile/';
     var query = $('#id').val() + '/' + $('#name').val() + '/'
         + $('#status').val()+ '/'+$('#birth').val();
     url += query;
@@ -39,7 +39,7 @@ function login() {
     $.ajax({
         type: 'POST',
         contentType: 'application/json', //x-www-form-urlencoded; charset=utf-8
-        url: 'http://localhost:8087/person/login',
+        url: 'http://localhost/person/login',
         processData: false,
         dataType: 'json',
         data: mydata,
@@ -60,7 +60,7 @@ function jumpToException() {
     $.ajax({
         type: 'POST',
         contentType: 'application/json',
-        url: 'http://localhost:8087/person/expt',
+        url: 'http://localhost/person/expt',
         processData: false,
         dataType: 'json',
         success: function (data) {
