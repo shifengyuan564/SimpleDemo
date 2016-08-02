@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://robinherbots.github.io/jquery.inputmask/ -->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>Jquery.inputmask by RobinHerbots</title>
+
+	<link rel="stylesheet" href="/js/jquery.inputmask-3.x/example/styles.css">
+	<link rel="stylesheet" href="/js/jquery.inputmask-3.x/example/pygment_trac.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body youdao="bind">
+<div class="wrapper">
+	<header>
+		<span>
+			<h1>Jquery.inputmask</h1>
+			<p>jQuery Input Mask plugin</p>
+		</span>
+
+		<menu>
+			<mi id="main" class=""><a href="http://robinherbots.github.io/jquery.inputmask/index.html">Main</a></mi>
+			<mi><a href="https://github.com/RobinHerbots/jquery.inputmask/wiki">Wiki</a></mi>
+			<mi id="demolnk" class="fired">Demo</mi>
+		</menu>
+	</header>
+
+	<section>
+		<link rel="stylesheet" href="/js/jquery.inputmask-3.x/example/styles.css">
+		<fieldset class="detailForm borderless">
+			<div>
+				<span>Date:</span>
+				<input data-inputmask="'alias': 'date'"> <span class="comment">dd/mm/yyyy</span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+				<span>Date:</span>
+				<input data-inputmask="'alias': 'mm/dd/yyyy'"> <span class="comment">mm/dd/yyyy</span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+				<span>Currency:</span>
+				<input data-inputmask="'alias': 'numeric', 'groupSeparator': ',', 'autoGroup': true, 'digits': 2, 'digitsOptional': false, 'prefix': '$ ', 'placeholder': '0'"><span class="comment"></span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+				<span>License plate:</span>
+				<input data-inputmask="'mask': '[9-]AAA-999'"> <span class="comment">[9-]AAA-999</span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+				<span>Decimal:</span>
+				<input data-inputmask="'alias':'decimal', 'groupSeparator':',', 'autoGroup':true"> <span class="comment">Group separator: , RadixPoint: .</span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+				<span>Phone:</span>
+<!--
+				<input id="phone" data-inputmask="'alias': 'phone'">
+-->
+				<input id = "phone" data-inputmask="'mask': '(999) 999-9999', 'autoUnmask':true, 'removeMaskOnSubmit':true">
+				<span class="comment"></span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+				<span>IP address:</span>
+				<input id="ip" data-inputmask="'alias': 'ip'"> <span class="comment"></span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+				<span>Email address:</span>
+				<input id="email" data-inputmask="'alias': 'email'"> <span class="comment"></span>
+				<div class="eventIndicator">
+					<span class="complete">Complete</span>
+					<span class="incomplete">Incomplete</span>
+					<span class="cleared">Cleared</span>
+					<span class="keyvalidation">Valid</span>
+					<span class="input">Input</span>
+				</div>
+				<br>
+			</div>
+		</fieldset>
+	</section>
+</div>
+
+
+<script src="/js/jquery.inputmask-3.x/example/jquery-1.10.0.min.js"></script>
+<script src="/js/jquery.inputmask-3.x/example/scale.fix.js"></script>
+<script src="/js/jquery.inputmask-3.x/example/jquery.inputmask.bundle.js"></script>
+<script src="/js/jquery.inputmask-3.x/example/phone.js"></script>
+
+<script language="javascript">
+	var defaultScope = new function () {
+		this.ready = function () {
+			$(":input").inputmask(undefined, {
+				oncomplete: function () {
+					var eventIdenticators = $(this).next().next(".eventIndicator").children("span");
+					$.each(eventIdenticators, function (ndx, lmnt) {
+						var $lmnt = $(lmnt);
+						if ($lmnt.hasClass("complete")) {
+							$lmnt.addClass("fired");
+						} else {
+							$lmnt.removeClass("fired");
+						}
+					});
+				},
+				onincomplete: function () {
+					var eventIdenticators = $(this).next().next(".eventIndicator").children("span");
+					$.each(eventIdenticators, function (ndx, lmnt) {
+						var $lmnt = $(lmnt);
+						if ($lmnt.hasClass("incomplete")) {
+							$lmnt.addClass("fired");
+						} else {
+							$lmnt.removeClass("fired");
+						}
+					});
+				},
+				oncleared: function () {
+					var eventIdenticators = $(this).next().next(".eventIndicator").children("span");
+					$.each(eventIdenticators, function (ndx, lmnt) {
+						var $lmnt = $(lmnt);
+						if ($lmnt.hasClass("cleared")) {
+							$lmnt.addClass("fired");
+						} else {
+							$lmnt.removeClass("fired");
+						}
+					});
+				},
+				onKeyValidation: function (result, opts) {
+					var eventIdenticators = $(this).next().next(".eventIndicator").children("span");
+					if (this.id == "phone" && $(this).inputmask("getmetadata")) {
+						$(this).next().text($(this).inputmask("getmetadata")["cd"]);
+					}
+					$.each(eventIdenticators, function (ndx, lmnt) {
+						var $lmnt = $(lmnt);
+						if ($lmnt.hasClass("keyvalidation")) {
+							if (result !== false) {
+								$lmnt.addClass("fired");
+							} else {
+								$lmnt.removeClass("fired");
+							}
+						}
+					});
+				}
+			}).on("input", function () {
+				var eventIdenticators = $(this).next().next(".eventIndicator").children("span");
+				$.each(eventIdenticators, function (ndx, lmnt) {
+					var $lmnt = $(lmnt);
+					if ($lmnt.hasClass("input")) {
+						$lmnt.addClass("fired");
+						setTimeout(function () {
+							$lmnt.removeClass("fired");
+						}, 100);
+					}
+				});
+			});
+		};
+	};
+	$(document).ready(function () {
+		defaultScope.ready();
+	});
+</script>
+
+
+</body>
+</html>

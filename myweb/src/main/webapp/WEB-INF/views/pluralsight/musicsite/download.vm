@@ -5,7 +5,7 @@
     <title>Download</title>
 
     <!-- *** BEGIN: Styles dev *** -->
-    <link rel="stylesheet" href="#springUrl('')/css/bootstrap.css"/>
+    <link rel="stylesheet" href="#springUrl('')/css/bootstrap-darkly.css"/>
     <link rel="stylesheet" href="#springUrl('')/css/musicsites/sidebar.css"/>
     <link rel="stylesheet" href="#springUrl('')/css/musicsites/summary-block.css"/>
     <link rel="stylesheet" href="#springUrl('')/css/musicsites/readme-box.css"/>
