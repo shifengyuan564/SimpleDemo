@@ -207,7 +207,43 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-4">
+            <div class="well">
+                <h3>Noraml 'select' list</h3>
+                <select class="form-control">
+                    <option>Jazz</option>
+                    <option>Country</option>
+                    <option>Rock</option>
+                    <option>Blues</option>
+                    <option>Alternative Rock</option>
+                </select>
+            </div>
 
+            <input type="hidden" name="SelectedGenre" id="SelectedGenre">
+            <input type="hidden" name="SelectedId" id="SelectedId">
+
+            <div class="well">
+                <h3>Use a 'dropdown' Toggle</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="dropdown">
+                            <button class="btn btn-primary" id="selectButton" data-toggle="dropdown">
+                                Select a Genre <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="ulGenres"
+                                    data-pdsa-dropdown-btn="selectButton"
+                                    data-pdsa-dropdown-submit-btn="Submit"
+                                    data-pdsa-dropdown-ctl-text="SelectedGenre"
+                                    data-pdsa-dropdown-ctl-value="SelectedId">
+                                <li><a href="#" data-pdsa-dropdown-val="1">Jazz</a></li>
+                                <li><a href="#" data-pdsa-dropdown-val="2">Country</a></li>
+                                <li><a href="#" data-pdsa-dropdown-val="3">Rock</a></li>
+                                <li><a href="#" data-pdsa-dropdown-val="4">Blues</a></li>
+                                <li><a href="#" data-pdsa-dropdown-val="5">Alternative Rock</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -241,6 +277,16 @@
                 .addClass('glyphicon-ok-circle');
         $("input:checked").parent()
                 .addClass('active');
+
+        // put text into select button
+        $("[data-pdsa-dropdown-val]").on("click", function(){
+            var text = $(this).text();
+            var parent = $(this).parent().parent();
+
+            $("#" + $(parent).data("pdsa-dropdown-btn")).html(text+"&nbsp;<span class='caret'></span>");
+            $("#" + $(parent).data("pdsa-dropdown-ctl-text")).val($(this).text());
+            $("#" + $(parent).data("pdsa-dropdown-ctl-value")).val($(this).data('pdsa-dropdown-val'));
+        });
     });
 
 </script>

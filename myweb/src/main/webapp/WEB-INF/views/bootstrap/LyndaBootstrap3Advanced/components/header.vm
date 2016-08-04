@@ -29,6 +29,13 @@
                     <li><a tabindex="-1" href="/lyndaBootstrap/artists#Richard_Tweed">Richard Tweed</a></li>
                 </ul>
             </li>
+            <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Maintenance <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="">Users</a></li>
+                    <li><a href="">Roles</a></li>
+                </ul>
+            </li>
             <li><a href="/lyndaBootstrap/register">Register</a></li>
         </ul>
     </section>
