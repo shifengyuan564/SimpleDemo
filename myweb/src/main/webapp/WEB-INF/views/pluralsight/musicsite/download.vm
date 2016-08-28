@@ -52,6 +52,21 @@
         .pdsa-submit-progress i {
             margin-right: 0.5em;
         }
+
+        .panel-right {
+            border: 0.05em solid lightgray;
+            border-radius: 0.25em 0.25em;
+            margin-top: -0.2em;
+            padding: 0.3em;
+            font-size: 0.9em;
+            float: right;
+        }
+
+        .panel-title a,
+        .panel-title a:active,
+        .panel-title a:visited {
+            text-decoration: none;
+        }
     </style>
 
 </head>
@@ -137,7 +152,10 @@
         <div class="col-xs-12 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Songs to Download</h3>
+                    <h1 class="panel-title">
+                        <span class="glyphicon glyphicon-music"></span>&nbsp;Songs to Download
+                        <a href="#" class="panel-right glyphicon glyphicon-random">&nbsp;Reload </a>
+                    </h1>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
