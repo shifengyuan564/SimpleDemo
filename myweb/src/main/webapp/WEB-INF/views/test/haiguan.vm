@@ -1,0 +1,115 @@
+#set($layout = "layout/null.vm")
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>测试restful</title>
+
+    <script type="text/javascript" src="#springUrl('')/js/jquery-2.1.0.js" charset="utf-8"></script>
+    <script type="text/javascript" src="#springUrl('')/js/bootstrap.js"></script>
+    <script type="text/javascript" src="#springUrl('')/js/jquery.typeahead.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="#springUrl('')/css/jquery.typeahead.css"/>
+
+    <style>
+        .row-odd {
+            background: #f5fcfe;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+/*
+            $(".typeahead-button").click(function () {
+
+                var urlpost = 'http://localhost/codemap/cus/c104/';
+
+                $.ajax({
+                    type: 'POST',
+                    url: urlpost,
+                    dataType: 'json',
+                    data: { queryKey:$('#queryKey').val()},
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function () {
+                        alert('ajax 返回 Error...');
+                    }
+                });
+            });
+*/
+
+            $.typeahead({
+                input: '#queryKey',
+                minLength: 1,
+                maxItem: 10,
+                order: "desc",
+                hint: true,
+
+                display: ["code", "name"],
+                cache: true,
+                dynamic: true,
+                emptyTemplate: '没有 &quot;{{query}}&quot; 的搜索结果',
+                template: "<span class='dynamic-result' style='nth-child(odd)'>"+
+                            "<span class='code'>{{code}}</span>" +
+                            "<span class='name'> ({{name}})</span>" +
+                        "</span>",
+                source: {
+                    data: function() {
+                        return $.ajax({
+                            type: 'POST',
+                            url: 'http://localhost:8083/codemap/cus/c104/',  /* /ciq/Code1/ */
+                            dataType: 'json',
+                            data: {queryKey: $('#queryKey').val()},
+                            success: function (data) {
+                                return data;
+                            },
+                            error: function () {
+                                alert('ajax 返回 Error...');
+                            }
+                        })
+                    }
+                },
+                callback: {
+                    onInit: function (node) {
+                        console.log('Typeahead Initiated on ' + node.selector);
+                    },
+                    onClickAfter: function (node, a, item, event) {
+                        $('#queryKey').val(item.code+" ("+item.name+")");
+                    },
+                    onLayoutBuiltAfter  : function (node, query, result) {
+                        $('.typeahead__list li:nth-child(odd)').addClass('row-odd');
+                    }
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+<div style="width: 100%; max-width: 800px; margin: 20px auto;">
+    <div class="well">
+        <h4>请求格式：</h4>
+        <h4>http://172.16.3.154 / codemap / cus / c104 /</h4>
+        <h4>http://172.16.3.154 / codemap / ciq / Code1 /</h4>
+    </div>
+
+    <div class="typeahead__container">
+        <div class="typeahead__field">
+            <span class="typeahead__query">
+                <input id="queryKey" class="queryKey" type="text" autofocus autocomplete="off">
+            </span>
+            <span class="typeahead__button">
+                <button>
+                    <span class="typeahead__search-icon"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

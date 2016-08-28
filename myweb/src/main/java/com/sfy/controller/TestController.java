@@ -49,4 +49,9 @@ public class TestController {
     public String liyi() {
         return "test/liyi";
     }
+
+    @RequestMapping(value = "/haiguan", method = RequestMethod.GET)
+    public String haiguan() {
+        return "test/haiguan";
+    }
 }

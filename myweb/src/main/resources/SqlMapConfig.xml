@@ -18,6 +18,7 @@
         <mapper resource="mappers/UserMapper.xml" />
         <mapper resource="mappers/AreaCascadeMapper.xml"/>
         <mapper resource="mappers/StoreMapper.xml"/>
+        <mapper resource="mappers/CodeMapper.xml"/>
     </mappers>
 
 </configuration>
