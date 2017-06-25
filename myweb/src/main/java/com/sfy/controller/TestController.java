@@ -49,4 +49,10 @@ public class TestController {
     public String liyi() {
         return "test/liyi";
     }
+
+
+    @RequestMapping(value = "/bigscreen", method = RequestMethod.GET)
+    public String bigscreen() {
+        return "test/bigscreen";
+    }
 }
