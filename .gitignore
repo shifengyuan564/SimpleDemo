@@ -1,8 +1,20 @@
 # Created by .ignore support plugin (20160715)
 
-.idea/
+.idea
 *.iml
 **/.iml
 /out
 .gitignore
 .class
+myweb/src/main/resources/rebel-remote.xml
+myweb/src/main/webapp/example/jquery-typeahead-2.7.0/
+myweb/src/main/webapp/js/lodash/
+myweb/target/
+myweb/src/main/resources/rebel-remote.xml
+myweb/src/main/webapp/example/jquery-typeahead-2.7.0/
+myweb/src/main/webapp/js/lodash/
+myweb/target/
+myweb/src/main/resources/rebel-remote.xml
+myweb/src/main/webapp/example/jquery-typeahead-2.7.0/
+myweb/src/main/webapp/js/lodash/
+myweb/target/

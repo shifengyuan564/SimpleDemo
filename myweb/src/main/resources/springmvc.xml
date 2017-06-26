@@ -27,7 +27,7 @@
     <context:component-scan base-package="com.sfy.controller"/>
 
     <context:annotation-config/>
-    <mvc:annotation-driven />
+    <mvc:annotation-driven/>
 
     <!--为了解决restful风格url，需要添加该种方式的标签。 静态资源解析 包括 ：js、css、img...以及静态html例子-->
     <mvc:resources location="/js/" mapping="/js/**"/>
@@ -87,6 +87,34 @@
         </property>
     </bean>
 
+    <!-- ajax乱码 -->
+    <!-- 启动SpringMVC的注解功能，完成请求和注解POJO的映射 -->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="stringHttpMessageConverter" />
+                <ref bean="jsonHttpMessageConverter" />
+                <!-- <ref bean="marshallingHttpMessageConverter" /> -->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter" >
+        <property name = "supportedMediaTypes">
+            <list>
+                <value>text/plain;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="jsonHttpMessageConverter"
+          class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json</value>
+            </list>
+        </property>
+    </bean>
+
     <!-- exception related -->
     <!-- all exception handler will be registered by DispatcherServlet default (detectAllHandlerExceptionResolvers=true) -->
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
@@ -104,4 +132,9 @@
             </props>
         </property>
     </bean>
+
+<!--
+    <import resource="spring-config-camel.xml"/>
+-->
+
 </beans>

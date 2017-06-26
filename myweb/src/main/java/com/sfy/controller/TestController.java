@@ -50,6 +50,11 @@ public class TestController {
         return "test/liyi";
     }
 
+    @RequestMapping(value = "/haiguan", method = RequestMethod.GET)
+    public String haiguan() {
+        return "test/haiguan";
+    }
+
 
     @RequestMapping(value = "/bigscreen", method = RequestMethod.GET)
     public String bigscreen() {

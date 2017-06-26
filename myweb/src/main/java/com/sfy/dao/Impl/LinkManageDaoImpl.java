@@ -33,4 +33,10 @@ public class LinkManageDaoImpl extends MySessionDaoSupport implements LinkManage
         return pageBean;
     }
 
+    @Override
+    public boolean addLink(Link link) {
+        int result = this.getSqlSession().insert("com.sfy.dao.LinkManageDao.addLink", link);
+        return result > 0;
+    }
+
 }

@@ -7,10 +7,13 @@
     <!-- js 的引入顺序不能乱写 -->
     <link rel="stylesheet" href="/css/bootstrap.css"/>
     <link rel="stylesheet" href="/js/bootstrap-daterangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" href="pdsa-date-range.css"/>
     <script type="text/javascript" src="/js/jquery-2.1.0.js"></script>
     <script type="text/javascript" src="/js/bootstrap.js"></script>
     <script type="text/javascript" src="/js/bootstrap-daterangepicker/moment.js"></script>
     <script type="text/javascript" src="/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script type="text/javascript" src="/js/common/commons.js"></script>
+    <script type="text/javascript" src="pdsa-date-range.js"></script>
 
     <script type="text/javascript">
         $(function() {
@@ -89,7 +92,7 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-md-8 center-block">
+    <div class="col-xs-12 col-md-7 center-block">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">From To</h3>
@@ -110,6 +113,44 @@
         </div>
     </div>
 </div>
+
+<!-- custom -->
+<div class="row">
+    <div class="col-xs-12 col-md-8 center-block">
+        <div class="pdsa-date-range">
+            <div class="list-group" id="pdsadatelist">
+                <div class="list-group-item" data-pdsa-date-func="today">Today</div>
+                <div class="list-group-item" data-pdsa-date-func="yesterday">Yesterday</div>
+                <div class="list-group-item" data-pdsa-date-func="last30days">Last 30 Days</div>
+                <div class="list-group-item" data-pdsa-date-func="thismonth">This Month</div>
+                <div class="list-group-item" data-pdsa-date-func="lastmonth">Last Month</div>
+                <div class="list-group-item" data-pdsa-date-func="nextmonth">Next Month</div>
+                <div class="list-group-item" data-pdsa-date-func="thisyear">This Year</div>
+            </div>
+
+            <div class="pdsa-date-custom-range">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <span>Custom Range</span>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12">From</div>
+                                <div class="col-xs-12"><input type="date" id="pdsaDateFrom" class="form-control" value="" /></div>
+                                <div class="col-xs-12">To</div>
+                                <div class="col-xs-12"><input type="date" id="pdsaDateTo" class="form-control" value="" /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pdsa-date-footer">
+                <div class="form-group">
+                    <button type="button" id="pdsaDateApply" class="btn btn-sm btn-primary">Apply</button>
+                    <button type="button" id="pdsaDateCancel" class="btn btn-sm btn-default">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
