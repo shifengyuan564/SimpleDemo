@@ -60,4 +60,9 @@ public class LinkManageServiceImpl implements LinkManageService {
     public Page<Link> pageQuery(Page<Link> pageBean, Link link) {
         return linkManageDao.pageQuery(pageBean,link);
     }
+
+    @Override
+    public boolean addLink(Link link) {
+        return linkManageDao.addLink(link);
+    }
 }

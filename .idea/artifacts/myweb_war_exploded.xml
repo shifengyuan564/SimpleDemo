@@ -20,7 +20,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:3.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:3.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:3.2.0.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:3.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.2.0.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
@@ -46,6 +45,74 @@
           <element id="library" level="project" name="Maven: org.apache.poi:poi-ooxml-schemas:3.9" />
           <element id="library" level="project" name="Maven: org.apache.xmlbeans:xmlbeans:2.3.0" />
           <element id="library" level="project" name="Maven: stax:stax-api:1.0.1" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-core:2.14.4" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-impl:2.2.7" />
+          <element id="library" level="project" name="Maven: com.sun.xml.bind:jaxb-core:2.2.7" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jaxb-api:2.2.7" />
+          <element id="library" level="project" name="Maven: com.sun.istack:istack-commons-runtime:2.16" />
+          <element id="library" level="project" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.12" />
+          <element id="library" level="project" name="Maven: javax.xml.bind:jsr173_api:1.0" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-spring:2.14.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:3.2.11.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-spring-javaconfig:2.14.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:3.2.11.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.servicemix.bundles:org.apache.servicemix.bundles.cglib:2.1_3_7" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-test-spring:2.14.4" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-test:2.14.4" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-mybatis:2.14.4" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-stream:2.14.4" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-jms:2.14.4" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jms:3.2.11.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.camel:camel-kafka:2.14.4" />
+          <element id="library" level="project" name="Maven: org.apache.kafka:kafka_2.10:0.8.1" />
+          <element id="library" level="project" name="Maven: com.yammer.metrics:metrics-annotation:2.2.0" />
+          <element id="library" level="project" name="Maven: com.yammer.metrics:metrics-core:2.2.0" />
+          <element id="library" level="project" name="Maven: org.xerial.snappy:snappy-java:1.0.5" />
+          <element id="library" level="project" name="Maven: org.apache.zookeeper:zookeeper:3.3.4" />
+          <element id="library" level="project" name="Maven: jline:jline:0.9.94" />
+          <element id="library" level="project" name="Maven: net.sf.jopt-simple:jopt-simple:3.2" />
+          <element id="library" level="project" name="Maven: org.scala-lang:scala-library:2.10.1" />
+          <element id="library" level="project" name="Maven: com.101tec:zkclient:0.3" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-camel:5.6.0" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-core:5.6.0" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:kahadb:5.6.0" />
+          <element id="library" level="project" name="Maven: org.apache.activemq.protobuf:activemq-protobuf:1.1" />
+          <element id="library" level="project" name="Maven: org.fusesource.fuse-extra:fusemq-leveldb:1.1" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtbuf:hawtbuf-proto:1.9" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtdispatch:hawtdispatch-scala:1.9" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtdispatch:hawtdispatch:1.9" />
+          <element id="library" level="project" name="Maven: org.iq80.leveldb:leveldb:0.2" />
+          <element id="library" level="project" name="Maven: org.iq80.leveldb:leveldb-api:0.2" />
+          <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: com.google.inject.extensions:guice-multibindings:3.0" />
+          <element id="library" level="project" name="Maven: org.fusesource.leveldbjni:leveldbjni-osx:1.2" />
+          <element id="library" level="project" name="Maven: org.fusesource.leveldbjni:leveldbjni:1.2" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtjni:hawtjni-runtime:1.5" />
+          <element id="library" level="project" name="Maven: org.fusesource.leveldbjni:leveldbjni-linux32:1.2" />
+          <element id="library" level="project" name="Maven: org.fusesource.leveldbjni:leveldbjni-linux64:1.2" />
+          <element id="library" level="project" name="Maven: org.apache.hadoop:hadoop-core:1.0.0" />
+          <element id="library" level="project" name="Maven: commons-configuration:commons-configuration:1.6" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils-core:1.8.0" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty:6.1.26" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:servlet-api:2.5-20081211" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jetty-util:6.1.26" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jsp-api-2.1:6.1.14" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:servlet-api-2.5:6.1.14" />
+          <element id="library" level="project" name="Maven: org.mortbay.jetty:jsp-2.1:6.1.14" />
+          <element id="library" level="project" name="Maven: ant:ant:1.6.5" />
+          <element id="library" level="project" name="Maven: org.fusesource.mqtt-client:mqtt-client:1.0" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtdispatch:hawtdispatch-transport:1.9" />
+          <element id="library" level="project" name="Maven: org.osgi:org.osgi.core:4.1.0" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:1.0.1" />
+          <element id="library" level="project" name="Maven: commons-net:commons-net:2.2" />
+          <element id="library" level="project" name="Maven: org.jasypt:jasypt:1.8" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-pool:5.11.1" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-jms-pool:5.11.1" />
+          <element id="library" level="project" name="Maven: org.apache.activemq:activemq-client:5.11.1" />
+          <element id="library" level="project" name="Maven: org.fusesource.hawtbuf:hawtbuf:1.11" />
+          <element id="library" level="project" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.0.1B_spec:1.0.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">

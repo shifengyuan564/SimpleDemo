@@ -9,7 +9,7 @@
     </resultMap>
 
     <!-- 新增友情链接信息 -->
-    <insert id="insert" parameterType="com.sfy.domain.Link" >
+    <insert id="addLink" parameterType="com.sfy.domain.Link" >
         INSERT INTO links (title, address) VALUES (#{title,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR})
         <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
             SELECT LAST_INSERT_ID() AS ID
