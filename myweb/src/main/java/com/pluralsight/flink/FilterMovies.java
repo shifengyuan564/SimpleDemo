@@ -27,7 +27,7 @@ public class FilterMovies {
                 .types(Long.class, String.class, String.class);
 
         // step 1 : map each line to movie object
-        DataSet<Movie> movies =  lines.map(new MapFunction<Tuple3<Long,String,String>, Movie>() {
+        DataSet<Movie> movies = lines.map(new MapFunction<Tuple3<Long, String, String>, Movie>() {
             @Override
             public Movie map(Tuple3<Long, String, String> csvLine) throws Exception {
                 String movieName = csvLine.f1;
