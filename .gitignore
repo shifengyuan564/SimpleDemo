@@ -6,3 +6,7 @@
 /out
 .gitignore
 .class
+myweb/src/main/resources/rebel-remote.xml
+myweb/src/main/webapp/example/jquery-typeahead-2.7.0/
+myweb/src/main/webapp/js/lodash/
+myweb/target/
