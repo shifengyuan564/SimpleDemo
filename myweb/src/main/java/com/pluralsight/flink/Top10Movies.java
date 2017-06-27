@@ -24,7 +24,7 @@ public class Top10Movies {
 
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
-        DataSet<Tuple2<Long, Double>> sorted =  env.readCsvFile("myweb/doc/movie-rating/ratings.csv")
+        DataSet<Tuple2<Long, Double>> sorted = env.readCsvFile("myweb/doc/movie-rating/ratings.csv")
                 .ignoreFirstLine()
                 .includeFields(false, true, true, false)
                 .types(Long.class, Double.class)
@@ -48,14 +48,14 @@ public class Top10Movies {
                         }
                     }
                 })
-                .partitionCustom(new Partitioner<Double>() {
+                .partitionCustom(new Partitioner<Double>() {   // 在double列上进行并行处理
                     @Override
                     public int partition(Double key, int numPartitions) {
-                        return key.intValue() - 1;  // 0-4号 partition处理，rating从1.0-5.0
+                        return key.intValue() - 1;  //每个评分区间交给对应的partition并行处理 1.x->0, 2.x->1, 3.x->2, 4.x->3, 5.0->4
                     }
                 }, 1)   // 1 means the second field
-                .setParallelism(5)
-                .sortPartition(1, Order.DESCENDING)
+                .setParallelism(5) // 5个并行处理
+                .sortPartition(1, Order.DESCENDING) // 给每个评分区间选出各自的top10
                 .mapPartition(new MapPartitionFunction<Tuple2<Long, Double>, Tuple2<Long, Double>>() {
                     @Override
                     public void mapPartition(Iterable<Tuple2<Long, Double>> values,
@@ -89,7 +89,7 @@ public class Top10Movies {
         DataSet<Tuple3<Long, String, Double>> result = movies.join(sorted)
                 .where(0)
                 .equalTo(0)
-                .with(new JoinFunction<Tuple2<Long,String>, Tuple2<Long,Double>, Tuple3<Long, String, Double>>() {
+                .with(new JoinFunction<Tuple2<Long, String>, Tuple2<Long, Double>, Tuple3<Long, String, Double>>() {
                     @Override
                     public Tuple3<Long, String, Double> join(Tuple2<Long, String> movie,
                                                              Tuple2<Long, Double> rating) throws Exception {
