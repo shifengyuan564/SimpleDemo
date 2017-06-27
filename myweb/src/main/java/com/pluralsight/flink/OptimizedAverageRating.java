@@ -6,6 +6,8 @@ import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
+import org.apache.flink.types.DoubleValue;
+import org.apache.flink.types.StringValue;
 import org.apache.flink.util.Collector;
 
 import java.util.Comparator;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
  * Date: 2017/6/26
  * Time: 20:23
  */
-public class AverageRating {
+public class OptimizedAverageRating {
     public static void main(String[] args) throws Exception {
 
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
@@ -40,33 +42,40 @@ public class AverageRating {
                 .equalTo(0)
                 .with(new JoinFunction<Tuple3<Long, String, String>,
                         Tuple2<Long, Double>,
-                        Tuple3<String, String, Double>>() {
+                        Tuple3<StringValue, StringValue, DoubleValue>>() {
+
+                    // 使用flink封装的基本类型，优化提升效率
+                    private StringValue movie_name = new StringValue();
+                    private StringValue movie_genre = new StringValue();
+                    private DoubleValue rating_score = new DoubleValue();
+                    private Tuple3<StringValue, StringValue, DoubleValue> result = new Tuple3<>(movie_name,movie_genre,rating_score);
+
                     @Override
-                    public Tuple3<String, String, Double> join(Tuple3<Long, String, String> movie,
+                    public Tuple3<StringValue, StringValue, DoubleValue> join(Tuple3<Long, String, String> movie,
                                                                Tuple2<Long, Double> rating) throws Exception {
-                        String movieName = movie.f1;
-                        String movieGenre = movie.f2.split("\\|")[0];
-                        Double ratingScore = rating.f1;
-                        return new Tuple3<>(movieName, movieGenre, ratingScore);
+                        movie_name.setValue(movie.f1);
+                        movie_genre.setValue(movie.f2.split("\\|")[0]);
+                        rating_score.setValue(rating.f1);
+                        return result;
                     }
                 })
                 .groupBy(1) // genre
-                .reduceGroup(new GroupReduceFunction<Tuple3<String, String, Double>,
+                .reduceGroup(new GroupReduceFunction<Tuple3<StringValue, StringValue, DoubleValue>,
                         Tuple2<String, Double>>() {
                     @Override
-                    public void reduce(Iterable<Tuple3<String, String, Double>> iterable,
-                                       Collector<Tuple2<String, Double>> collector) throws Exception {
+                    public void reduce(Iterable<Tuple3<StringValue, StringValue, DoubleValue>> values,
+                                       Collector<Tuple2<String, Double>> out) throws Exception {
                         String genre = null;
                         int count = 0;
                         double totalScore = 0;
 
-                        for (Tuple3<String, String, Double> movie : iterable) {
-                            genre = movie.f1;
-                            totalScore += movie.f2;
+                        for (Tuple3<StringValue, StringValue, DoubleValue> movie : values) {
+                            genre = movie.f1.getValue();
+                            totalScore += movie.f2.getValue();
                             count++;
                         }
 
-                        collector.collect(new Tuple2<String, Double>(genre, totalScore / count));
+                        out.collect(new Tuple2<String, Double>(genre, totalScore / count));
                     }
                 })
                 .collect();
