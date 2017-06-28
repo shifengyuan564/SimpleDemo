@@ -1,9 +1,0 @@
-# Created by .ignore support plugin (20160715)
-
-.idea/
-*.iml
-**/.iml
-/out
-.gitignore
-.class
-myweb/target/
