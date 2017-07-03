@@ -37,16 +37,16 @@ public class PartitionCustomExample {
                 new Tuple2<>(7, 4.093333333333334),
                 new Tuple2<>(8, 3.988188976377952),
                 new Tuple2<>(9, 4.166666666666667),
-                new Tuple2<>(10,4.0158730158730161),
+                new Tuple2<>(10, 4.0158730158730161),
                 new Tuple2<>(11, 2.9691358024691357),
                 new Tuple2<>(12, 4.20952380952381),
                 new Tuple2<>(13, 4.20952380952381),
                 new Tuple2<>(14, 2.8706896551724137)
         );
 
-        DataSet<Tuple2<Integer, Double>> partitionedData = data.partitionCustom(new MyPartitioner(), 1)
-                .sortPartition(1, Order.DESCENDING) // 每个partition内部倒序
-                .setParallelism(1);// 利用1个并行把最终的结果集倒序
+        DataSet<Tuple2<Integer, Double>> partitionedData =
+                data.partitionCustom(new MyPartitioner(), 1).setParallelism(4)
+                        .sortPartition(1, Order.DESCENDING).setParallelism(1);// 利用1个并行把最终的结果集倒序
 
 
         partitionedData.print();
