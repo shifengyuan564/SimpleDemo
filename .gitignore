@@ -2,3 +2,10 @@
 *.iml
 .idea/
 target/
+myweb/src/main/webapp/example/jquery-typeahead-2.3.4/.gitignore
+myweb/src/main/webapp/example/jquery-typeahead-2.7.0/.gitignore
+myweb/src/main/webapp/js/bootstrap-daterangepicker/.gitignore
+myweb/src/main/webapp/js/clueTip/.gitignore
+myweb/src/main/webapp/js/lodash/.gitignore
+myweb/src/main/webapp/js/nice-validator-0.8.1/.gitignore
+out/
