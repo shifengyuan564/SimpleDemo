@@ -26,6 +26,9 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <excludes>
+                        <exclude>**/node_modules/*</exclude> <!-- ** mean 'any directories' -->
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
