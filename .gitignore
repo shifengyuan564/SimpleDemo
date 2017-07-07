@@ -10,3 +10,4 @@ myweb/src/main/webapp/js/lodash/.gitignore
 myweb/src/main/webapp/js/nice-validator-0.8.1/.gitignore
 out/
 node_modules/
+myweb/build/
