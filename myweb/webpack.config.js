@@ -19,19 +19,21 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react']
+                    presets: ["react", "es2015"]
                 }
             },
             {
                 test: /\.json$/,
                 loader: "json-loader"
             }
-
         ]
     },
 
     plugins: [
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({
+            title:"myweb - react deep dive",
+            template: './build/template.html'
+        })
     ],
 
     devtool: 'source-map'
