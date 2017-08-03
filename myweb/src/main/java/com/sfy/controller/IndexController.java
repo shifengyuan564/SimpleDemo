@@ -13,31 +13,38 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/")
 public class IndexController {
 
+    @RequestMapping(value = "/login")
+    public String login() {
+        return "site/login";
+    }
+
+    ;
+
     @RequestMapping(value = "/index")
     public String index() {
         return "site/index";
     }
 
     @RequestMapping(value = "/top/homepage")
-    public String topHomepage(){
+    public String topHomepage() {
         return "site/homepage";
     }
 
     @RequestMapping(value = "/top/baseinfo")
-    public String topBaseInfo(){
+    public String topBaseInfo() {
         return "site/baseinfo";
     }
 
     @RequestMapping(value = "/vali")
-    public String testValidate(){
+    public String testValidate() {
         return "site/vali";
     }
 
     /**
      * 跳转页面
      */
-    @RequestMapping(value={"/getView/**"},method=RequestMethod.GET)
-    public String getView(HttpServletRequest request, Model model){
+    @RequestMapping(value = {"/getView/**"}, method = RequestMethod.GET)
+    public String getView(HttpServletRequest request, Model model) {
         String view = request.getRequestURI().substring("/getView".length());
         model.addAttribute("request", request);
         //model.addAttribute("userPin", LoginContext.getLoginContext().getPin());
