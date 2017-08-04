@@ -37,19 +37,20 @@
     });
 
     var InputComponent = React.createClass({
-        changeHandler: function (event) {
 
-            this.setState({
-               inputContent: event.target.value
-            });
-
-            event.stopPropagation();
-            event.preventDefault();
-        },
         getInitialState: function () {
             return {
                 inputContent: '初始值 initial State'
             }
+        },
+        changeHandler: function (event) {
+
+            this.setState({
+                inputContent: event.target.value
+            });
+
+            event.stopPropagation();
+            event.preventDefault();
         },
         render: function () {
             return (

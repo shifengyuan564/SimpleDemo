@@ -19,14 +19,10 @@ import java.security.Principal;
 public class ShiroFilter implements Filter {
 
     @Override
-    public void destroy() {
-
-    }
+    public void destroy() {}
 
     @Override
-    public void init(FilterConfig arg0) throws ServletException {
-
-    }
+    public void init(FilterConfig arg0) throws ServletException {}
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -37,13 +33,15 @@ public class ShiroFilter implements Filter {
         Principal principal = httpRequest.getUserPrincipal();
 
         if (principal != null) {
-            Subject subjects = SecurityUtils.getSubject();
+            Subject subjects = SecurityUtils.getSubject(); //可以得到当前正在执行的主题。进而可以得到session
+
             // 为了简单，这里初始化一个用户。实际项目项目中应该去数据库里通过名字取用户：
             // 例如：User user = userService.getByAccount(principal.getName());
             User user = new User();
             user.setUserName("sfy");
-            user.setPassword("sfy");
+            user.setPassword("csdncsdn");
             user.setRole(new Role("administrator"));
+
             if (user.getUserName().equals(principal.getName())) {
                 UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(), user.getPassword());
                 subjects = SecurityUtils.getSubject();
