@@ -48,14 +48,12 @@ public class ExcelController {
                                        HttpServletResponse response,
                                        MultipartFile file) {
 
-        //转换成输入流
         try {
-            InputStream is = file.getInputStream();
+            InputStream is = file.getInputStream();//转换成输入流
 
             List<List<Object>> list = new ArrayList<List<Object>>();
+            work = this.getWorkbook(is, file.getOriginalFilename());//得到excel
 
-            //得到excel
-            work = this.getWorkbook(is, file.getOriginalFilename());
             if (null == work) {
                 throw new Exception("创建Excel工作薄为空！");
             }
@@ -74,7 +72,7 @@ public class ExcelController {
 
                     row = sheet.getRow(j);
                     //getFirstRowNum/getFirstCellNum-->从0开始取
-                    //去除第一行row.getFirstCellNum() == j == 0
+                    //去除第一行row.getFirstCellNum() == 0 == j
                     if (row == null || row.getFirstCellNum() == j) {
                         continue;
                     }
@@ -83,10 +81,6 @@ public class ExcelController {
                     List<Object> li = new ArrayList<Object>();
                     for (int y = row.getFirstCellNum(); y < row.getLastCellNum(); y++) {
                         cell = row.getCell(y);
-
-                        //System.out.println("cell=" + cell);
-                        //System.out.println("getCellValue=" + this.getCellValue(cell));
-
                         li.add(this.getCellValue(cell));
                     }
                     list.add(li);
