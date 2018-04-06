@@ -28,6 +28,11 @@ public class IndexController {
         return "site/baseinfo";
     }
 
+    @RequestMapping(value = "/vali")
+    public String testValidate(){
+        return "site/vali";
+    }
+
     /**
      * 跳转页面
      */

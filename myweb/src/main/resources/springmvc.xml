@@ -135,4 +135,9 @@
             </props>
         </property>
     </bean>
+
+<!--
+    <import resource="spring-config-camel.xml"/>
+-->
+
 </beans>

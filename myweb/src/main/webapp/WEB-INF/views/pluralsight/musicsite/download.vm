@@ -39,6 +39,7 @@
 
         /* Overriding styles for spinner */
         .pdsa-submit-progress {
+            z-index: 9999;
             padding-top: 2em;
             width: 23em;
             margin-left: -11.5em;
@@ -47,6 +48,19 @@
         .pdsa-submit-progress-bg {
             background-color: lightgray;
             opacity: .5;
+        }
+
+        .pdsa-popover-mask {
+            z-index: 9998;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: #080e12;
+            opacity:0.4;
+            filter:alpha(opacity=40);
+            display:none
         }
 
         .pdsa-submit-progress i {
@@ -146,6 +160,8 @@
     <label>Please wait while Downloading...</label>
 </div>
 
+<div class="pdsa-popover-mask hidden"></div>
+
 <!-- *** BEGIN: Body Content *** -->
 <div class="container body-content">
     <div class="row">
@@ -217,7 +233,14 @@
         $("body").addClass("pdsa-submit-progress-bg");  // Gray out background on page
 
         // Wrap in setTimeout so the UI can update the spinners
-        setTimeout(function () {$(".pdsa-submit-progress").removeClass("hidden");}, 500);
+        setTimeout(
+            function () {
+                $(".pdsa-submit-progress").removeClass("hidden");
+                $(".pdsa-popover-mask").removeClass("hidden");
+                $('.pdsa-popover-mask').fadeIn(100);
+            },
+            500
+        );
 
         return true;
     }
