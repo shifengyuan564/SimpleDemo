@@ -115,6 +115,9 @@
         </property>
     </bean>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+
     <!-- exception related -->
     <!-- all exception handler will be registered by DispatcherServlet default (detectAllHandlerExceptionResolvers=true) -->
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

@@ -1,0 +1,83 @@
+#set($layout = "/layout/null.vm")
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="/js/JqueryUpload/css/jquery.fileupload.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/excel-main.css"/>
+</head>
+
+<body>
+<!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><b>ICBC Dalian HR Department</b></a>
+        </div>
+    </div>
+</div>
+
+<div id="headerwrap">
+    <div class="shadowContainer fade in" style="display: none;"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 upload-excel-input">
+                <form id="uploadForm" enctype="multipart/form-data" method="POST">
+                    <span class="btn btn-success fileinput-button willAdd">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>选择文件</span>
+                        <input id="fileupload" type="file" name="file" data-url="/excel/dealExcel">
+                    </span>
+
+                    <span>
+                        <button id="uploadBtn" type="button" class="btn btn-primary" disabled="disabled">
+                            <span class="glyphicon glyphicon-cloud-upload"></span> 上传文件
+                        </button>
+                    </span>
+
+                    <span>
+                        <button id="downloadBtn" type="button" class="btn btn-danger" disabled="disabled">
+                            <span class="glyphicon glyphicon-cloud-download"></span> 生成汇总表
+                        </button>
+                    </span>
+                    <div class="row">
+                        <span id="selectedFilesName"></span>
+                    </div>
+                    <div class="row progressRow">
+                        <div class="progress" style="display: none;">
+                            <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="10"
+                                 aria-valuemin="10" aria-valuemax="100" style="width: 10%;">
+                                10%
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <img class="img-responsive" src="/img/document-icon.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <hr>
+    <p class="centered">Created by ICBC Dalian HR Department - 2018</p>
+</div>
+
+<script type="text/javascript" src="/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/JqueryUpload/js/vendor/jquery.ui.widget.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/JqueryUpload/js/jquery.iframe-transport.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/JqueryUpload/js/jquery.fileupload.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/custom/excelUpload.js"></script>
+
+
+</body>
+</html>

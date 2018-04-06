@@ -63,6 +63,7 @@
         <a id="page5" class="list-group-item clickBtn" url="/getView/basicManage/managerManage" href="#">京东帮管家管理</a>
         <a id="page6" class="list-group-item clickBtn curr" url="/getView/site/linkpage" href="#">友情链接管理</a>
         <a id="page7" class="list-group-item clickBtn" url="/erp/informationDelivery/index" href="#">新闻公告管理</a>
+        <a id="page12" class="list-group-item clickBtn" url="/getView/site/excelTest" href="#">Excel上传测试</a>
 
         <a href="#" class="list-group-item list-group-item-warning">
             <span style="font-size:18px;font-weight: bold;">权限系统</span>

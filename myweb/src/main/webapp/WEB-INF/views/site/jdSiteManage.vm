@@ -504,8 +504,8 @@
                         <input id="fileupload" type="file" name="files[]" data-url="/site/uploadForPage" multiple>
                     </span>
                     <span>
-                        <button id="uploadBtn" type="button" class="btn btn-primary" disabled="disabled"><span
-                                class="glyphicon glyphicon-cloud-upload"></span> 上传文件
+                        <button id="uploadBtn" type="button" class="btn btn-primary" disabled="disabled">
+                            <span class="glyphicon glyphicon-cloud-upload"></span> 上传文件
                         </button>
                     </span>
                     <div class="row">
