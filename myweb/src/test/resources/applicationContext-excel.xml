@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+
+    <bean id="excelTest" class="excelTest">
+        <property name="cellRules">
+            <map>
+                <entry key="人力资源系统编码" value="0"/>   <!--sheet1-第1列 -->
+                <entry key="姓名" value="1"/>             <!--sheet1-第2列 -->
+
+                <entry key="表一应纳税额" value="25"/>    <!-- sheet1-第26列 -->
+                <entry key="表二应纳税额" value="25"/>    <!-- sheet2-第26列 -->
+                <entry key="表三应纳税额" value="25"/>    <!-- sheet3-第26列 -->
+                <entry key="表四收入合计" value="8"/>     <!-- sheet4-第9列 -->
+            </map>
+        </property>
+    </bean>
+</beans>
