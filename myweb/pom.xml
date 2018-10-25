@@ -8,8 +8,17 @@
     <name>myweb Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+    </repositories>
+
 
     <build>
+        <finalName>myweb</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -17,7 +26,6 @@
             </resource>
         </resources>
 
-        <finalName>myweb</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -28,6 +36,51 @@
                 </configuration>
             </plugin>
 
+            <!--生产发布时，需要用这个插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <useCache>true</useCache>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-war</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>exploded</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <version>1.5.3</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <basedir>${project.build.directory}/${project.artifactId}</basedir>
+                    <includes>
+                        <include>/WEB-INF/views/bootstrap/*.vm</include>
+                    </includes>
+
+                    <replacements>
+                        <replacement>
+                            <token>在这里添加一些文本</token>
+                            <value>在这里添加些文本</value>
+                        </replacement>
+                    </replacements>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

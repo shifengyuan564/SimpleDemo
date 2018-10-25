@@ -19,8 +19,8 @@
         </section>
         <section class="sidebar col col-lg-4">
             #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-register.vm")
-                    #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-lastyear.vm")
-                    #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-abouttheartists.vm")
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-lastyear.vm")
+            #parse("/bootstrap/LyndaBootstrap3Advanced/components/aside-abouttheartists.vm")
         </section>
     </div>
     #parse("/bootstrap/LyndaBootstrap3Advanced/components/footer.vm")
