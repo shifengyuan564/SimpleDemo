@@ -1,36 +1,38 @@
+<head>
+    <title>京东帮</title>
+    <link rel="stylesheet"  type="text/css" href="#springUrl('')/css/index.css"/>
 
-<link rel="stylesheet"  type="text/css" href="#springUrl('')/css/index.css"/>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var visibleHeight = $(window).height();     // 浏览器当前窗口可视区域高度
+            var headerHight = $(".header").height() + 25;    // div的高度 （包含margin）
+            $("#mainFrame").attr('height', visibleHeight-headerHight);
 
 
-<script type="text/javascript">
-    $(document).ready(function() {
+            $(".btnSwitchJs a").click(function(e){
+                if(this.attributes['url']){
+                    switchmainFrame(this.attributes['url'].nodeValue);
+                    switchActiveButtonCss("#"+this.id);
+                }
+            });
 
-        var visibleHeight = $(window).height();     // 浏览器当前窗口可视区域高度
-        var headerHight = $(".header").height() + 25;    // div的高度 （包含margin）
-        $("#mainFrame").attr('height', visibleHeight-headerHight);
-
-
-        $(".btnSwitchJs a").click(function(e){
-            if(this.attributes['url']){
-                switchmainFrame(this.attributes['url'].nodeValue);
-                switchActiveButtonCss("#"+this.id);
+            function switchmainFrame(url){
+                $('#mainFrame', parent.document).attr("src",url);
             }
+
+
+            function switchActiveButtonCss(id){
+                $(".header ul li").removeClass('curr');
+                $(id).parent().addClass('curr');
+            };
+
+            $("#page1").click();    // 初始默认显示首页
         });
+    </script>
+</head>
 
-        function switchmainFrame(url){
-            $('#mainFrame', parent.document).attr("src",url);
-        }
-
-
-        function switchActiveButtonCss(id){
-            $(".header ul li").removeClass('curr');
-            $(id).parent().addClass('curr');
-        };
-
-        $("#page1").click();    // 初始默认显示首页
-    });
-</script>
-
+<body>
 <div class="header">
     <div class="w">
         <div class="logo"><a href="">京东帮管理平台</a></div>
@@ -53,10 +55,8 @@
     </div>
 </div>
 
-
 <iframe id="mainFrame" style="top: 0px; padding-right: 0px; padding-left: 0px; overflow-y: scroll" class="i-col-xs-12" frameborder="0" scrolling="yes"></iframe>
-
-
+</body>
 
 
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Component Lifecycle</title>
+
+    <style type="text/css">
+        .alert-text {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+
+
+<script type="text/babel">
+
+    var SFY = React.createClass({
+
+        // Mounting
+        getInitialState: function () {
+            alert('init');
+            return {
+                opacity: 1.0,
+                fontSize: '18px'
+            };
+        },
+        componentWillMount: function () {
+            alert('will');
+        },
+        render: function () {
+            return <div className="alert-text" style={{opacity: this.state.opacity, fontSize: this.state.fontSize}}>
+                Hello~ {this.props.name} {this.props.age}
+            </div>;
+        },
+        componentDidMount: function () {
+            alert('did');
+
+            var _self = this;
+            window.setTimeout(function () {
+                _self.setState({
+                    opacity: 0.2,
+                    fontSize: '40px'
+                });
+            }, 1000);
+
+        }
+    });
+
+    ReactDOM.render(
+            <SFY name="史丰源" age="29"/>,
+        document.getElementById('container')
+    );
+</script>
+
+<script type="text/javascript" src="/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="/js/react/react.js"></script>
+<script type="text/javascript" src="/js/react/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+</html>

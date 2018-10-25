@@ -18,4 +18,6 @@ public interface LinkManageDao {
      * @return 友情链接信息列表
      */
     Page<Link> pageQuery(Page<Link> pageBean, Link link);
+
+    boolean addLink(Link link);
 }

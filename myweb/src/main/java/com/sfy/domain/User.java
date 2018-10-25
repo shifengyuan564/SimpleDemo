@@ -1,11 +1,15 @@
 package com.sfy.domain;
 
 public class User {
-	private String userNo; // 用户账号
+
+    private Role role;
+
+
+    private String userNo; // 用户账号
 	private String password;
+	private String userName; // 用户姓名
 	private Integer userType; // 用户类型
 	private String memo; // 链接信息
-	private String userName; // 用户姓名
 	private String orgNo; // 所属分公司编号
 	private String orgName; // 所属分公司名字
 	private String distributeNo; // 所属配送中心编号
@@ -16,7 +20,19 @@ public class User {
 	private Integer accountStatus; // 账号状态：是否激活
 	private Integer yn;
 	private Integer userFlag;
-	public String getUserNo() {
+
+    public User(String userName, String password) {
+        this.password = password;
+        this.userName = userName;
+    }
+
+    public User() {
+
+    }
+
+    public Role getRole() {return role;}
+    public void setRole(Role role) {this.role = role;}
+    public String getUserNo() {
 		return userNo;
 	}
 	public void setUserNo(String userNo) {

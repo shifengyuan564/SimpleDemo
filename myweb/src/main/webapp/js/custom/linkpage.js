@@ -1,7 +1,13 @@
 //初始化方法
 $(document).ready(function () {
+    "use strict";
+
+    // 校验
+    validatorDefine.insertLinkValidator();
 
     initDataTable();
+
+
 
     $('#pageNo').keydown(function(e){
         if(e.keyCode==13){
@@ -17,6 +23,8 @@ $(document).ready(function () {
         ignore: 'hidden'
     });
 
+
+    // 添加1
     $("#saveBtn").click(function(){
         save();
     });
@@ -25,8 +33,48 @@ $(document).ready(function () {
         update();
     });
 
+
 });
 
+var validatorDefine = {
+    insertLinkValidator: function () {
+        $('#insertForm2').validate({
+            rules: {
+                title2: {
+                    required: true,
+                    min: 0
+                },
+                address2: {
+                    required: true,
+                    min: 0
+                }
+            },
+            messages: {
+                title2: {
+                    required: "请填写名称",
+                    min: "请填写名称"
+                },
+                address2: {
+                    required: "请填写地址",
+                    min: "请填写地址"
+                }
+            },
+            errorPlacement: function (error, element) {
+                error.appendTo($(".alertValidate"));
+            },
+            success: function (label) {
+                $.each($('.alertValidate label'), function (_index, _obj) {
+                    if ($(label).attr("id") == $(_obj).attr("id")) {
+                        $(_obj).remove();
+                    }
+                });
+            },
+            errorContainer: ".alertValidate",
+            errorLabelContainer: $("#insertForm2 .alertValidate")
+        });
+    }
+
+};
 
 function query(){
     changePageSize();
@@ -271,7 +319,7 @@ function save(){
         jQuery.ajax({
             type: "POST",
             dataType: 'json',
-            url: "/erp/links/insert",
+            url: "/baseinfo/addlink",
             data: {
                 title: $('#titleI').val(),
                 address: $('#addressI').val(),
@@ -298,7 +346,7 @@ function save(){
  * @param userCode 用户编码
  */
 function openUpdateWindow(id){
-    $('#updateBtnModal').modal('show')
+    $('#updateBtnModal').modal('show');
     $("#updateForm")[0].reset();
     jQuery.ajax({
         type: "POST",

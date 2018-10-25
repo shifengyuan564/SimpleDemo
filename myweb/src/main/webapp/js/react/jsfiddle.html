@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Base Fiddle</title>
+
+    <style type="text/css">
+        .alert-text {
+            color: red;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+
+
+
+<script type="text/babel">
+    var SFY = React.createClass({
+        render: function () {
+            return <div className="alert-text">Hello~ {this.props.name} {this.props.age}</div>;
+        }
+    });
+
+    ReactDOM.render(
+            <SFY name="史丰源" age="29" />,
+//        document.getElementById('container')
+        $('#container')[0]
+    );
+</script>
+
+<script type="text/javascript" src="/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="/js/react/react.js"></script>
+<script type="text/javascript" src="/js/react/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+</html>

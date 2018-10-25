@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- web.xml中shiro的filter对应的bean (Shiro 的Web过滤器)-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/login"/>          <!-- loginUrl认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由formAuthenticationFilter进行表单认证 -->
+        <property name="successUrl" value="/index"/>        <!-- 认证成功统一跳转到first.action，建议不配置，shiro认证成功自动到上一个请求路径 -->
+        <property name="unauthorizedUrl" value="/error"/>   <!-- 通过unauthorizedUrl指定没有权限操作时跳转页面-->
+
+        <!-- 自定义filter配置
+        <property name="filters">
+            <map>
+                <entry key="authc" value-ref="shiro"/>
+            </map>
+        </property>-->
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- anon表示此地址不需要任何权限即可访问 -->
+                /login=anon
+                /submit=anon
+                /error=anon
+                /img/**=anon
+
+                <!-- roles[manager]表示访问此连接需要用户的角色为manager -->
+                /**=authc,roles["administrator"]
+            </value>
+        </property>
+    </bean>
+
+    <bean id="shiro" class="com.sfy.shiro.ShiroFilter"/>
+    <bean id="shiroRealm" class="com.sfy.shiro.ShiroRealm"/>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="shiroRealm"/>
+        <!-- 需要使用cache的话加上这句
+        <property name="cacheManager" ref="shiroEhcacheManager" />
+         -->
+    </bean>
+
+    <!-- 用户授权信息Cache, 采用EhCache，需要的话就配置上此信息
+    <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache-shiro.xml" />
+    </bean>
+    -->
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+</beans>

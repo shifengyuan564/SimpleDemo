@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public class Person implements Serializable {
 
+    private static final long serialVersionUID = -3932101116106946221L;
+
     private int id;
     private String name;
     private boolean status;

@@ -39,6 +39,7 @@
 
         /* Overriding styles for spinner */
         .pdsa-submit-progress {
+            z-index: 9999;
             padding-top: 2em;
             width: 23em;
             margin-left: -11.5em;
@@ -49,8 +50,36 @@
             opacity: .5;
         }
 
+        .pdsa-popover-mask {
+            z-index: 9998;
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background: #080e12;
+            opacity:0.4;
+            filter:alpha(opacity=40);
+            display:none
+        }
+
         .pdsa-submit-progress i {
             margin-right: 0.5em;
+        }
+
+        .panel-right {
+            border: 0.05em solid lightgray;
+            border-radius: 0.25em 0.25em;
+            margin-top: -0.2em;
+            padding: 0.3em;
+            font-size: 0.9em;
+            float: right;
+        }
+
+        .panel-title a,
+        .panel-title a:active,
+        .panel-title a:visited {
+            text-decoration: none;
         }
     </style>
 
@@ -131,13 +160,18 @@
     <label>Please wait while Downloading...</label>
 </div>
 
+<div class="pdsa-popover-mask hidden"></div>
+
 <!-- *** BEGIN: Body Content *** -->
 <div class="container body-content">
     <div class="row">
         <div class="col-xs-12 col-sm-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Songs to Download</h3>
+                    <h1 class="panel-title">
+                        <span class="glyphicon glyphicon-music"></span>&nbsp;Songs to Download
+                        <a href="#" class="panel-right glyphicon glyphicon-random">&nbsp;Reload </a>
+                    </h1>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -199,7 +233,14 @@
         $("body").addClass("pdsa-submit-progress-bg");  // Gray out background on page
 
         // Wrap in setTimeout so the UI can update the spinners
-        setTimeout(function () {$(".pdsa-submit-progress").removeClass("hidden");}, 500);
+        setTimeout(
+            function () {
+                $(".pdsa-submit-progress").removeClass("hidden");
+                $(".pdsa-popover-mask").removeClass("hidden");
+                $('.pdsa-popover-mask').fadeIn(100);
+            },
+            500
+        );
 
         return true;
     }

@@ -1,0 +1,151 @@
+#set($layout = "/layout/null.vm")
+
+<link rel="stylesheet" type="text/css"  href="#springUrl('')/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/css/jquery.validator.css"/>
+<link rel="stylesheet" type="text/css" href="#springUrl('')/css/linkpage.css?v=20160317" />
+
+<script type="text/javascript" src="/js/jquery-2.1.0.js" charset="utf-8" ></script>
+<script type="text/javascript" src="#springUrl('')/js/bootstrap.js"></script>
+
+<script src="/js/validate/jquery.validate.js"></script>
+<script src="/js/validate/additional-methods.js"></script>
+<script src="/js/validate/cus-custom-validate.js"></script>
+
+<script src="/js/custom/vali.js"></script>
+<style>
+    .bootstrapBtn{
+        background: #f24f44 none repeat scroll 0 0;
+        border: 1px solid #f24f44;
+        color: #fff;
+        border-radius: 2px;
+        display: inline-block;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        margin: 0 10px;
+        text-align: center;
+        width: 98px;
+    }
+    .bootstrapBtn:hover {
+        background: #fb766d none repeat scroll 0 0;
+        border: 1px solid #fb766d;
+    }
+
+    .bootstrapBtnWarning{
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid #d9d9d9;
+        color: #959595;
+        border-radius: 2px;
+        display: inline-block;
+        font-size: 12px;
+        height: 30px;
+        line-height: 30px;
+        margin: 0 10px;
+        text-align: center;
+        width: 98px;
+    }
+
+    .bootstrapBtnWarning:hover {
+        border: 1px solid #f24f44;
+        color: #f24f44;
+    }
+</style>
+
+<!-- modal test -->
+<div class="bs-example-modal-lg" id="insertBtnModal">
+    <div class="modal-dialog modal-lg" style="width:600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: left; font-weight: bold;">添加</h4>
+            </div>
+            <div class="modal-body">
+                <form id="insertForm2" class="form-horizontal">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px; ">
+                                <label for="title2">名称</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="title2" name="title2" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px;">
+                                <label for="address2">地址</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="address2" name="address2" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px;">
+                                <label for="num2">号码</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="num2" name="num2" type="text" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <div class="alert alert-danger alertValidate" role="alert" style="display: none;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="saveBtn2" class="btn btn-primary insertBtn" >保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="bs-example-modal-lg" id="cusRuleBtnModal">
+    <div class="modal-dialog modal-lg" style="width:600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" style="text-align: left; font-weight: bold;">修改</h4>
+            </div>
+            <div class="modal-body">
+                <form id="cusRuleForm" class="form-horizontal">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px; ">
+                                <label for="inoutLabel">进出口标志</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="inoutLabel" name="inoutLabel" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px;">
+                                <label for="supervise">监管方式</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="supervise" name="supervise" type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-bottom: 5px; width:150px;">
+                                <label for="noNeed">征免性质</label>
+                            </td>
+                            <td style="padding-bottom: 5px;">
+                                <input class="form-control" id="noNeed" name="noNeed" type="text" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <div class="alert alert-danger wrongInput" role="alert" style="display: none;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="saveBtn" class="btn btn-primary insertBtn" >保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+

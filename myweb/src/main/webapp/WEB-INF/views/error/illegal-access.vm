@@ -36,8 +36,7 @@
 
 <div>
     $!exception.printMessage<br/>
-    <input id="relogin" type="submit" value="重新登录" name="relogin"
-           style="color: rgb(255,255,0); font-size: 9pt; background-color: rgb(0,128,128)">
+    <input id="relogin" type="submit" value="重新登录" name="relogin" style="color: rgb(255,255,0); font-size: 9pt; background-color: rgb(0,128,128)">
 </div>
 
 </body>

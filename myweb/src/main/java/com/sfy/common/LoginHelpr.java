@@ -7,7 +7,7 @@ import com.sfy.domain.User;
 import org.apache.log4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -71,7 +71,7 @@ public final class LoginHelpr {
 		MediaType mediaType = new MediaType("application", "json");
 		supportedMediaTypes.add(mediaType);
 
-		MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+		MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 		httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> list = restTemplate
@@ -92,7 +92,7 @@ public final class LoginHelpr {
 			MediaType mediaType = new MediaType("application", "json");
 			supportedMediaTypes.add(mediaType);
 
-			MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+			MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 			httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 			RestTemplate restTemplate = new RestTemplate();
 			List<HttpMessageConverter<?>> list = restTemplate
@@ -122,7 +122,7 @@ public final class LoginHelpr {
 			MediaType mediaType = new MediaType("application", "json");
 			supportedMediaTypes.add(mediaType);
 
-			MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+			MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 			httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 			RestTemplate restTemplate = new RestTemplate();
 			List<HttpMessageConverter<?>> list = restTemplate
@@ -155,7 +155,7 @@ public final class LoginHelpr {
 		MediaType mediaType = new MediaType("application", "json");
 		supportedMediaTypes.add(mediaType);
 
-		MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+		MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 		httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> list = restTemplate
@@ -179,7 +179,7 @@ public final class LoginHelpr {
 		MediaType mediaType = new MediaType("application", "json");
 		supportedMediaTypes.add(mediaType);
 
-		MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+		MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 		httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> list = restTemplate
@@ -209,7 +209,7 @@ public final class LoginHelpr {
 			MediaType mediaType = new MediaType("application", "json");
 			supportedMediaTypes.add(mediaType);
 
-			MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+			MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 			httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 			RestTemplate restTemplate = new RestTemplate();
 			List<HttpMessageConverter<?>> list = restTemplate
@@ -244,7 +244,7 @@ public final class LoginHelpr {
 			MediaType mediaType = new MediaType("application", "json");
 			supportedMediaTypes.add(mediaType);
 
-			MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+			MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 			httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 			RestTemplate restTemplate = new RestTemplate();
 			List<HttpMessageConverter<?>> list = restTemplate
@@ -307,7 +307,7 @@ public final class LoginHelpr {
 			MediaType mediaType = new MediaType("application", "json");
 			supportedMediaTypes.add(mediaType);
 
-			MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+			MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 			httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 			RestTemplate restTemplate = new RestTemplate();
 			List<HttpMessageConverter<?>> list = restTemplate
@@ -344,7 +344,7 @@ public final class LoginHelpr {
 		MediaType mediaType = new MediaType("application", "json");
 		supportedMediaTypes.add(mediaType);
 
-		MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+		MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 		httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> list = restTemplate
@@ -364,7 +364,7 @@ public final class LoginHelpr {
 		MediaType mediaType = new MediaType("application", "json");
 		supportedMediaTypes.add(mediaType);
 
-		MappingJacksonHttpMessageConverter httpMessageConverter = new MappingJacksonHttpMessageConverter();
+		MappingJackson2HttpMessageConverter httpMessageConverter = new MappingJackson2HttpMessageConverter();
 		httpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
 		RestTemplate restTemplate = new RestTemplate();
 		List<HttpMessageConverter<?>> list = restTemplate

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.me.CodeMapper" >
+
+    <resultMap id="CodeResultMap" type="com.sfy.domain.Code">
+        <id column="id" property="id" />
+        <!--<result column="company_name" property="companyName"/>-->
+        <!--<result column="company_code" property="companyCode"/>-->
+        <result column="business_code" property="businessCode"/>
+        <result column="business_name" property="businessName"/>
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="instruction" property="instruction"/>
+    </resultMap>
+
+    <sql id="queryCodeCondition">
+        <if test="_parameter != null">
+            is_delete = 0
+            <if test="businessCode != null and businessCode !='' ">
+                AND business_code = #{businessCode}
+            </if>
+            <if test="queryKey != null and queryKey !='' ">
+                AND ( code LIKE CONCAT('%',#{queryKey},'%') OR name LIKE CONCAT('%',#{queryKey},'%') )
+            </if>
+        </if>
+    </sql>
+
+    <select id="queryCode" parameterType="com.sfy.domain.Code" resultMap="CodeResultMap">
+        select
+            id,
+            business_code,
+            business_name,
+            code,
+            name,
+            instruction
+        from
+            ${companyCode}
+        <where>
+            <include refid="queryCodeCondition"/>
+        </where>
+        ORDER BY id DESC
+        LIMIT 0, 10
+    </select>
+</mapper>

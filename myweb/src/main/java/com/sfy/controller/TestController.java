@@ -49,4 +49,15 @@ public class TestController {
     public String liyi() {
         return "test/liyi";
     }
+
+    @RequestMapping(value = "/haiguan", method = RequestMethod.GET)
+    public String haiguan() {
+        return "test/haiguan";
+    }
+
+
+    @RequestMapping(value = "/bigscreen", method = RequestMethod.GET)
+    public String bigscreen() {
+        return "test/bigscreen";
+    }
 }

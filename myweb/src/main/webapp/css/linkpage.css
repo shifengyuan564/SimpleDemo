@@ -222,3 +222,18 @@ thead {
 .table-hover>thead:hover, .table-hover>tbody>tr:hover>td {
     background-color: rgb(250, 234, 203);
 }
+
+/*校验*/
+.alertValidate,
+.alertModifyValidate,
+.wrongInput {
+    margin-left: 10px;
+}
+
+.alertValidate label,
+.alertModifyValidate label,
+.wrongInput label{
+    line-height: 14px !important;
+    display: block !important;  /*分行显示*/
+    text-align: left !important;
+}

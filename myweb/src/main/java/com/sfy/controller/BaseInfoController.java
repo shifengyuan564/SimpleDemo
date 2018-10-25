@@ -61,4 +61,11 @@ public class BaseInfoController {
         return result;
     }
 
+    @RequestMapping(value = "/addlink", produces = "application/json;charset=UTF-8",  method = RequestMethod.POST)
+    @ResponseBody
+    public boolean addLink(Link link){
+
+        return linkManageService.addLink(link);
+    }
+
 }
