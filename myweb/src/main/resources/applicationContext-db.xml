@@ -63,13 +63,4 @@
     </tx:advice>
 
 
-    <!-- camel-->
-    <bean id="required" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
-        <property name="transactionManager" ref="txManager" />
-        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
-    </bean>
-    <bean id="mybatis" class="org.apache.camel.component.mybatis.MyBatisComponent">
-        <property name="sqlSessionFactory" ref="myCustomFactory" />
-    </bean>
-
 </beans>

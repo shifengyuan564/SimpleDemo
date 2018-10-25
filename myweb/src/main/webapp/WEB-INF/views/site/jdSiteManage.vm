@@ -521,6 +521,11 @@
                         </div>
                     </div>
                 </form>
+                <form  enctype="multipart/form-data"  id="uploadformid"  >
+                    <input type="file" name="file" accept="image/png,image/gif,image/jpeg" id="file">
+                    <button class="btn btn-primary float-right"  type="button" id="uploadImage" >上传到七牛</button>
+                </form>
+
                 <div class="alert alert-danger alertValidate" role="alert" style="display: none;">
                 </div>
             </div>

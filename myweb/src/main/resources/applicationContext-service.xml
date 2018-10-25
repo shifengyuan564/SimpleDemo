@@ -18,13 +18,11 @@
 	<!-- 注解bean包扫描 -->
 	<context:component-scan base-package="com.sfy.service"/>
     <context:component-scan base-package="com.sfy.dao "/>
-    <context:component-scan base-package="com.sfy.manager"/>
     <context:component-scan base-package="com.sfy.controller"/>
 
     <context:annotation-config/>
 
     <!-- 导入其他配置文件 -->
-    <import resource="spring-config-redis.xml"/>
 
 
     <!-- 属性文件读入 -->
@@ -32,7 +30,6 @@
 		<property name="locations">
 			<list>
 				<value>classpath:important.properties</value>
-				<value>classpath:mss_config.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -52,4 +49,14 @@
 		<property name="tempDirectory" value="${catalina.base}/temp/las_jdhms" />
 		<property name="bucketName" value="${jss.bucketName.bbs}" />
 	</bean>-->
+
+	<!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"/>
+		<!-- 设定文件上传的最大值为5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"/>
+		<!-- 设定文件上传时写入内存的最大值，如果小于这个参数不会生成临时文件，默认为10240 -->
+		<property name="maxInMemorySize" value="40960"/>
+	</bean>
 </beans>

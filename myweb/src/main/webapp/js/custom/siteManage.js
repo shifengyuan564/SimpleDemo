@@ -74,6 +74,24 @@ var pageInit = function () {
         clearBtn: true,
         autoclose: true
     });
+
+    $("#uploadImage").click(function() {
+        $.ajax({
+            url: 'http://localhost/test/upload',
+            type: 'POST',
+            cache: false,
+            data: new FormData($('#uploadformid')[0]),
+            processData: false,
+            contentType: false,
+            success: function(data){
+                alert(data);
+
+            }
+        }).done(function(res) {
+            $('#file').val('');
+        }).fail(function(res) {});
+    });
+
     $('#fileupload').fileupload({
         dataType: 'json',
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png|doc|xsl|ppt|rar|zip)$/i,
